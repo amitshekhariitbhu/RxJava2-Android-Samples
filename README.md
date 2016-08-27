@@ -1,8 +1,8 @@
 # Learning RxJava2 for Android by example
 
 ####This project is for : 
-1 . who is migrating to RxJava 2.0 
-2 . or just started with RxJava.
+* who is migrating to RxJava 2.0 
+* or just started with RxJava.
 
 ### Just Build the project and start learning RxJava by examples.
 
