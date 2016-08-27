@@ -26,7 +26,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class ZipExample extends AppCompatActivity {
 
-    private static final String TAG = MapExample.class.getSimpleName();
+    private static final String TAG = ZipExample.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -53,7 +53,9 @@ public class ZipExample extends AppCompatActivity {
                         return Utils.filterUserWhoLovesBoth(cricketFans, footballFans);
                     }
                 })
+                // Run on a background thread
                 .subscribeOn(Schedulers.io())
+                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
     }
@@ -87,29 +89,29 @@ public class ZipExample extends AppCompatActivity {
 
             @Override
             public void onSubscribe(Disposable d) {
-                textView.append("onSubscribe : isDisposed :" + d.isDisposed());
-                Log.d(TAG, "onSubscribe : " + d.isDisposed());
+                textView.append(" onSubscribe : isDisposed :" + d.isDisposed());
+                Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
             public void onNext(List<User> userList) {
-                textView.append("onNext");
+                textView.append(" onNext");
                 for (User user : userList) {
-                    textView.append("firstName : " + user.firstName);
+                    textView.append(" firstName : " + user.firstName);
                 }
-                Log.d(TAG, "onNext : " + userList.size());
+                Log.d(TAG, " onNext : " + userList.size());
             }
 
             @Override
             public void onError(Throwable e) {
-                textView.append("onError : " + e.getMessage());
-                Log.d(TAG, "onError : " + e.getMessage());
+                textView.append(" onError : " + e.getMessage());
+                Log.d(TAG, " onError : " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
-                textView.append("onComplete");
-                Log.d(TAG, "onComplete");
+                textView.append(" onComplete");
+                Log.d(TAG, " onComplete");
             }
         };
     }

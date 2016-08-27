@@ -34,6 +34,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="startDisposableActivity"
+        android:text="@string/disposable"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="startTakeActivity"
         android:text="@string/take"
         android:textColor="@android:color/black" />

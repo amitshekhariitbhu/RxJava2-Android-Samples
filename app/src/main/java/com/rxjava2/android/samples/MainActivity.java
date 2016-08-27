@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, ZipExample.class));
     }
 
+    public void startDisposableActivity(View view) {
+        startActivity(new Intent(MainActivity.this, DisposableExample.class));
+    }
+
     public void startTakeActivity(View view) {
         startActivity(new Intent(MainActivity.this, TakeExample.class));
     }

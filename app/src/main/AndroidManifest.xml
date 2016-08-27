@@ -19,6 +19,7 @@
         <activity android:name=".SimpleExample"></activity>
         <activity android:name=".MapExample"></activity>
         <activity android:name=".ZipExample"></activity>
+        <activity android:name=".DisposableExample"></activity>
         <activity android:name=".TakeExample"></activity>
     </application>
 

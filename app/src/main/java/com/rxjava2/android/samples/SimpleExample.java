@@ -24,9 +24,6 @@ public class SimpleExample extends AppCompatActivity {
     private static final String TAG = SimpleExample.class.getSimpleName();
     Button btn;
     TextView textView;
-    private Subscription subscription;
-    private Disposable disposable;
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +42,9 @@ public class SimpleExample extends AppCompatActivity {
 
     private void doSomeWork() {
         getObservable()
+                // Run on a background thread
                 .subscribeOn(Schedulers.io())
+                // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
     }
@@ -59,26 +58,26 @@ public class SimpleExample extends AppCompatActivity {
 
             @Override
             public void onSubscribe(Disposable d) {
-                textView.append("onSubscribe : isDisposed :" + d.isDisposed());
-                Log.d(TAG, "onSubscribe : " + d.isDisposed());
+                textView.append(" onSubscribe : isDisposed :" + d.isDisposed());
+                Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
             public void onNext(String value) {
-                textView.append("onNext : value : " + value);
-                Log.d(TAG, "onNext : value : " + value);
+                textView.append(" onNext : value : " + value);
+                Log.d(TAG, " onNext : value : " + value);
             }
 
             @Override
             public void onError(Throwable e) {
-                textView.append("onError : " + e.getMessage());
-                Log.d(TAG, "onError : " + e.getMessage());
+                textView.append(" onError : " + e.getMessage());
+                Log.d(TAG, " onError : " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
-                textView.append("onComplete");
-                Log.d(TAG, "onComplete");
+                textView.append(" onComplete");
+                Log.d(TAG, " onComplete");
             }
         };
     }
