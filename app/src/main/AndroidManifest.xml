@@ -16,11 +16,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SimpleExample"></activity>
-        <activity android:name=".MapExample"></activity>
-        <activity android:name=".ZipExample"></activity>
-        <activity android:name=".DisposableExample"></activity>
-        <activity android:name=".TakeExample"></activity>
+        <activity
+            android:name=".SimpleExample"
+            android:label="@string/simple"/>
+        <activity
+            android:name=".MapExample"
+            android:label="@string/map"/>
+        <activity
+            android:name=".ZipExample"
+            android:label="@string/zip"/>
+        <activity
+            android:name=".DisposableExample"
+            android:label="@string/disposable"/>
+        <activity
+            android:name=".TakeExample"
+            android:label="@string/take"/>
     </application>
 
 </manifest>
