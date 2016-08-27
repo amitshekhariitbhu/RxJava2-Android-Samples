@@ -49,6 +49,9 @@
         <activity
             android:name=".ReduceExampleActivity"
             android:label="@string/reduce" />
+        <activity
+            android:name=".BufferExampleActivity"
+            android:label="@string/buffer" />
     </application>
 
 </manifest>

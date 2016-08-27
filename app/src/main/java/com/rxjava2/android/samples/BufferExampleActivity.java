@@ -7,18 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class SimpleExampleActivity extends AppCompatActivity {
+public class BufferExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = SimpleExampleActivity.class.getSimpleName();
+    private static final String TAG = BufferExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -38,23 +38,30 @@ public class SimpleExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example to emit two value one by one
+     * simple example using buffer operator - bundles all emitted values into a list
      */
     private void doSomeWork() {
-        getObservable()
-                // Run on a background thread
-                .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(getObserver());
+
+        Observable<List<String>> buffered = getObservable().buffer(3, 1);
+
+        // 3 means,  it takes max of three from its start index and create list
+        // 1 means, it jumps one step every time
+        // so the it gives the following list
+        // 1 - one, two, three
+        // 2 - two, three, four
+        // 3 - three, four, five
+        // 4 - four, five
+        // 5 - five
+
+        buffered.subscribe(getObserver());
     }
 
     private Observable<String> getObservable() {
-        return Observable.just("Cricket", "Football");
+        return Observable.just("one", "two", "three", "four", "five");
     }
 
-    private Observer<String> getObserver() {
-        return new Observer<String>() {
+    private Observer<List<String>> getObserver() {
+        return new Observer<List<String>>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -63,9 +70,14 @@ public class SimpleExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(String value) {
-                textView.append(" onNext : value : " + value);
-                Log.d(TAG, " onNext : value : " + value);
+            public void onNext(List<String> stringList) {
+                textView.append(" onNext size : " + stringList.size());
+                Log.d(TAG, " onNext : size :" + stringList.size());
+                for (String value : stringList) {
+                    textView.append(" value : " + value);
+                    Log.d(TAG, " : value :" + value);
+                }
+
             }
 
             @Override

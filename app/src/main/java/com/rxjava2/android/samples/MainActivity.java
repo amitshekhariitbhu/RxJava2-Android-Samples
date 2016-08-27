@@ -56,4 +56,8 @@ public class MainActivity extends AppCompatActivity {
     public void startReduceActivity(View view) {
         startActivity(new Intent(MainActivity.this, ReduceExampleActivity.class));
     }
+
+    public void startBufferActivity(View view) {
+        startActivity(new Intent(MainActivity.this, BufferExampleActivity.class));
+    }
 }
