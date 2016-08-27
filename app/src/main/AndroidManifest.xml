@@ -43,6 +43,9 @@
         <activity
             android:name=".CompletableObserverActivity"
             android:label="@string/CompletableObserver" />
+        <activity
+            android:name=".FlowableExampleActivity"
+            android:label="@string/Flowable" />
     </application>
 
 </manifest>

@@ -10,4 +10,5 @@
     <string name="interval">Interval</string>
     <string name="SingleObserver">SingleObserver</string>
     <string name="CompletableObserver">CompletableObserver</string>
+    <string name="Flowable">Flowable</string>
 </resources>

@@ -48,4 +48,8 @@ public class MainActivity extends AppCompatActivity {
     public void startCompletableObserverActivity(View view) {
         startActivity(new Intent(MainActivity.this, CompletableObserverActivity.class));
     }
+
+    public void startFlowableActivity(View view) {
+        startActivity(new Intent(MainActivity.this, FlowableExampleActivity.class));
+    }
 }
