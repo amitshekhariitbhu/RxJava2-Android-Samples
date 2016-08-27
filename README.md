@@ -25,34 +25,34 @@ compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
 
 # RxJava2 Tutorials present in this sample project
 
-Example using CompositeDisposable as CompositeSubscription and Subscription have
+* Example using `CompositeDisposable` as `CompositeSubscription` and `Subscription` have
 been removed.
 
-Example using RxJava2 operators such as:
+* Example using `Flowable`.
 
-* MAP
-* ZIP
-* TAKE
-* FLATMAP 
-* and much more.
+* Example using `SingleObserver`, `CompletableObserver`.
 
-Example using Function as Func1 has been removed.
+* Example using RxJava2 operators such as `MAP, ZIP, TAKE, FLATMAP`, and much more:
 
-Example using BiFunction as Func2 has been removed.
+* Example using `Function` as `Func1` has been removed.
+
+* Example using `BiFunction` as `Func2` has been removed.
+
+* And many others examples
 
 # Quick Look on few changes done in RxJava2 over RxJava1
 
 RxJava1 -> RxJava2
 
-* onCompleted -> onComplete - without the trailing d
-* Func1 -> Function
-* Func2 -> BiFunction
-* CompositeSubscription -> CompositeDisposable
-* limit operator has been removed - Use take in RxJava2
-* merge operator has been added overloads with prefetch 
-* mergeDelayError operator has been added overloads with prefetch 
-* switchOnNext operator has been added overloads with prefetch 
-* switchOnNextDelayError operator has been added overloads with prefetch 
+* `onCompleted` -> `onComplete` - without the trailing d
+* `Func1` -> `Function`
+* `Func2` -> `BiFunction`
+* `CompositeSubscription` -> `CompositeDisposable`
+* `limit` operator has been removed - Use `take` in RxJava2
+* `merge` operator has been added overloads with `prefetch` 
+* `mergeDelayError` operator has been added overloads with `prefetch` 
+* `switchOnNext` operator has been added overloads with `prefetch` 
+* `switchOnNextDelayError` operator has been added overloads with `prefetch` 
 * and much more.
 
 # Highlights of the examples :
