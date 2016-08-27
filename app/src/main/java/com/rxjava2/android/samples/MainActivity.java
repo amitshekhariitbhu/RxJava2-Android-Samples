@@ -40,4 +40,12 @@ public class MainActivity extends AppCompatActivity {
     public void startIntervalActivity(View view) {
         startActivity(new Intent(MainActivity.this, IntervalExampleActivity.class));
     }
+
+    public void startSingleObserverActivity(View view) {
+        startActivity(new Intent(MainActivity.this, SingleObserverExampleActivity.class));
+    }
+
+    public void startCompletableObserverActivity(View view) {
+        startActivity(new Intent(MainActivity.this, CompletableObserverActivity.class));
+    }
 }

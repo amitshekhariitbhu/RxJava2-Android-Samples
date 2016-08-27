@@ -8,4 +8,6 @@
     <string name="take">Take</string>
     <string name="timer">Timer</string>
     <string name="interval">Interval</string>
+    <string name="SingleObserver">SingleObserver</string>
+    <string name="CompletableObserver">CompletableObserver</string>
 </resources>

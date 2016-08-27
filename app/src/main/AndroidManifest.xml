@@ -37,6 +37,12 @@
         <activity
             android:name=".IntervalExampleActivity"
             android:label="@string/interval" />
+        <activity
+            android:name=".SingleObserverExampleActivity"
+            android:label="@string/SingleObserver" />
+        <activity
+            android:name=".CompletableObserverActivity"
+            android:label="@string/CompletableObserver" />
     </application>
 
 </manifest>
