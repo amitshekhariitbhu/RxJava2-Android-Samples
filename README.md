@@ -21,8 +21,12 @@ You will be using RxJava2 operators such as:
 * FLATMAP 
 * and much more.
 
-You will be learning how to use CompositeDisposable as CompositeSubscription and Subscription has
+How to use CompositeDisposable as CompositeSubscription and Subscription have
 been removed.
+
+How to use Function as Func1 has been removed.
+
+How to use BiFunction as Func2 has been removed.
 
 # Quick Look on few changes done in RxJava2 over RxJava1
 
