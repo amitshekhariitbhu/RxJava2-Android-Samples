@@ -15,7 +15,7 @@ Add this in your build.gradle
 ```groovy
 compile 'io.reactivex.rxjava2:rxjava:2.0.0-RC1'
 ```
-For using RxAndroid also add the following
+If you are using RxAndroid also, then add the following
 ```groovy
 compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
 ```
