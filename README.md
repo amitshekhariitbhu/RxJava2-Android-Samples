@@ -7,7 +7,7 @@ Because Reactive-Streams has a different architecture, it mandates changes to so
 
 # Migration From RxJava 1 to RxJava2
 
-This (link)[https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0] will help you while migrating to RxJava2.
+This [link](https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0) will help you while migrating to RxJava2.
 
 # RxJava2 Tutorials
 
