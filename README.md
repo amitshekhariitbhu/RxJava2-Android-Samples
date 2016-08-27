@@ -7,8 +7,6 @@ Because Reactive-Streams has a different architecture, it mandates changes to so
 
 # Migration From RxJava 1 to RxJava2
 
-This [link](https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0) will help you while migrating to RxJava2.
-
 Using RxJava 2.0 Library in your application
 
 Add this in your build.gradle
@@ -22,6 +20,9 @@ compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
 
 # RxJava2 Tutorials
 
+Using CompositeDisposable as CompositeSubscription and Subscription have
+been removed.
+
 Using RxJava2 for Android by implementing few examples using RxJava2.
 
 Using RxJava2 operators such as:
@@ -31,9 +32,6 @@ Using RxJava2 operators such as:
 * TAKE
 * FLATMAP 
 * and much more.
-
-Using CompositeDisposable as CompositeSubscription and Subscription have
-been removed.
 
 Using Function as Func1 has been removed.
 
