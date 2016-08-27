@@ -18,14 +18,12 @@ If you are using RxAndroid also, then add the following
 compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
 ```
 
-# RxJava2 Tutorials
+# RxJava2 Tutorials present in this sample project
 
-Using CompositeDisposable as CompositeSubscription and Subscription have
+Example using CompositeDisposable as CompositeSubscription and Subscription have
 been removed.
 
-Using RxJava2 for Android by implementing few examples using RxJava2.
-
-Using RxJava2 operators such as:
+Example using RxJava2 operators such as:
 
 * MAP
 * ZIP
@@ -33,9 +31,9 @@ Using RxJava2 operators such as:
 * FLATMAP 
 * and much more.
 
-Using Function as Func1 has been removed.
+Example using Function as Func1 has been removed.
 
-Using BiFunction as Func2 has been removed.
+Example using BiFunction as Func2 has been removed.
 
 # Quick Look on few changes done in RxJava2 over RxJava1
 
