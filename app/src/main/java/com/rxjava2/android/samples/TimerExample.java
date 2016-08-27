@@ -7,21 +7,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.reactivestreams.Subscription;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class SimpleExample extends AppCompatActivity {
+public class TimerExample extends AppCompatActivity {
 
-    private static final String TAG = SimpleExample.class.getSimpleName();
+    private static final String TAG = TimerExample.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -41,7 +40,7 @@ public class SimpleExample extends AppCompatActivity {
     }
 
     /*
-     * simple example to emit two value one by one
+     * simple example using timer to do something after 2 second
      */
     private void doSomeWork() {
         getObservable()
@@ -52,12 +51,12 @@ public class SimpleExample extends AppCompatActivity {
                 .subscribe(getObserver());
     }
 
-    private Observable<? extends String> getObservable() {
-        return Observable.just("Cricket", "Football");
+    private Observable<? extends Long> getObservable() {
+        return Observable.timer(2, TimeUnit.SECONDS);
     }
 
-    private Observer<String> getObserver() {
-        return new Observer<String>() {
+    private Observer<Long> getObserver() {
+        return new Observer<Long>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -66,7 +65,7 @@ public class SimpleExample extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(String value) {
+            public void onNext(Long value) {
                 textView.append(" onNext : value : " + value);
                 Log.d(TAG, " onNext : value : " + value);
             }

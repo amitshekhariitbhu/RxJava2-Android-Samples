@@ -14,22 +14,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startSimpleActivity(View view) {
-        startActivity(new Intent(MainActivity.this, SimpleExample.class));
+        startActivity(new Intent(MainActivity.this, SimpleExampleActivity.class));
     }
 
     public void startMapActivity(View view) {
-        startActivity(new Intent(MainActivity.this, MapExample.class));
+        startActivity(new Intent(MainActivity.this, MapExampleActivity.class));
     }
 
     public void startZipActivity(View view) {
-        startActivity(new Intent(MainActivity.this, ZipExample.class));
+        startActivity(new Intent(MainActivity.this, ZipExampleActivity.class));
     }
 
     public void startDisposableActivity(View view) {
-        startActivity(new Intent(MainActivity.this, DisposableExample.class));
+        startActivity(new Intent(MainActivity.this, DisposableExampleActivity.class));
     }
 
     public void startTakeActivity(View view) {
-        startActivity(new Intent(MainActivity.this, TakeExample.class));
+        startActivity(new Intent(MainActivity.this, TakeExampleActivity.class));
+    }
+
+    public void startTimerActivity(View view) {
+        startActivity(new Intent(MainActivity.this, TimerExample.class));
+    }
+
+    public void startIntervalActivity(View view) {
+        startActivity(new Intent(MainActivity.this, IntervalExampleActivity.class));
     }
 }

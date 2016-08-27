@@ -22,9 +22,9 @@ compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
 
 # RxJava2 Tutorials
 
-Here, you will learn RxJava2 for Android by implementing few examples using RxJava2.
+Using RxJava2 for Android by implementing few examples using RxJava2.
 
-You will be using RxJava2 operators such as:
+Using RxJava2 operators such as:
 
 * MAP
 * ZIP
@@ -32,12 +32,12 @@ You will be using RxJava2 operators such as:
 * FLATMAP 
 * and much more.
 
-How to use CompositeDisposable as CompositeSubscription and Subscription have
+Using CompositeDisposable as CompositeSubscription and Subscription have
 been removed.
 
-How to use Function as Func1 has been removed.
+Using Function as Func1 has been removed.
 
-How to use BiFunction as Func2 has been removed.
+Using BiFunction as Func2 has been removed.
 
 # Quick Look on few changes done in RxJava2 over RxJava1
 
@@ -53,6 +53,16 @@ RxJava1 -> RxJava2
 * switchOnNext operator has been added overloads with prefetch 
 * switchOnNextDelayError operator has been added overloads with prefetch 
 * and much more.
+
+# Highlights of the examples :
+
+* [DisposableExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/DisposableExampleActivity.java) - Using CompositeDisposable
+* [MapExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/MapExampleActivity.java) - Using Map Operator
+* [ZipExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ZipExampleActivity.java) - Using Zip Operator
+* [TakeExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/TakeExampleActivity.java) - Using Take Operator
+* [IntervalExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/IntervalExampleActivity.java) - Using Interval
+
+  
 
 ### Show some :heart:
 * Be sure to click the :star: button in the upper right of this page. :v:

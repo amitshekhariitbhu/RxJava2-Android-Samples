@@ -20,9 +20,9 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class DisposableExample extends AppCompatActivity {
+public class DisposableExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = DisposableExample.class.getSimpleName();
+    private static final String TAG = DisposableExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
     private final CompositeDisposable disposables = new CompositeDisposable();
@@ -45,9 +45,8 @@ public class DisposableExample extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        disposables.clear();
+        disposables.clear(); // do not send event after activity has been destroyed
     }
-
 
     /*
      * Example to understand how to use disposables.

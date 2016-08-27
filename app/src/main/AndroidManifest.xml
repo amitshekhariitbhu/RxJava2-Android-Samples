@@ -17,20 +17,26 @@
         </activity>
 
         <activity
-            android:name=".SimpleExample"
-            android:label="@string/simple"/>
+            android:name=".SimpleExampleActivity"
+            android:label="@string/simple" />
         <activity
-            android:name=".MapExample"
-            android:label="@string/map"/>
+            android:name=".MapExampleActivity"
+            android:label="@string/map" />
         <activity
-            android:name=".ZipExample"
-            android:label="@string/zip"/>
+            android:name=".ZipExampleActivity"
+            android:label="@string/zip" />
         <activity
-            android:name=".DisposableExample"
-            android:label="@string/disposable"/>
+            android:name=".DisposableExampleActivity"
+            android:label="@string/disposable" />
         <activity
-            android:name=".TakeExample"
-            android:label="@string/take"/>
+            android:name=".TakeExampleActivity"
+            android:label="@string/take" />
+        <activity
+            android:name=".TimerExample"
+            android:label="@string/timer" />
+        <activity
+            android:name=".IntervalExampleActivity"
+            android:label="@string/interval" />
     </application>
 
 </manifest>
