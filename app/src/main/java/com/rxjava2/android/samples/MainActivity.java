@@ -64,4 +64,8 @@ public class MainActivity extends AppCompatActivity {
     public void startFilterActivity(View view) {
         startActivity(new Intent(MainActivity.this, FilterExampleActivity.class));
     }
+
+    public void startSkipActivity(View view) {
+        startActivity(new Intent(MainActivity.this, SkipExampleActivity.class));
+    }
 }

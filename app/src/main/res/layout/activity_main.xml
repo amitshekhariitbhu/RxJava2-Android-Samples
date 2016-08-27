@@ -105,5 +105,12 @@
             android:text="@string/filter"
             android:textColor="@android:color/black" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startSkipActivity"
+            android:text="@string/skip"
+            android:textColor="@android:color/black" />
+
     </LinearLayout>
 </ScrollView>

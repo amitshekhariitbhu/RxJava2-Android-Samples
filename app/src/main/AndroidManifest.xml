@@ -55,6 +55,9 @@
         <activity
             android:name=".FilterExampleActivity"
             android:label="@string/filter" />
+        <activity
+            android:name=".SkipExampleActivity"
+            android:label="@string/skip" />
     </application>
 
 </manifest>

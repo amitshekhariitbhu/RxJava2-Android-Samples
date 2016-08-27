@@ -14,4 +14,5 @@
     <string name="reduce">Reduce</string>
     <string name="buffer">Buffer</string>
     <string name="filter">Filter</string>
+    <string name="skip">Skip</string>
 </resources>
