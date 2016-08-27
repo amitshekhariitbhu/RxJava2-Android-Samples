@@ -32,7 +32,7 @@ been removed.
 
 * Example using `SingleObserver`, `CompletableObserver`.
 
-* Example using RxJava2 operators such as `MAP, ZIP, TAKE, FLATMAP`, and much more:
+* Example using RxJava2 operators such as `map, zip, take, reduce, flatMap`, and much more:
 
 * Example using `Function` as `Func1` has been removed.
 
@@ -64,6 +64,7 @@ RxJava1 -> RxJava2
 * [MapExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/MapExampleActivity.java) - Using Map Operator
 * [ZipExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ZipExampleActivity.java) - Using Zip Operator
 * [TakeExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/TakeExampleActivity.java) - Using Take Operator
+* [ReduceExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ReduceExampleActivity.java) - Using Reduce Operator
 * [IntervalExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/IntervalExampleActivity.java) - Using Interval
 
 ### TODO 

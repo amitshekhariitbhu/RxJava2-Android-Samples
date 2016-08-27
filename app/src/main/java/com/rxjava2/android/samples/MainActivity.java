@@ -52,4 +52,8 @@ public class MainActivity extends AppCompatActivity {
     public void startFlowableActivity(View view) {
         startActivity(new Intent(MainActivity.this, FlowableExampleActivity.class));
     }
+
+    public void startReduceActivity(View view) {
+        startActivity(new Intent(MainActivity.this, ReduceExampleActivity.class));
+    }
 }

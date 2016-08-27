@@ -46,6 +46,9 @@
         <activity
             android:name=".FlowableExampleActivity"
             android:label="@string/Flowable" />
+        <activity
+            android:name=".ReduceExampleActivity"
+            android:label="@string/reduce" />
     </application>
 
 </manifest>
