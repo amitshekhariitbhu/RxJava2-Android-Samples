@@ -38,7 +38,7 @@ been removed.
 
 * Example using `SingleObserver`, `CompletableObserver`.
 
-* Example using RxJava2 operators such as `map, zip, take, reduce, flatMap, filter, buffer, skip`, and much more:
+* Example using RxJava2 operators such as `map, zip, take, reduce, flatMap, filter, buffer, skip, replay`, and much more:
 
 * Example using `Function` as `Func1` has been removed.
 
@@ -74,6 +74,7 @@ RxJava1 -> RxJava2
 * [ReduceExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ReduceExampleActivity.java) - Using `reduce` Operator
 * [FilterExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/FilterExampleActivity.java) - Using `filter` Operator
 * [SkipExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/SkipExampleActivity.java) - Using `skip` Operator
+* [ReplayExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ReplayExampleActivity.java) - Using `replay` Operator
 * [IntervalExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/IntervalExampleActivity.java) - Using `Interval`
 
 ### TODO 

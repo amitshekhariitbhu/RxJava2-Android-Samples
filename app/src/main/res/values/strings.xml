@@ -15,4 +15,5 @@
     <string name="buffer">Buffer</string>
     <string name="filter">Filter</string>
     <string name="skip">Skip</string>
+    <string name="replay">Replay</string>
 </resources>

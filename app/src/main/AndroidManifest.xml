@@ -58,6 +58,9 @@
         <activity
             android:name=".SkipExampleActivity"
             android:label="@string/skip" />
+        <activity
+            android:name=".ReplayExampleActivity"
+            android:label="@string/replay" />
     </application>
 
 </manifest>

@@ -68,4 +68,8 @@ public class MainActivity extends AppCompatActivity {
     public void startSkipActivity(View view) {
         startActivity(new Intent(MainActivity.this, SkipExampleActivity.class));
     }
+
+    public void startReplayActivity(View view) {
+        startActivity(new Intent(MainActivity.this, ReplayExampleActivity.class));
+    }
 }
