@@ -63,7 +63,9 @@ RxJava1 -> RxJava2
 * [TakeExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/TakeExampleActivity.java) - Using Take Operator
 * [IntervalExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/IntervalExampleActivity.java) - Using Interval
 
-  
+### TODO 
+
+* Many examples are to be added 
 
 ### Show some :heart:
 * Be sure to click the :star: button in the upper right of this page. :v:
