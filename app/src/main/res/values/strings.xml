@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RxJava2-Android-Samples</string>
+    <string name="start">Start</string>
+    <string name="simple">Simple</string>
+    <string name="map">Map</string>
+    <string name="zip">Zip</string>
+    <string name="take">Take</string>
+</resources>
