@@ -9,6 +9,17 @@ Because Reactive-Streams has a different architecture, it mandates changes to so
 
 This [link](https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0) will help you while migrating to RxJava2.
 
+Using RxJava 2.0 Library in your application
+
+Add this in your build.gradle
+```groovy
+compile 'io.reactivex.rxjava2:rxjava:2.0.0-RC1'
+```
+For using RxAndroid also add the following
+```groovy
+compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
+```
+
 # RxJava2 Tutorials
 
 Here, you will learn RxJava2 for Android by implementing few examples using RxJava2.
