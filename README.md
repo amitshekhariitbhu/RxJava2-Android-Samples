@@ -21,6 +21,21 @@ You will be using RxJava2 operators such as:
 * FLATMAP 
 * and much more.
 
+# Quick Look on few changes done in RxJava2 over RxJava1
+
+RxJava1 -> RxJava2
+
+* onCompleted -> onComplete - without the trailing d
+* Func1 -> Function
+* Func2 -> BiFunction
+* CompositeSubscription -> CompositeDisposable
+* limit operator has been removed - Use take in RxJava2
+* merge operator has been added overloads with prefetch 
+* mergeDelayError operator has been added overloads with prefetch 
+* switchOnNext operator has been added overloads with prefetch 
+* switchOnNextDelayError operator has been added overloads with prefetch 
+* and much more.
+
 ### Show some :heart:
 * Be sure to click the "<b>Star</b>" button in the upper right of this page. :smile:
 
