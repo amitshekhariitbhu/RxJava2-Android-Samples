@@ -72,4 +72,8 @@ public class MainActivity extends AppCompatActivity {
     public void startReplayActivity(View view) {
         startActivity(new Intent(MainActivity.this, ReplayExampleActivity.class));
     }
+
+    public void startConcatActivity(View view) {
+        startActivity(new Intent(MainActivity.this, ConcatExampleActivity.class));
+    }
 }

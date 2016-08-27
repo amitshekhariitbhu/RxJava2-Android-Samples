@@ -61,6 +61,9 @@
         <activity
             android:name=".ReplayExampleActivity"
             android:label="@string/replay" />
+        <activity
+            android:name=".ConcatExampleActivity"
+            android:label="@string/concat" />
     </application>
 
 </manifest>
