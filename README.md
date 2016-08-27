@@ -55,7 +55,7 @@ RxJava1 -> RxJava2
 * and much more.
 
 ### Show some :heart:
-* Be sure to click the "<b>Star</b>" button in the upper right of this page. :smile:
+* Be sure to click the :star: button in the upper right of this page. :v:
 
 ### Contact - Let's become friend
 - [Twitter](https://twitter.com/amitiitbhu)
