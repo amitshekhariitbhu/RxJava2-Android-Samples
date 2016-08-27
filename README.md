@@ -7,7 +7,12 @@ Because Reactive-Streams has a different architecture, it mandates changes to so
 
 # Migration From RxJava 1 to RxJava2
 
-Using RxJava 2.0 Library in your application
+To allow having RxJava 1.x and RxJava 2.x side-by-side, RxJava 2.x is under the maven coordinates 
+io.reactivex.rxjava2:rxjava:2.x.y and classes are accessible below io.reactivex.
+
+Users switching from 1.x to 2.x have to re-organize their imports, but carefully.
+
+### Using RxJava 2.0 Library in your application
 
 Add this in your build.gradle
 ```groovy
