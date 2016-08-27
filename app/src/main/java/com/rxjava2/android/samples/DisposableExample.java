@@ -48,6 +48,11 @@ public class DisposableExample extends AppCompatActivity {
         disposables.clear();
     }
 
+
+    /*
+     * Example to understand how to use disposables.
+     * disposables is cleared in onDestroy of this activity.
+     */
     void doSomeWork() {
         disposables.add(sampleObservable()
                 // Run on a background thread

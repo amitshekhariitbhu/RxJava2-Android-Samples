@@ -46,6 +46,12 @@ public class MapExample extends AppCompatActivity {
         });
     }
 
+    /*
+    * Here we are getting ApiUser Object from api server
+    * then we are converting it into User Object because
+    * may be our database support User Not ApiUser Object
+    * Here we are using Map Operator to do that
+    */
     private void doSomeWork() {
         getObservable()
                 // Run on a background thread

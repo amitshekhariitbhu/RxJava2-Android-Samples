@@ -37,6 +37,9 @@ public class TakeExample extends AppCompatActivity {
         });
     }
 
+    /* Using take operator, it only emits
+    * required number of values. here only 3 out of 5
+    */
     private void doSomeWork() {
         getObservable()
                 // Run on a background thread

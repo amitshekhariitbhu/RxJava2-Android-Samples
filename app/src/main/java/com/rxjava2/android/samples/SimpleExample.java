@@ -40,6 +40,9 @@ public class SimpleExample extends AppCompatActivity {
         });
     }
 
+    /*
+     * simple example to emit two value one by one
+     */
     private void doSomeWork() {
         getObservable()
                 // Run on a background thread
