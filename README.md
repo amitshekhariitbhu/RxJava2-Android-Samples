@@ -1,5 +1,11 @@
 # Learning RxJava2 for Android by example
 
+####This project is for : 
+1 . who is migrating to RxJava 2.0 
+2 . or just started with RxJava.
+
+### Just Build the project and start learning RxJava by examples.
+
 RxJava 2.0 has been completely rewritten from scratch on top of the Reactive-Streams specification. The specification itself has evolved out of RxJava 1.x and provides a common baseline for reactive systems and libraries.
 
 Because Reactive-Streams has a different architecture, it mandates changes to some well known RxJava types.
