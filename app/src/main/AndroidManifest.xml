@@ -52,6 +52,9 @@
         <activity
             android:name=".BufferExampleActivity"
             android:label="@string/buffer" />
+        <activity
+            android:name=".FilterExampleActivity"
+            android:label="@string/filter" />
     </application>
 
 </manifest>

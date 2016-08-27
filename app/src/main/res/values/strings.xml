@@ -13,4 +13,5 @@
     <string name="Flowable">Flowable</string>
     <string name="reduce">Reduce</string>
     <string name="buffer">Buffer</string>
+    <string name="filter">Filter</string>
 </resources>

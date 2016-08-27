@@ -60,4 +60,8 @@ public class MainActivity extends AppCompatActivity {
     public void startBufferActivity(View view) {
         startActivity(new Intent(MainActivity.this, BufferExampleActivity.class));
     }
+
+    public void startFilterActivity(View view) {
+        startActivity(new Intent(MainActivity.this, FilterExampleActivity.class));
+    }
 }
