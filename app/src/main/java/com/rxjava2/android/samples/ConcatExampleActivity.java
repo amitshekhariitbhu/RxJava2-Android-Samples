@@ -36,9 +36,12 @@ public class ConcatExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * Using concat operator to combine Observable : concat does not maintain
-     * the order of emitting values.
-     * It will emit all the 7 values but may not be in order
+     * Using concat operator to combine Observable : concat maintain
+     * the order.
+     * It will emit all the 7 values in order
+     * here - first 1, 3, 5, 7 and then 2, 4, 6
+     * first all from the first Observable and then
+     * all from the second Observable all in order
      */
     private void doSomeWork() {
         final String[] oddStrings = {"1", "3", "5", "7"};
