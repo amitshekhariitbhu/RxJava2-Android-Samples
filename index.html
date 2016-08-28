@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rxjava2-android-samples by amitshekhariitbhu</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Rxjava2-android-samples</h1>
+        <p class="header">RxJava2 Android Examples- Migration to RxJava2</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/amitshekhariitbhu">amitshekhariitbhu</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="learning-rxjava2-for-android-by-example" class="anchor" href="#learning-rxjava2-for-android-by-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Learning RxJava2 for Android by example</h1>
+
+<h4>
+<a id="this-project-is-for-" class="anchor" href="#this-project-is-for-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This project is for :</h4>
+
+<ul>
+<li>who is migrating to RxJava 2 </li>
+<li>or just started with RxJava.</li>
+</ul>
+
+<h3>
+<a id="just-build-the-project-and-start-learning-rxjava-by-examples" class="anchor" href="#just-build-the-project-and-start-learning-rxjava-by-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Just Build the project and start learning RxJava by examples.</h3>
+
+<p>RxJava 2.0 has been completely rewritten from scratch on top of the Reactive-Streams specification. The specification itself has evolved out of RxJava 1.x and provides a common baseline for reactive systems and libraries.</p>
+
+<p>Because Reactive-Streams has a different architecture, it mandates changes to some well known RxJava types.</p>
+
+<h1>
+<a id="migration-from-rxjava-1-to-rxjava-2" class="anchor" href="#migration-from-rxjava-1-to-rxjava-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Migration From RxJava 1 to RxJava 2</h1>
+
+<p>To allow having RxJava 1 and RxJava 2 side-by-side, RxJava 2 is under the maven coordinates 
+io.reactivex.rxjava2:rxjava:2.x.y and classes are accessible below io.reactivex.</p>
+
+<p>Users switching from 1.x to 2.x have to re-organize their imports, but carefully.</p>
+
+<h3>
+<a id="using-rxjava-20-library-in-your-application" class="anchor" href="#using-rxjava-20-library-in-your-application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using RxJava 2.0 Library in your application</h3>
+
+<p>Add this in your build.gradle</p>
+
+<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>io.reactivex.rxjava2:rxjava:2.0.0-RC1<span class="pl-pds">'</span></span></pre></div>
+
+<p>If you are using RxAndroid also, then add the following</p>
+
+<div class="highlight highlight-source-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>io.reactivex.rxjava2:rxandroid:2.0.0-RC1<span class="pl-pds">'</span></span></pre></div>
+
+<h1>
+<a id="rxjava2-examples-present-in-this-sample-project" class="anchor" href="#rxjava2-examples-present-in-this-sample-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RxJava2 Examples present in this sample project</h1>
+
+<ul>
+<li><p>RxJava 2.0 Example using <code>CompositeDisposable</code> as <code>CompositeSubscription</code> and <code>Subscription</code> have
+been removed.</p></li>
+<li><p>RxJava 2 Example using <code>Flowable</code>.</p></li>
+<li><p>RxJava 2 Example using <code>SingleObserver</code>, <code>CompletableObserver</code>.</p></li>
+<li><p>RxJava 2 Example using RxJava2 operators such as <code>map, zip, take, reduce, flatMap, filter, buffer, skip, merge, concat, replay</code>, and much more:</p></li>
+<li><p>RxJava 2 Android Samples using <code>Function</code> as <code>Func1</code> has been removed.</p></li>
+<li><p>RxJava 2 Android Samples  using <code>BiFunction</code> as <code>Func2</code> has been removed.</p></li>
+<li><p>And many others android examples</p></li>
+</ul>
+
+<h1>
+<a id="quick-look-on-few-changes-done-in-rxjava2-over-rxjava1" class="anchor" href="#quick-look-on-few-changes-done-in-rxjava2-over-rxjava1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Quick Look on few changes done in RxJava2 over RxJava1</h1>
+
+<p>RxJava1 -&gt; RxJava2</p>
+
+<ul>
+<li>
+<code>onCompleted</code> -&gt; <code>onComplete</code> - without the trailing d</li>
+<li>
+<code>Func1</code> -&gt; <code>Function</code>
+</li>
+<li>
+<code>Func2</code> -&gt; <code>BiFunction</code>
+</li>
+<li>
+<code>CompositeSubscription</code> -&gt; <code>CompositeDisposable</code>
+</li>
+<li>
+<code>limit</code> operator has been removed - Use <code>take</code> in RxJava2</li>
+<li>and much more.</li>
+</ul>
+
+<h1>
+<a id="operators-" class="anchor" href="#operators-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Operators :</h1>
+
+<ul>
+<li>
+<code>Map</code> -&gt; transform the items emitted by an Observable by applying a function to each item</li>
+<li>
+<code>Zip</code> -&gt; combine the emissions of multiple Observables together via a specified function and emit single items for each combination based on the results of this function</li>
+<li>
+<code>Filter</code> -&gt; emit only those items from an Observable that pass a predicate test</li>
+<li>
+<code>FlatMap</code> -&gt; transform the items emitted by an Observable into Observables, then flatten the emissions from those into a single Observable</li>
+<li>
+<code>Take</code> -&gt; emit only the first n items emitted by an Observable</li>
+<li>
+<code>Reduce</code> -&gt; apply a function to each item emitted by an Observable, sequentially, and emit the final value</li>
+<li>
+<code>Skip</code> -&gt; suppress the first n items emitted by an Observable</li>
+<li>
+<code>Buffer</code> -&gt; periodically gather items emitted by an Observable into bundles and emit these bundles rather than emitting the items one at a time</li>
+<li>
+<code>Concat</code> -&gt; emit the emissions from two or more Observables without interleaving them</li>
+<li>
+<code>Replay</code> -&gt; ensure that all observers see the same sequence of emitted items, even if they subscribe after the Observable has begun emitting items</li>
+<li>
+<code>Merge</code> -&gt; combine multiple Observables into one by merging their emissions</li>
+</ul>
+
+<h1>
+<a id="highlights-of-the-examples-" class="anchor" href="#highlights-of-the-examples-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Highlights of the examples :</h1>
+
+<ul>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/DisposableExampleActivity.java">DisposableExampleActivity</a> - Using <code>CompositeDisposable</code>
+</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/FlowableExampleActivity.java">FlowableExampleActivity</a> - Using <code>Flowable</code> and <code>reduce</code> operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/SingleObserverExampleActivity.java">SingleObserverExampleActivity</a> - Using <code>SingleObserver</code>
+</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/CompletableObserverActivity.java">CompletableObserverActivity</a> - Using <code>CompletableObserver</code>
+</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/MapExampleActivity.java">MapExampleActivity</a> - Using <code>map</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ZipExampleActivity.java">ZipExampleActivity</a> - Using <code>zip</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/BufferExampleActivity.java">BufferExampleActivity</a> - Using <code>buffer</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/TakeExampleActivity.java">TakeExampleActivity</a> - Using <code>take</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ReduceExampleActivity.java">ReduceExampleActivity</a> - Using <code>reduce</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/FilterExampleActivity.java">FilterExampleActivity</a> - Using <code>filter</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/SkipExampleActivity.java">SkipExampleActivity</a> - Using <code>skip</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ReplayExampleActivity.java">ReplayExampleActivity</a> - Using <code>replay</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ConcatExampleActivity.java">ConcatExampleActivity</a> - Using <code>concat</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/MergeExampleActivity.java">MergeExampleActivity</a> - Using <code>merge</code> Operator</li>
+<li>
+<a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/IntervalExampleActivity.java">IntervalExampleActivity</a> - Using <code>Interval</code>
+</li>
+</ul>
+
+<h3>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TODO</h3>
+
+<ul>
+<li>Many examples are to be added </li>
+</ul>
+
+<h3>
+<a id="show-some-heart" class="anchor" href="#show-some-heart" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Show some <g-emoji alias="heart" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png">❤️</g-emoji>
+</h3>
+
+<ul>
+<li>Be sure to click the <g-emoji alias="star" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b50.png">⭐</g-emoji> button in the upper right of this page. <g-emoji alias="v" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/270c.png">✌️</g-emoji>
+</li>
+</ul>
+
+<h3>
+<a id="contact---lets-become-friend" class="anchor" href="#contact---lets-become-friend" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact - Let's become friend</h3>
+
+<ul>
+<li><a href="https://twitter.com/amitiitbhu">Twitter</a></li>
+<li><a href="https://github.com/amitshekhariitbhu">Github</a></li>
+<li><a href="https://medium.com/@amitshekhar">Medium</a></li>
+<li><a href="https://www.facebook.com/amit.shekhar.iitbhu">Facebook</a></li>
+</ul>
+
+<h3>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h3>
+
+<pre><code>   Copyright (C) 2016 Amit Shekhar
+   Copyright (C) 2011 Android Open Source Project
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+</code></pre>
+
+<h3>
+<a id="contributing-to-rxjava2-android-samples" class="anchor" href="#contributing-to-rxjava2-android-samples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing to RxJava2 Android Samples</h3>
+
+<p>Just make pull request. You are in!</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
