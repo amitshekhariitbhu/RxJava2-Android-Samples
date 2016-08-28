@@ -1,7 +1,7 @@
 # Learning RxJava2 for Android by example
 
 ####This project is for : 
-* who is migrating to RxJava 2.0 
+* who is migrating to RxJava 2 
 * or just started with RxJava.
 
 ### Just Build the project and start learning RxJava by examples.
@@ -11,9 +11,9 @@ RxJava 2.0 has been completely rewritten from scratch on top of the Reactive-Str
 Because Reactive-Streams has a different architecture, it mandates changes to some well known RxJava types.
 
 
-# Migration From RxJava 1 to RxJava2
+# Migration From RxJava 1 to RxJava 2
 
-To allow having RxJava 1.x and RxJava 2.x side-by-side, RxJava 2.x is under the maven coordinates 
+To allow having RxJava 1 and RxJava 2 side-by-side, RxJava 2 is under the maven coordinates 
 io.reactivex.rxjava2:rxjava:2.x.y and classes are accessible below io.reactivex.
 
 Users switching from 1.x to 2.x have to re-organize their imports, but carefully.
@@ -31,20 +31,20 @@ compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
 
 # RxJava2 Examples present in this sample project
 
-* Example using `CompositeDisposable` as `CompositeSubscription` and `Subscription` have
+* RxJava 2.0 Example using `CompositeDisposable` as `CompositeSubscription` and `Subscription` have
 been removed.
 
-* Example using `Flowable`.
+* RxJava 2 Example using `Flowable`.
 
-* Example using `SingleObserver`, `CompletableObserver`.
+* RxJava 2 Example using `SingleObserver`, `CompletableObserver`.
 
-* Example using RxJava2 operators such as `map, zip, take, reduce, flatMap, filter, buffer, skip, concat, replay`, and much more:
+* RxJava 2 Example using RxJava2 operators such as `map, zip, take, reduce, flatMap, filter, buffer, skip, concat, replay`, and much more:
 
-* Example using `Function` as `Func1` has been removed.
+* RxJava 2 Android Samples using `Function` as `Func1` has been removed.
 
-* Example using `BiFunction` as `Func2` has been removed.
+* RxJava 2 Android Samples  using `BiFunction` as `Func2` has been removed.
 
-* And many others examples
+* And many others android examples
 
 # Quick Look on few changes done in RxJava2 over RxJava1
 
