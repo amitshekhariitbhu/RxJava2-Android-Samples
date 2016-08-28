@@ -76,4 +76,8 @@ public class MainActivity extends AppCompatActivity {
     public void startConcatActivity(View view) {
         startActivity(new Intent(MainActivity.this, ConcatExampleActivity.class));
     }
+
+    public void startMergeActivity(View view) {
+        startActivity(new Intent(MainActivity.this, MergeExampleActivity.class));
+    }
 }

@@ -12,11 +12,11 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by amitshekhar on 27/08/16.
+ * Created by amitshekhar on 28/08/16.
  */
-public class ConcatExampleActivity extends AppCompatActivity {
+public class MergeExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = ConcatExampleActivity.class.getSimpleName();
+    private static final String TAG = MergeExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -36,12 +36,10 @@ public class ConcatExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * Using concat operator to combine Observable : concat maintain
+     * Using merge operator to combine Observable : merge maintain does not
      * the order of Observable.
-     * It will emit all the 7 values in order
-     * here - first "A1", "A2", "A3", "A4" and then "B1", "B2", "B3"
-     * first all from the first Observable and then
-     * all from the second Observable all in order
+     * It will emit all the 7 values may not be in order
+     * Ex - "A1", "B1", "A2", "A3", "A4", "B2", "B3" - may be anything
      */
     private void doSomeWork() {
         final String[] aStrings = {"A1", "A2", "A3", "A4"};
@@ -50,7 +48,7 @@ public class ConcatExampleActivity extends AppCompatActivity {
         final Observable<String> aObservable = Observable.fromArray(aStrings);
         final Observable<String> bObservable = Observable.fromArray(bStrings);
 
-        Observable.concat(aObservable, bObservable)
+        Observable.merge(aObservable, bObservable)
                 .subscribe(getObserver());
     }
 

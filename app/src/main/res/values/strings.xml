@@ -17,4 +17,5 @@
     <string name="skip">Skip</string>
     <string name="replay">Replay</string>
     <string name="concat">Concat</string>
+    <string name="merge">Merge</string>
 </resources>

@@ -64,6 +64,9 @@
         <activity
             android:name=".ConcatExampleActivity"
             android:label="@string/concat" />
+        <activity
+            android:name=".MergeExampleActivity"
+            android:label="@string/merge" />
     </application>
 
 </manifest>
