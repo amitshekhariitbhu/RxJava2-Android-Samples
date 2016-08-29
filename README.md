@@ -1,6 +1,8 @@
 # Learning RxJava2 for Android by example
+## How to use RxJava 2 in Android Application
+## How to migrate from RxJava 1 to RxJava 2
 
-####This project is for : 
+### This project is for : 
 * who is migrating to RxJava 2 
 * or just started with RxJava.
 
@@ -29,7 +31,7 @@ If you are using RxAndroid also, then add the following
 compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
 ```
 
-# RxJava2 Examples present in this sample project
+# RxJava 2 Examples present in this sample project
 
 * RxJava 2.0 Example using `CompositeDisposable` as `CompositeSubscription` and `Subscription` have
 been removed.
@@ -93,8 +95,8 @@ RxJava1 -> RxJava2
 
 * Many examples are to be added 
 
-### Show some :heart:
-* Be sure to click the :star: button in the upper right of this page. :v:
+### Found this project useful :heart:
+* Support by clicking the :star: button on the upper right of this page. :v:
 
 ### Contact - Let's become friend
 - [Twitter](https://twitter.com/amitiitbhu)
@@ -120,7 +122,7 @@ RxJava1 -> RxJava2
    limitations under the License.
 ```
 
-### Contributing to RxJava2 Android Samples
+### Contributing to RxJava 2 Android Samples
 Just make pull request. You are in!
 
  
