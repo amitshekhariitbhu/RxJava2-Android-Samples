@@ -67,6 +67,9 @@
         <activity
             android:name=".MergeExampleActivity"
             android:label="@string/merge" />
+        <activity
+            android:name=".DeferExampleActivity"
+            android:label="@string/defer" />
     </application>
 
 </manifest>

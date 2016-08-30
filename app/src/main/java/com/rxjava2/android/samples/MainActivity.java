@@ -80,4 +80,8 @@ public class MainActivity extends AppCompatActivity {
     public void startMergeActivity(View view) {
         startActivity(new Intent(MainActivity.this, MergeExampleActivity.class));
     }
+
+    public void startDeferActivity(View view) {
+        startActivity(new Intent(MainActivity.this, DeferExampleActivity.class));
+    }
 }

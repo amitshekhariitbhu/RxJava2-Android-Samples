@@ -18,4 +18,5 @@
     <string name="replay">Replay</string>
     <string name="concat">Concat</string>
     <string name="merge">Merge</string>
+    <string name="defer">Defer</string>
 </resources>

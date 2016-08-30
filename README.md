@@ -1,4 +1,4 @@
-# Learning RxJava2 for Android by example
+# Learning RxJava 2 for Android by example
 ## How to use RxJava 2 in Android Application
 ## How to migrate from RxJava 1 to RxJava 2
 
@@ -89,6 +89,7 @@ RxJava1 -> RxJava2
 * [ReplayExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ReplayExampleActivity.java) - Using `replay` Operator
 * [ConcatExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ConcatExampleActivity.java) - Using `concat` Operator
 * [MergeExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/MergeExampleActivity.java) - Using `merge` Operator
+* [DeferExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/DeferExampleActivity.java) - Using `defer` Observable
 * [IntervalExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/IntervalExampleActivity.java) - Using `Interval`
 
 ### TODO 
