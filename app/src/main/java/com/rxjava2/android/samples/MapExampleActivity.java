@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.rxjava2.android.samples.model.ApiUser;
 import com.rxjava2.android.samples.model.User;
+import com.rxjava2.android.samples.utils.AppConstant;
 import com.rxjava2.android.samples.utils.Utils;
 
 import java.util.List;
@@ -85,15 +86,16 @@ public class MapExampleActivity extends AppCompatActivity {
 
             @Override
             public void onSubscribe(Disposable d) {
-                textView.append(" onSubscribe : isDisposed :" + d.isDisposed());
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
             public void onNext(List<User> userList) {
                 textView.append(" onNext");
+                textView.append(AppConstant.LINE_SEPARATOR);
                 for (User user : userList) {
                     textView.append(" firstName : " + user.firstName);
+                    textView.append(AppConstant.LINE_SEPARATOR);
                 }
                 Log.d(TAG, " onNext : " + userList.size());
             }
@@ -101,12 +103,14 @@ public class MapExampleActivity extends AppCompatActivity {
             @Override
             public void onError(Throwable e) {
                 textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
                 textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onComplete");
             }
         };

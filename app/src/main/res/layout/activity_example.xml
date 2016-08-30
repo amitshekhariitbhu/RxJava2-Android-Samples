@@ -16,10 +16,16 @@
         android:textAllCaps="false"
         android:textColor="@android:color/black" />
 
-    <TextView
-        android:id="@+id/textView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@android:color/black" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@android:color/black" />
+
+    </ScrollView>
 
 </LinearLayout>

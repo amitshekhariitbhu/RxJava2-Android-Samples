@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.rxjava2.android.samples.utils.AppConstant;
+
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -69,18 +71,21 @@ public class IntervalExampleActivity extends AppCompatActivity {
             @Override
             public void onNext(Long value) {
                 textView.append(" onNext : value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onNext : value : " + value);
             }
 
             @Override
             public void onError(Throwable e) {
                 textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
                 textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onComplete");
             }
         };

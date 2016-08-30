@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.rxjava2.android.samples.utils.AppConstant;
+
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observables.ConnectableObservable;
@@ -66,25 +68,27 @@ public class ReplayExampleActivity extends AppCompatActivity {
 
             @Override
             public void onSubscribe(Disposable d) {
-                textView.append(" First onSubscribe : isDisposed :" + d.isDisposed());
                 Log.d(TAG, " First onSubscribe : " + d.isDisposed());
             }
 
             @Override
             public void onNext(Integer value) {
                 textView.append(" First onNext : value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " First onNext value : " + value);
             }
 
             @Override
             public void onError(Throwable e) {
                 textView.append(" First onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " First onError : " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
                 textView.append(" First onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " First onComplete");
             }
         };

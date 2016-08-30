@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.rxjava2.android.samples.model.Car;
+import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -18,7 +19,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class DeferExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = SimpleExampleActivity.class.getSimpleName();
+    private static final String TAG = DeferExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -59,25 +60,27 @@ public class DeferExampleActivity extends AppCompatActivity {
 
             @Override
             public void onSubscribe(Disposable d) {
-                textView.append(" onSubscribe : isDisposed :" + d.isDisposed());
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
             public void onNext(String value) {
                 textView.append(" onNext : value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onNext : value : " + value);
             }
 
             @Override
             public void onError(Throwable e) {
                 textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
                 textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onComplete");
             }
         };

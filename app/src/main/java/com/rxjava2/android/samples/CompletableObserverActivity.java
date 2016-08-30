@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.rxjava2.android.samples.utils.AppConstant;
+
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Completable;
@@ -56,19 +58,20 @@ public class CompletableObserverActivity extends AppCompatActivity {
         return new CompletableObserver() {
             @Override
             public void onSubscribe(Disposable d) {
-                textView.append(" onSubscribe : isDisposed :" + d.isDisposed());
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
             public void onComplete() {
                 textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onComplete");
             }
 
             @Override
             public void onError(Throwable e) {
                 textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
         };

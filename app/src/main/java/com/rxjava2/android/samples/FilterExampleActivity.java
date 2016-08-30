@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.rxjava2.android.samples.utils.AppConstant;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -57,14 +59,15 @@ public class FilterExampleActivity extends AppCompatActivity {
 
             @Override
             public void onSubscribe(Disposable d) {
-                textView.append(" onSubscribe : isDisposed :" + d.isDisposed());
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
             public void onNext(Integer value) {
                 textView.append(" onNext : ");
+                textView.append(AppConstant.LINE_SEPARATOR);
                 textView.append(" value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onNext ");
                 Log.d(TAG, " value : " + value);
             }
@@ -72,12 +75,14 @@ public class FilterExampleActivity extends AppCompatActivity {
             @Override
             public void onError(Throwable e) {
                 textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
                 textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onComplete");
             }
         };

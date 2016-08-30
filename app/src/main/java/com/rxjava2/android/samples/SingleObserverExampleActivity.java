@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.rxjava2.android.samples.utils.AppConstant;
+
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
@@ -47,19 +49,20 @@ public class SingleObserverExampleActivity extends AppCompatActivity {
         return new SingleObserver<String>() {
             @Override
             public void onSubscribe(Disposable d) {
-                textView.append(" onSubscribe : isDisposed :" + d.isDisposed());
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
             public void onSuccess(String value) {
                 textView.append(" onNext : value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onNext value : " + value);
             }
 
             @Override
             public void onError(Throwable e) {
                 textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
         };
