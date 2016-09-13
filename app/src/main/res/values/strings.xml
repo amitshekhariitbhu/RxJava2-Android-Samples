@@ -20,4 +20,5 @@
     <string name="merge">Merge</string>
     <string name="defer">Defer</string>
     <string name="distinct">Distinct</string>
+    <string name="last">Last</string>
 </resources>
