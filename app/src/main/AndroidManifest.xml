@@ -74,6 +74,9 @@
         <activity
             android:name=".DistinctExampleActivity"
             android:label="@string/distinct" />
+        <activity
+            android:name=".LastOperatorExampleActivity"
+            android:label="@string/distinct" />
     </application>
 
 </manifest>
