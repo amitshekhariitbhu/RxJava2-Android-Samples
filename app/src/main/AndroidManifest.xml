@@ -70,6 +70,10 @@
         <activity
             android:name=".DeferExampleActivity"
             android:label="@string/defer" />
+
+        <activity
+            android:name=".DistinctExampleActivity"
+            android:label="@string/distinct" />
     </application>
 
 </manifest>
