@@ -73,7 +73,7 @@
 
         <activity
             android:name=".DistinctExampleActivity"
-            android:label="@string/defer" />
+            android:label="@string/distinct" />
     </application>
 
 </manifest>
