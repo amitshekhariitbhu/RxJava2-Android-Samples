@@ -84,4 +84,8 @@ public class MainActivity extends AppCompatActivity {
     public void startDeferActivity(View view) {
         startActivity(new Intent(MainActivity.this, DeferExampleActivity.class));
     }
+
+    public void startDistinctActivity(View view) {
+      startActivity(new Intent(MainActivity.this, DistinctExampleActivity.class));
+    }
 }
