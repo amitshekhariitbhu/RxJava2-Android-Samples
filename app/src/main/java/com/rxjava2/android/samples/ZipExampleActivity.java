@@ -71,7 +71,7 @@ public class ZipExampleActivity extends AppCompatActivity {
         return Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
             public void subscribe(ObservableEmitter<List<User>> e) throws Exception {
-                if (!e.isCancelled()) {
+                if (!e.isDisposed()) {
                     e.onNext(Utils.getUserListWhoLovesCricket());
                     e.onComplete();
                 }
@@ -83,7 +83,7 @@ public class ZipExampleActivity extends AppCompatActivity {
         return Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
             public void subscribe(ObservableEmitter<List<User>> e) throws Exception {
-                if (!e.isCancelled()) {
+                if (!e.isDisposed()) {
                     e.onNext(Utils.getUserListWhoLovesFootball());
                     e.onComplete();
                 }
