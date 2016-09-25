@@ -10,8 +10,9 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Flowable;
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
-import io.reactivex.subscribers.DefaultSubscriber;
 
 /**
  * Created by amitshekhar on 27/08/16.
@@ -53,13 +54,19 @@ public class FlowableExampleActivity extends AppCompatActivity {
 
     }
 
-    private DefaultSubscriber<Integer> getObserver() {
-        return new DefaultSubscriber<Integer>() {
+    private SingleObserver<Integer> getObserver() {
+
+        return new SingleObserver<Integer>() {
             @Override
-            public void onComplete() {
-                textView.append(" onComplete");
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, " onSubscribe : " + d.isDisposed());
+            }
+
+            @Override
+            public void onSuccess(Integer value) {
+                textView.append(" onSuccess : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onComplete");
+                Log.d(TAG, " onSuccess : value : " + value);
             }
 
             @Override
@@ -67,13 +74,6 @@ public class FlowableExampleActivity extends AppCompatActivity {
                 textView.append(" onError : " + e.getMessage());
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
-            }
-
-            @Override
-            public void onNext(Integer value) {
-                textView.append(" onNext : value : " + value);
-                textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext value : " + value);
             }
         };
     }

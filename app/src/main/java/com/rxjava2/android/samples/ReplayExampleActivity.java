@@ -101,11 +101,13 @@ public class ReplayExampleActivity extends AppCompatActivity {
             public void onSubscribe(Disposable d) {
                 textView.append(" Second onSubscribe : isDisposed :" + d.isDisposed());
                 Log.d(TAG, " Second onSubscribe : " + d.isDisposed());
+                textView.append(AppConstant.LINE_SEPARATOR);
             }
 
             @Override
             public void onNext(Integer value) {
                 textView.append(" Second onNext : value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " Second onNext value : " + value);
             }
 

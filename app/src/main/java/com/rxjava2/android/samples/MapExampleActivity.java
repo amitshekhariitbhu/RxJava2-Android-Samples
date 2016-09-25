@@ -73,7 +73,7 @@ public class MapExampleActivity extends AppCompatActivity {
         return Observable.create(new ObservableOnSubscribe<List<ApiUser>>() {
             @Override
             public void subscribe(ObservableEmitter<List<ApiUser>> e) throws Exception {
-                if (!e.isCancelled()) {
+                if (!e.isDisposed()) {
                     e.onNext(Utils.getApiUserList());
                     e.onComplete();
                 }
