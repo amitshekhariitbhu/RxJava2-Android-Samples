@@ -24,11 +24,11 @@ Users switching from 1.x to 2.x have to re-organize their imports, but carefully
 
 Add this in your build.gradle
 ```groovy
-compile 'io.reactivex.rxjava2:rxjava:2.0.0-RC5'
+compile 'io.reactivex.rxjava2:rxjava:2.0.0'
 ```
 If you are using RxAndroid also, then add the following
 ```groovy
-compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
+compile 'io.reactivex.rxjava2:rxandroid:2.0.0'
 ```
 
 # RxJava 2 Examples present in this sample project
