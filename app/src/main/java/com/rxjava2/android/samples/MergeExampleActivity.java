@@ -38,7 +38,7 @@ public class MergeExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * Using merge operator to combine Observable : merge maintain does not
+     * Using merge operator to combine Observable : merge does not maintain
      * the order of Observable.
      * It will emit all the 7 values may not be in order
      * Ex - "A1", "B1", "A2", "A3", "A4", "B2", "B3" - may be anything
