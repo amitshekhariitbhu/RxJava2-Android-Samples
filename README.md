@@ -99,13 +99,14 @@ RxJava1 -> RxJava2
 ### Found this project useful :heart:
 * Support by clicking the :star: button on the upper right of this page. :v:
 
+### Check out an awesome library for fast and simple networking in Android.
+* [Fast Android Networking Library](https://github.com/amitshekhariitbhu/Fast-Android-Networking)
+
 ### Contact - Let's become friend
 - [Twitter](https://twitter.com/amitiitbhu)
 - [Github](https://github.com/amitshekhariitbhu)
 - [Medium](https://medium.com/@amitshekhar)
 - [Facebook](https://www.facebook.com/amit.shekhar.iitbhu)
-
-### Check out [Fast Android Networking Library](https://github.com/amitshekhariitbhu/Fast-Android-Networking) for simple and easy networking in Android.
 
 ### License
 ```
