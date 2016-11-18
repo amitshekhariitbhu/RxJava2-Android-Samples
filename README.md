@@ -96,8 +96,8 @@ RxJava1 -> RxJava2
 
 * Many examples are to be added 
 
-### Found this project useful :heart:
-* Support by clicking the :star: button on the upper right of this page. :v:
+### Find this project useful ? :heart:
+* Support it clicking the :star: button on the upper right of this page. :v:
 
 ### Check out an awesome library for fast and simple networking in Android.
 * [Fast Android Networking Library](https://github.com/amitshekhariitbhu/Fast-Android-Networking)
