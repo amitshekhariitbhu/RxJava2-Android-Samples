@@ -15,6 +15,7 @@
     <string name="buffer">Buffer</string>
     <string name="filter">Filter</string>
     <string name="skip">Skip</string>
+    <string name="scan">Scan</string>
     <string name="replay">Replay</string>
     <string name="concat">Concat</string>
     <string name="merge">Merge</string>

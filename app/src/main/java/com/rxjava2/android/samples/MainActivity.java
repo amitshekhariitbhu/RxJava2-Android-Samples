@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, SkipExampleActivity.class));
     }
 
+    public void startScanActivity(View view) {
+        startActivity(new Intent(MainActivity.this, ScanExampleActivity.class));
+    }
+
     public void startReplayActivity(View view) {
         startActivity(new Intent(MainActivity.this, ReplayExampleActivity.class));
     }
