@@ -88,6 +88,9 @@
         <activity
             android:name=".BehaviorSubjectExample"
             android:label="@string/behavior_subject" />
+        <activity
+            android:name=".AsyncSubjectExample"
+            android:label="@string/behavior_subject" />
     </application>
 
 </manifest>

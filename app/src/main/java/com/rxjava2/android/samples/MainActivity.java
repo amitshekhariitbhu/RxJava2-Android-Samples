@@ -108,4 +108,8 @@ public class MainActivity extends AppCompatActivity {
     public void startBehaviorSubjectActivity(View view) {
         startActivity(new Intent(MainActivity.this, BehaviorSubjectExample.class));
     }
+
+    public void startAsyncSubjectActivity(View view) {
+        startActivity(new Intent(MainActivity.this, AsyncSubjectExample.class));
+    }
 }
