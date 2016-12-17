@@ -79,6 +79,9 @@
         <activity
             android:name=".LastOperatorExampleActivity"
             android:label="@string/distinct" />
+        <activity
+            android:name=".ReplaySubjectExample"
+            android:label="@string/replay_subject" />
     </application>
 
 </manifest>
