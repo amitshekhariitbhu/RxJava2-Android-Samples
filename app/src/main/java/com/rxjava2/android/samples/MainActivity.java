@@ -100,4 +100,8 @@ public class MainActivity extends AppCompatActivity {
     public void startReplaySubjectActivity(View view) {
         startActivity(new Intent(MainActivity.this, ReplaySubjectExample.class));
     }
+
+    public void startPublishSubjectActivity(View view) {
+        startActivity(new Intent(MainActivity.this, PublishSubjectExample.class));
+    }
 }

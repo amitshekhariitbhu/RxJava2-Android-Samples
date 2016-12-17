@@ -82,6 +82,9 @@
         <activity
             android:name=".ReplaySubjectExample"
             android:label="@string/replay_subject" />
+        <activity
+            android:name=".PublishSubjectExample"
+            android:label="@string/publish_subject" />
     </application>
 
 </manifest>
