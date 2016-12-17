@@ -104,4 +104,8 @@ public class MainActivity extends AppCompatActivity {
     public void startPublishSubjectActivity(View view) {
         startActivity(new Intent(MainActivity.this, PublishSubjectExample.class));
     }
+
+    public void startBehaviorSubjectActivity(View view) {
+        startActivity(new Intent(MainActivity.this, BehaviorSubjectExample.class));
+    }
 }

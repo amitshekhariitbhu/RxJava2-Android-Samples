@@ -24,4 +24,5 @@
     <string name="last">Last</string>
     <string name="replay_subject">ReplaySubject</string>
     <string name="publish_subject">PublishSubject</string>
+    <string name="behavior_subject">BehaviorSubject</string>
 </resources>

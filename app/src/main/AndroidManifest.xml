@@ -85,6 +85,9 @@
         <activity
             android:name=".PublishSubjectExample"
             android:label="@string/publish_subject" />
+        <activity
+            android:name=".BehaviorSubjectExample"
+            android:label="@string/behavior_subject" />
     </application>
 
 </manifest>

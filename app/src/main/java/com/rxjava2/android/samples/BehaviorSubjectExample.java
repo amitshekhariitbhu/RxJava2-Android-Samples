@@ -11,15 +11,15 @@ import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.BehaviorSubject;
 
 /**
  * Created by amitshekhar on 17/12/16.
  */
 
-public class PublishSubjectExample extends AppCompatActivity {
+public class BehaviorSubjectExample extends AppCompatActivity {
 
-    private static final String TAG = PublishSubjectExample.class.getSimpleName();
+    private static final String TAG = BehaviorSubjectExample.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -38,12 +38,13 @@ public class PublishSubjectExample extends AppCompatActivity {
         });
     }
 
-    /* PublishSubject emits to an observer only those items that are emitted
-     * by the source Observable, subsequent to the time of the subscription.
+    /* When an observer subscribes to a BehaviorSubject, it begins by emitting the item most
+     * recently emitted by the source Observable (or a seed/default value if none has yet been
+     * emitted) and then continues to emit any other items emitted later by the source Observable(s).
      */
     private void doSomeWork() {
 
-        PublishSubject<Integer> source = PublishSubject.create();
+        BehaviorSubject<Integer> source = BehaviorSubject.create();
 
         source.subscribe(getFirstObserver()); // it will get 1, 2, 3, 4 and onComplete
 
@@ -52,7 +53,7 @@ public class PublishSubjectExample extends AppCompatActivity {
         source.onNext(3);
 
         /*
-         * it will emit 4 and onComplete for second observer also.
+         * it will emit 3(last emitted), 4 and onComplete for second observer also.
          */
         source.subscribe(getSecondObserver());
 
