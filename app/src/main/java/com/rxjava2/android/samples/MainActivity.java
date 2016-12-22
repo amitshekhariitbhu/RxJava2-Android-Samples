@@ -112,4 +112,8 @@ public class MainActivity extends AppCompatActivity {
     public void startAsyncSubjectActivity(View view) {
         startActivity(new Intent(MainActivity.this, AsyncSubjectExample.class));
     }
+
+    public void startThrottleLastActivity(View view) {
+        startActivity(new Intent(MainActivity.this, ThrottleLastExampleActivity.class));
+    }
 }

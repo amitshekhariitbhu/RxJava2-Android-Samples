@@ -91,6 +91,9 @@
         <activity
             android:name=".AsyncSubjectExample"
             android:label="@string/behavior_subject" />
+        <activity
+            android:name=".ThrottleLastExampleActivity"
+            android:label="@string/throttle_last" />
     </application>
 
 </manifest>
