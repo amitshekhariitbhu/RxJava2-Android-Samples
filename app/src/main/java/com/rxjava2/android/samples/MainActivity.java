@@ -116,4 +116,8 @@ public class MainActivity extends AppCompatActivity {
     public void startThrottleLastActivity(View view) {
         startActivity(new Intent(MainActivity.this, ThrottleLastExampleActivity.class));
     }
+
+    public void startDebounceActivity(View view) {
+        startActivity(new Intent(MainActivity.this, DebounceExampleActivity.class));
+    }
 }

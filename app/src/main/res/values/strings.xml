@@ -27,4 +27,5 @@
     <string name="behavior_subject">BehaviorSubject</string>
     <string name="async_subject">AsyncSubject</string>
     <string name="throttle_last">ThrottleLast</string>
+    <string name="debounce">Debounce</string>
 </resources>

@@ -94,6 +94,9 @@
         <activity
             android:name=".ThrottleLastExampleActivity"
             android:label="@string/throttle_last" />
+        <activity
+            android:name=".DebounceExampleActivity"
+            android:label="@string/debounce" />
     </application>
 
 </manifest>
