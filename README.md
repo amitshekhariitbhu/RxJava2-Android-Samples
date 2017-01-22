@@ -78,7 +78,7 @@ RxJava1 -> RxJava2
 * [DisposableExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/operators/DisposableExampleActivity.java) - Using `CompositeDisposable`
 * [FlowableExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/operators/FlowableExampleActivity.java) - Using `Flowable` and `reduce` operator
 * [SingleObserverExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/operators/SingleObserverExampleActivity.java) - Using `SingleObserver`
-* [CompletableObserverActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/operators/CompletableObserverActivity.java) - Using `CompletableObserver`
+* [CompletableObserverActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/operators/CompletableObserverExampleActivity.java) - Using `CompletableObserver`
 * [MapExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/operators/MapExampleActivity.java) - Using `map` Operator
 * [ZipExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/operators/ZipExampleActivity.java) - Using `zip` Operator
 * [BufferExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/operators/BufferExampleActivity.java) - Using `buffer` Operator
