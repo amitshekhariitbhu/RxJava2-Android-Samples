@@ -193,6 +193,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="startThrottleFirstActivity"
+            android:text="@string/throttle_first"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="startThrottleLastActivity"
             android:text="@string/throttle_last"
             android:textColor="@android:color/black" />
@@ -202,6 +209,13 @@
             android:layout_height="wrap_content"
             android:onClick="startDebounceActivity"
             android:text="@string/debounce"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startWindowActivity"
+            android:text="@string/window"
             android:textColor="@android:color/black" />
 
     </LinearLayout>
