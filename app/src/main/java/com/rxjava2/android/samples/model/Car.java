@@ -10,7 +10,7 @@ import io.reactivex.ObservableSource;
  */
 public class Car {
 
-    private String brand="Volvo";
+    private String brand;
 
     public void setBrand(String brand) {
         this.brand = brand;

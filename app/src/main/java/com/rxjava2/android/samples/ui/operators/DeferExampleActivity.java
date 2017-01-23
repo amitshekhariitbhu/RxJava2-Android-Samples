@@ -1,7 +1,7 @@
 package com.rxjava2.android.samples.ui.operators;
 
-import com.rxjava2.android.samples.ui.ExampleBaseActivity;
 import com.rxjava2.android.samples.model.Car;
+import com.rxjava2.android.samples.ui.ExampleBaseActivity;
 
 import io.reactivex.Observable;
 
@@ -17,13 +17,12 @@ public class DeferExampleActivity extends ExampleBaseActivity {
 
         Car car = new Car();
 
-//        car.setBrand("Audi");
-
         Observable<String> brandDeferObservable = car.brandDeferObservable();
 
-        car.setBrand("BMW");  // Even if we are setting the brand after creating Observable
-                              // we will get the brand as BMW.
-                              // If we had not used defer, we would have got null as the brand.
+        car.setBrand("BMW");
+        // Even if we are setting the brand after creating Observable
+        // we will get the brand as BMW.
+        // If we had not used defer, we would have got null as the brand.
 
         brandDeferObservable
                 .subscribe(getObserver());
