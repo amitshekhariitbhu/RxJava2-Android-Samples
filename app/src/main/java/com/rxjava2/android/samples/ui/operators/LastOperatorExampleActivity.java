@@ -10,15 +10,13 @@ import io.reactivex.Observable;
 public class LastOperatorExampleActivity extends ExampleBaseActivity {
 
     protected void doSomeWork() {
-        getObservable().last("ADefault") // the default item ("ADefault") to emit if the source ObservableSource is empty
+        getObservable()
+                .last("Default") // the default item ("Default") to emit if the source ObservableSource is empty
                 .subscribe(this.<String>getSingleObserver());
-        //经过Last操作后，Observable变成SingleObservable了
     }
 
     private Observable<String> getObservable() {
-//        return Observable.empty();
         return Observable.just("A1", "A2", "A3", "A4", "A5", "A6");
     }
-
 
 }

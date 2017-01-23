@@ -36,8 +36,7 @@ public class IntervalExampleActivity extends ExampleBaseActivity {
     }
 
     private Observable<? extends Long> getObservable() {
-        //第一个参数是initialDelay初始化延迟，第二个参数是间隔时间。
-        return Observable.interval(0, 1, TimeUnit.SECONDS);
+        return Observable.interval(0, 2, TimeUnit.SECONDS);
     }
 
 }

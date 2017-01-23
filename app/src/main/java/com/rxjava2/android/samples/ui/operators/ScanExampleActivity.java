@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ScanExampleActivity extends ExampleBaseActivity {
 
-    /* Using scan operator, it sends also the previous result */
+    /* Using scan operator, it sends the previous result also */
     protected void doSomeWork() {
         getObservable()
                 // Run on a background thread
@@ -25,8 +25,6 @@ public class ScanExampleActivity extends ExampleBaseActivity {
                 .subscribe(getObserver());
         //Scan又叫累加器。将原始第一个与第二个应用函数的值作为第二个发射出去数据（第一个发射的数据就是原始第一个数据）
         //第三个发射的数据是原始第三个与第二个发射出去的应用函数后的值。
-
-
     }
 
     private Observable<Integer> getObservable() {

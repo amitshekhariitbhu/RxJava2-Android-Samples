@@ -1,8 +1,8 @@
 package com.rxjava2.android.samples.ui.operators;
 
-import com.rxjava2.android.samples.ui.ExampleBaseActivity;
 import com.rxjava2.android.samples.model.ApiUser;
 import com.rxjava2.android.samples.model.User;
+import com.rxjava2.android.samples.ui.ExampleBaseActivity;
 import com.rxjava2.android.samples.utils.Utils;
 
 import java.util.List;

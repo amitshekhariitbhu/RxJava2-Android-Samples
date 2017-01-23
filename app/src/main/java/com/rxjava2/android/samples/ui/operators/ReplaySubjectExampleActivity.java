@@ -25,22 +25,19 @@ public class ReplaySubjectExampleActivity extends ExampleBaseActivity {
         source.onNext(-1);
         source.onNext(0);
 
-        source.subscribe(this.<Integer>getObserver("First")); // it will get -1, 0, 1, 2, 3, 4
+        source.subscribe(this.<Integer>getObserver("First")); // it will get -1, 0, 1, 2, 3, 4, 5
 
         source.onNext(1);
         source.onNext(2);
         source.onNext(3);
         source.onNext(4);
-//        source.onComplete();
-//OnComplete后发射数据就无效了。如果仍要发射数据，需要重新创建ReplaySubject 并重新订阅
-//        source.onNext(5);
 
         /*
-         * it will emit -1, 0, 1, 2, 3, 4 for second observer also as we have used replay
+         * it will emit -1, 0, 1, 2, 3, 4, 5 for second observer also as we have used replay
          */
         source.subscribe(this.<Integer>getObserver("Second"));
 
-        source.onNext(6);
+        source.onNext(5);
         source.onComplete();
 
     }
