@@ -9,7 +9,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ScanExampleActivity extends ExampleBaseActivity {
 
-    /* Using scan operator, it sends the previous result also */
+    /* Using scan operator, apply a function to each item emitted by an Observable,
+    * sequentially, and emit each successive value
+    */
     protected void doSomeWork() {
         getObservable()
                 // Run on a background thread

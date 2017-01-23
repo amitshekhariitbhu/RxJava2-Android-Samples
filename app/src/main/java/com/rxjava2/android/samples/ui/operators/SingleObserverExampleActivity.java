@@ -24,8 +24,6 @@ public class SingleObserverExampleActivity extends ExampleBaseActivity {
             public void subscribe(SingleEmitter<String> e) throws Exception {
                 if (!e.isDisposed()) {
                     e.onSuccess("Hello Success!");
-//                    e.onError(new RuntimeException("Occur RuntimeException"));
-//                    throw new RuntimeException("Occur RuntimeException");
                 }
             }
         }).doOnSuccess(new Consumer<String>() {
@@ -41,11 +39,9 @@ public class SingleObserverExampleActivity extends ExampleBaseActivity {
         }).onErrorReturn(new Function<Throwable, String>() {
             @Override
             public String apply(Throwable throwable) throws Exception {
-                return "Exception message: "+throwable.getMessage();
+                return "Exception message: " + throwable.getMessage();
             }
         }).subscribe(getSingleObserver());
-//        Single.just("Amit")
-//                .subscribe(getSingleObserver());
     }
 
 }
