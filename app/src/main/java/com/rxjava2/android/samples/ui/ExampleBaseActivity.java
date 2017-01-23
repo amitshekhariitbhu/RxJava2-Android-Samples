@@ -44,35 +44,35 @@ public abstract class ExampleBaseActivity extends AppCompatActivity {
     }
 
     /**
-     * Do some work when click the button.
+     * Do some work on button click.
      */
-    protected abstract void doSomeWork() ;
+    protected abstract void doSomeWork();
 
     protected <T> Observer<T> getObserver() {
         return getObserver("");
     }
 
-    protected <T> Observer<T> getObserver(final Object theNumberOfObserver) {
+    protected <T> Observer<T> getObserver(final Object observerTag) {
         return new Observer<T>() {
 
             @Override
             public void onSubscribe(Disposable d) {
-                ExampleBaseActivity.this.onSubscribe(theNumberOfObserver,d);
+                ExampleBaseActivity.this.onSubscribe(observerTag, d);
             }
 
             @Override
             public void onNext(T value) {
-                ExampleBaseActivity.this.onNext(theNumberOfObserver,value);
+                ExampleBaseActivity.this.onNext(observerTag, value);
             }
 
             @Override
             public void onError(Throwable e) {
-                ExampleBaseActivity.this.onError(theNumberOfObserver,e);
+                ExampleBaseActivity.this.onError(observerTag, e);
             }
 
             @Override
             public void onComplete() {
-                ExampleBaseActivity.this.onComplete(theNumberOfObserver);
+                ExampleBaseActivity.this.onComplete(observerTag);
             }
         };
     }
@@ -81,21 +81,21 @@ public abstract class ExampleBaseActivity extends AppCompatActivity {
         return getCompletableObserver("");
     }
 
-    protected CompletableObserver getCompletableObserver(final Object theNumberOfObserver) {
+    protected CompletableObserver getCompletableObserver(final Object observerTag) {
         return new CompletableObserver() {
             @Override
             public void onSubscribe(Disposable d) {
-                ExampleBaseActivity.this.onSubscribe(theNumberOfObserver, d);
+                ExampleBaseActivity.this.onSubscribe(observerTag, d);
             }
 
             @Override
             public void onComplete() {
-                ExampleBaseActivity.this.onComplete(theNumberOfObserver);
+                ExampleBaseActivity.this.onComplete(observerTag);
             }
 
             @Override
             public void onError(Throwable e) {
-                ExampleBaseActivity.this.onError(theNumberOfObserver, e);
+                ExampleBaseActivity.this.onError(observerTag, e);
             }
         };
     }
@@ -104,21 +104,21 @@ public abstract class ExampleBaseActivity extends AppCompatActivity {
         return getDisposableObserver("");
     }
 
-    protected <T> DisposableObserver<T> getDisposableObserver(final Object theNumberOfObserver) {
+    protected <T> DisposableObserver<T> getDisposableObserver(final Object observerTag) {
         return new DisposableObserver<T>() {
             @Override
             public void onNext(T t) {
-                ExampleBaseActivity.this.onNext(theNumberOfObserver, t);
+                ExampleBaseActivity.this.onNext(observerTag, t);
             }
 
             @Override
             public void onError(Throwable e) {
-                ExampleBaseActivity.this.onError(theNumberOfObserver, e);
+                ExampleBaseActivity.this.onError(observerTag, e);
             }
 
             @Override
             public void onComplete() {
-                ExampleBaseActivity.this.onComplete(theNumberOfObserver);
+                ExampleBaseActivity.this.onComplete(observerTag);
             }
         };
     }
@@ -127,21 +127,21 @@ public abstract class ExampleBaseActivity extends AppCompatActivity {
         return getSingleObserver("");
     }
 
-    protected <T> SingleObserver<T> getSingleObserver(final Object theNumberOfObserver) {
+    protected <T> SingleObserver<T> getSingleObserver(final Object observerTag) {
         return new SingleObserver<T>() {
             @Override
             public void onSubscribe(Disposable d) {
-                ExampleBaseActivity.this.onSubscribe(theNumberOfObserver, d);
+                ExampleBaseActivity.this.onSubscribe(observerTag, d);
             }
 
             @Override
             public void onSuccess(T t) {
-                ExampleBaseActivity.this.onNext(theNumberOfObserver, t);
+                ExampleBaseActivity.this.onNext(observerTag, t);
             }
 
             @Override
             public void onError(Throwable e) {
-                ExampleBaseActivity.this.onError(theNumberOfObserver, e);
+                ExampleBaseActivity.this.onError(observerTag, e);
             }
         };
     }
@@ -150,32 +150,32 @@ public abstract class ExampleBaseActivity extends AppCompatActivity {
         return getMaybeObserver("");
     }
 
-    protected <T> MaybeObserver<T> getMaybeObserver(final Object theNumberOfObserver) {
+    protected <T> MaybeObserver<T> getMaybeObserver(final Object observerTag) {
         return new MaybeObserver<T>() {
             @Override
             public void onSubscribe(Disposable d) {
-                ExampleBaseActivity.this.onSubscribe(theNumberOfObserver, d);
+                ExampleBaseActivity.this.onSubscribe(observerTag, d);
             }
 
             @Override
             public void onSuccess(T t) {
-                ExampleBaseActivity.this.onSuccess(theNumberOfObserver, t);
+                ExampleBaseActivity.this.onSuccess(observerTag, t);
             }
 
             @Override
             public void onError(Throwable e) {
-                ExampleBaseActivity.this.onError(theNumberOfObserver, e);
+                ExampleBaseActivity.this.onError(observerTag, e);
             }
 
             @Override
             public void onComplete() {
-                ExampleBaseActivity.this.onComplete(theNumberOfObserver);
+                ExampleBaseActivity.this.onComplete(observerTag);
             }
         };
     }
 
-    protected void onSubscribe(Object theNumberOfObserver,Disposable d) {
-        String msg = theNumberOfObserver + "  onSubscribe";
+    protected void onSubscribe(Object observerTag, Disposable d) {
+        String msg = observerTag + "  onSubscribe";
         if (d != null) {
             msg = msg + ": isDisposed :" + d.isDisposed();
         }
@@ -184,19 +184,19 @@ public abstract class ExampleBaseActivity extends AppCompatActivity {
         textView.append(AppConstant.LINE_SEPARATOR);
     }
 
-    protected <T> void onNext(Object theNumberOfObserver,T value) {
-        onPositive(theNumberOfObserver,"onNext",value);
+    protected <T> void onNext(Object observerTag, T value) {
+        onPositive(observerTag, "onNext", value);
     }
 
-    protected <T> void onSuccess(Object theNumberOfObserver, T value) {
-        onPositive(theNumberOfObserver,"onSuccess",value);
+    protected <T> void onSuccess(Object observerTag, T value) {
+        onPositive(observerTag, "onSuccess", value);
     }
 
-    private <T> void onPositive(Object theNumberOfObserver,String positiveKey,T value) {
+    private <T> void onPositive(Object observerTag, String positiveKey, T value) {
         if (value instanceof List) {
             List valueList = (List) value;
-            Log.d(TAG, theNumberOfObserver+" "+positiveKey+"  size :" + valueList.size());
-            textView.append( theNumberOfObserver+" "+positiveKey+"  size :" + valueList.size());
+            Log.d(TAG, observerTag + " " + positiveKey + "  size :" + valueList.size());
+            textView.append(observerTag + " " + positiveKey + "  size :" + valueList.size());
             textView.append(AppConstant.LINE_SEPARATOR);
             for (Object obj : valueList) {
                 Log.d(TAG, " : value : " + obj.toString());
@@ -204,22 +204,22 @@ public abstract class ExampleBaseActivity extends AppCompatActivity {
                 textView.append(AppConstant.LINE_SEPARATOR);
             }
         } else {
-            Log.d(TAG, theNumberOfObserver+" "+positiveKey+"  value : " + value);
-            textView.append(theNumberOfObserver+" "+positiveKey+" : value : " + value);
+            Log.d(TAG, observerTag + " " + positiveKey + "  value : " + value);
+            textView.append(observerTag + " " + positiveKey + " : value : " + value);
             textView.append(AppConstant.LINE_SEPARATOR);
         }
     }
 
-    protected  void onError(Object theNumberOfObserver,Throwable e) {
-        textView.append(theNumberOfObserver+"  onError : " + e.getMessage());
+    protected void onError(Object observerTag, Throwable e) {
+        textView.append(observerTag + "  onError : " + e.getMessage());
         textView.append(AppConstant.LINE_SEPARATOR);
-        Log.e(TAG, theNumberOfObserver+"  onError : " , e);
+        Log.e(TAG, observerTag + "  onError : ", e);
     }
 
-    public void onComplete(Object theNumberOfObserver) {
-        textView.append(theNumberOfObserver+"  onComplete");
+    public void onComplete(Object observerTag) {
+        textView.append(observerTag + "  onComplete");
         textView.append(AppConstant.LINE_SEPARATOR);
-        Log.d(TAG, theNumberOfObserver+"  onComplete");
+        Log.d(TAG, observerTag + "  onComplete");
     }
 
 
