@@ -1,22 +1,10 @@
 package com.rxjava2.android.samples.utils;
 
-import android.util.Log;
-
 import com.rxjava2.android.samples.model.ApiUser;
 import com.rxjava2.android.samples.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.function.Consumer;
-
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-import static com.rxjava2.android.samples.R.id.textView;
 
 /**
  * Created by amitshekhar on 27/08/16.
