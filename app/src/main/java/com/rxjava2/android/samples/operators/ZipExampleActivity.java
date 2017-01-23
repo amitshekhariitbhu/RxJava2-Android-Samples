@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 import com.rxjava2.android.samples.model.User;
 import com.rxjava2.android.samples.utils.Utils;
 
@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class ZipExampleActivity extends AbsExampleActivity {
+public class ZipExampleActivity extends ExampleBaseActivity {
     /*
     * Here we are getting two user list
     * One, the list of cricket fans

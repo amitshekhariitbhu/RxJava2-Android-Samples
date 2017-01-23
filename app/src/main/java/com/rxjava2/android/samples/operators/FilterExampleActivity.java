@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Predicate;
@@ -8,7 +8,7 @@ import io.reactivex.functions.Predicate;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class FilterExampleActivity extends AbsExampleActivity {
+public class FilterExampleActivity extends ExampleBaseActivity {
 
     /*
      * simple example by using filter operator to emit only even value

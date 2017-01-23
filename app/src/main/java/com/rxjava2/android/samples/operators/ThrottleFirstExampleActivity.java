@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by threshold on 2017/1/11.
  */
 
-public class ThrottleFirstExampleActivity extends AbsExampleActivity {
+public class ThrottleFirstExampleActivity extends ExampleBaseActivity {
 
     protected void doSomeWork() {
         getObservable()

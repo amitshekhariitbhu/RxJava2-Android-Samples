@@ -1,13 +1,13 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.Observable;
 
 /**
  * Created by techteam on 13/09/16.
  */
-public class LastOperatorExampleActivity extends AbsExampleActivity {
+public class LastOperatorExampleActivity extends ExampleBaseActivity {
 
     protected void doSomeWork() {
         getObservable().last("ADefault") // the default item ("ADefault") to emit if the source ObservableSource is empty

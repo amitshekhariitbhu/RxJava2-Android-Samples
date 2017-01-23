@@ -1,13 +1,13 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
 
-public class ScanExampleActivity extends AbsExampleActivity {
+public class ScanExampleActivity extends ExampleBaseActivity {
 
     /* Using scan operator, it sends also the previous result */
     protected void doSomeWork() {

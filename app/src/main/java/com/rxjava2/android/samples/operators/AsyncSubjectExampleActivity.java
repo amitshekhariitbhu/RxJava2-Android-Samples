@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.subjects.AsyncSubject;
 
@@ -8,7 +8,7 @@ import io.reactivex.subjects.AsyncSubject;
  * Created by amitshekhar on 17/12/16.
  */
 
-public class AsyncSubjectExampleActivity extends AbsExampleActivity {
+public class AsyncSubjectExampleActivity extends ExampleBaseActivity {
 
     /* An AsyncSubject emits the last value (and only the last value) emitted by the source
      * Observable, and only after that source Observable completes. (If the source Observable

@@ -2,7 +2,7 @@ package com.rxjava2.android.samples.operators;
 
 import android.util.Log;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
@@ -13,7 +13,7 @@ import io.reactivex.functions.Function;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class SingleObserverExampleActivity extends AbsExampleActivity {
+public class SingleObserverExampleActivity extends ExampleBaseActivity {
 
     /*
      * simple example using SingleObserver

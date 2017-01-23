@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class TimerExampleActivity extends AbsExampleActivity {
+public class TimerExampleActivity extends ExampleBaseActivity {
 
     /*
      * simple example using timer to do something after 2 second

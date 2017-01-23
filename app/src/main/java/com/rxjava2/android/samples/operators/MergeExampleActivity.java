@@ -1,13 +1,13 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.Observable;
 
 /**
  * Created by amitshekhar on 28/08/16.
  */
-public class MergeExampleActivity extends AbsExampleActivity {
+public class MergeExampleActivity extends ExampleBaseActivity {
     /*
      * Using merge operator to combine Observable : merge does not maintain
      * the order of Observable.

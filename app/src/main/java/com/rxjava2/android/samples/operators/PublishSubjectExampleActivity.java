@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.subjects.PublishSubject;
 
@@ -8,7 +8,7 @@ import io.reactivex.subjects.PublishSubject;
  * Created by amitshekhar on 17/12/16.
  */
 
-public class PublishSubjectExampleActivity extends AbsExampleActivity {
+public class PublishSubjectExampleActivity extends ExampleBaseActivity {
 
     /* PublishSubject emits to an observer only those items that are emitted
      * by the source Observable, subsequent to the time of the subscription.

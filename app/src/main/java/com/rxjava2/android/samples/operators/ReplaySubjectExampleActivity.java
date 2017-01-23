@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.subjects.ReplaySubject;
 
@@ -8,7 +8,7 @@ import io.reactivex.subjects.ReplaySubject;
  * Created by amitshekhar on 17/12/16.
  */
 
-public class ReplaySubjectExampleActivity extends AbsExampleActivity {
+public class ReplaySubjectExampleActivity extends ExampleBaseActivity {
 
     /* ReplaySubject emits to any observer all of the items that were emitted
      * by the source Observable, regardless of when the observer subscribes.

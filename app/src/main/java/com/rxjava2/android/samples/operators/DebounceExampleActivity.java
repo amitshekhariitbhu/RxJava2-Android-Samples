@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by amitshekhar on 22/12/16.
  */
 
-public class DebounceExampleActivity extends AbsExampleActivity {
+public class DebounceExampleActivity extends ExampleBaseActivity {
 
     private static final String TAG = DebounceExampleActivity.class.getSimpleName();
 

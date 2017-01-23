@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 import com.rxjava2.android.samples.model.Car;
 
 import io.reactivex.Observable;
@@ -8,7 +8,7 @@ import io.reactivex.Observable;
 /**
  * Created by amitshekhar on 30/08/16.
  */
-public class DeferExampleActivity extends AbsExampleActivity {
+public class DeferExampleActivity extends ExampleBaseActivity {
 
     /*
      * Defer used for Deferring Observable code until subscription in RxJava

@@ -2,7 +2,7 @@ package com.rxjava2.android.samples.operators;
 
 import android.os.SystemClock;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import java.util.concurrent.Callable;
 
@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class DisposableExampleActivity extends AbsExampleActivity {
+public class DisposableExampleActivity extends ExampleBaseActivity {
 
     private final CompositeDisposable disposables = new CompositeDisposable();
 

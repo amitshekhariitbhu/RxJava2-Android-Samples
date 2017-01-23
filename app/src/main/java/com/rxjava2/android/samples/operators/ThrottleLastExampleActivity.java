@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by amitshekhar on 22/12/16.
  */
 
-public class ThrottleLastExampleActivity extends AbsExampleActivity {
+public class ThrottleLastExampleActivity extends ExampleBaseActivity {
 
     /*
     * Using throttleLast() -> emit the most recent items emitted by an Observable within

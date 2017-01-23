@@ -22,7 +22,7 @@ import io.reactivex.observers.DisposableObserver;
  * Created by threshold on 2017/1/11.
  */
 
-public abstract class AbsExampleActivity extends AppCompatActivity {
+public abstract class ExampleBaseActivity extends AppCompatActivity {
 
     protected String TAG = getClass().getSimpleName();
     protected Button btn;
@@ -56,22 +56,22 @@ public abstract class AbsExampleActivity extends AppCompatActivity {
 
             @Override
             public void onSubscribe(Disposable d) {
-                AbsExampleActivity.this.onSubscribe(theNumberOfObserver,d);
+                ExampleBaseActivity.this.onSubscribe(theNumberOfObserver,d);
             }
 
             @Override
             public void onNext(T value) {
-                AbsExampleActivity.this.onNext(theNumberOfObserver,value);
+                ExampleBaseActivity.this.onNext(theNumberOfObserver,value);
             }
 
             @Override
             public void onError(Throwable e) {
-                AbsExampleActivity.this.onError(theNumberOfObserver,e);
+                ExampleBaseActivity.this.onError(theNumberOfObserver,e);
             }
 
             @Override
             public void onComplete() {
-                AbsExampleActivity.this.onComplete(theNumberOfObserver);
+                ExampleBaseActivity.this.onComplete(theNumberOfObserver);
             }
         };
     }
@@ -84,17 +84,17 @@ public abstract class AbsExampleActivity extends AppCompatActivity {
         return new CompletableObserver() {
             @Override
             public void onSubscribe(Disposable d) {
-                AbsExampleActivity.this.onSubscribe(theNumberOfObserver, d);
+                ExampleBaseActivity.this.onSubscribe(theNumberOfObserver, d);
             }
 
             @Override
             public void onComplete() {
-                AbsExampleActivity.this.onComplete(theNumberOfObserver);
+                ExampleBaseActivity.this.onComplete(theNumberOfObserver);
             }
 
             @Override
             public void onError(Throwable e) {
-                AbsExampleActivity.this.onError(theNumberOfObserver, e);
+                ExampleBaseActivity.this.onError(theNumberOfObserver, e);
             }
         };
     }
@@ -107,17 +107,17 @@ public abstract class AbsExampleActivity extends AppCompatActivity {
         return new DisposableObserver<T>() {
             @Override
             public void onNext(T t) {
-                AbsExampleActivity.this.onNext(theNumberOfObserver, t);
+                ExampleBaseActivity.this.onNext(theNumberOfObserver, t);
             }
 
             @Override
             public void onError(Throwable e) {
-                AbsExampleActivity.this.onError(theNumberOfObserver, e);
+                ExampleBaseActivity.this.onError(theNumberOfObserver, e);
             }
 
             @Override
             public void onComplete() {
-                AbsExampleActivity.this.onComplete(theNumberOfObserver);
+                ExampleBaseActivity.this.onComplete(theNumberOfObserver);
             }
         };
     }
@@ -130,17 +130,17 @@ public abstract class AbsExampleActivity extends AppCompatActivity {
         return new SingleObserver<T>() {
             @Override
             public void onSubscribe(Disposable d) {
-                AbsExampleActivity.this.onSubscribe(theNumberOfObserver, d);
+                ExampleBaseActivity.this.onSubscribe(theNumberOfObserver, d);
             }
 
             @Override
             public void onSuccess(T t) {
-                AbsExampleActivity.this.onNext(theNumberOfObserver, t);
+                ExampleBaseActivity.this.onNext(theNumberOfObserver, t);
             }
 
             @Override
             public void onError(Throwable e) {
-                AbsExampleActivity.this.onError(theNumberOfObserver, e);
+                ExampleBaseActivity.this.onError(theNumberOfObserver, e);
             }
         };
     }
@@ -153,22 +153,22 @@ public abstract class AbsExampleActivity extends AppCompatActivity {
         return new MaybeObserver<T>() {
             @Override
             public void onSubscribe(Disposable d) {
-                AbsExampleActivity.this.onSubscribe(theNumberOfObserver, d);
+                ExampleBaseActivity.this.onSubscribe(theNumberOfObserver, d);
             }
 
             @Override
             public void onSuccess(T t) {
-                AbsExampleActivity.this.onSuccess(theNumberOfObserver, t);
+                ExampleBaseActivity.this.onSuccess(theNumberOfObserver, t);
             }
 
             @Override
             public void onError(Throwable e) {
-                AbsExampleActivity.this.onError(theNumberOfObserver, e);
+                ExampleBaseActivity.this.onError(theNumberOfObserver, e);
             }
 
             @Override
             public void onComplete() {
-                AbsExampleActivity.this.onComplete(theNumberOfObserver);
+                ExampleBaseActivity.this.onComplete(theNumberOfObserver);
             }
         };
     }

@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.observables.ConnectableObservable;
 import io.reactivex.subjects.PublishSubject;
@@ -8,7 +8,7 @@ import io.reactivex.subjects.PublishSubject;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class ReplayExampleActivity extends AbsExampleActivity {
+public class ReplayExampleActivity extends ExampleBaseActivity {
 
     /* Using replay operator, replay ensure that all observers see the same sequence
      * of emitted items, even if they subscribe after the Observable has begun emitting items

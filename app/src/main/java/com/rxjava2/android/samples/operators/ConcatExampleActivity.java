@@ -1,13 +1,13 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.Observable;
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class ConcatExampleActivity extends AbsExampleActivity {
+public class ConcatExampleActivity extends ExampleBaseActivity {
 
     private static final String TAG = ConcatExampleActivity.class.getSimpleName();
 

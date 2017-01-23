@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 
 import io.reactivex.subjects.BehaviorSubject;
 
@@ -8,7 +8,7 @@ import io.reactivex.subjects.BehaviorSubject;
  * Created by amitshekhar on 17/12/16.
  */
 
-public class BehaviorSubjectExampleActivity extends AbsExampleActivity {
+public class BehaviorSubjectExampleActivity extends ExampleBaseActivity {
 
     /* When an observer subscribes to a BehaviorSubject, it begins by emitting the item most
      * recently emitted by the source Observable (or a seed/default value if none has yet been

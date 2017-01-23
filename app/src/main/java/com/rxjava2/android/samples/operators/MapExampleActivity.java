@@ -1,6 +1,6 @@
 package com.rxjava2.android.samples.operators;
 
-import com.rxjava2.android.samples.AbsExampleActivity;
+import com.rxjava2.android.samples.ExampleBaseActivity;
 import com.rxjava2.android.samples.model.ApiUser;
 import com.rxjava2.android.samples.model.User;
 import com.rxjava2.android.samples.utils.Utils;
@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class MapExampleActivity extends AbsExampleActivity {
+public class MapExampleActivity extends ExampleBaseActivity {
 
     /*
     * Here we are getting ApiUser Object from api server
