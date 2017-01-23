@@ -18,8 +18,6 @@ public class BehaviorSubjectExampleActivity extends ExampleBaseActivity {
 
         BehaviorSubject<Integer> source = BehaviorSubject.createDefault(-1);
 
-//        source.onNext(0); //如果启用这句话，firstObserver将获得 0 (最近发射的最后一个数据)，1，2，3，4
-
         source.subscribe(getObserver("First")); // it will get -1, 1, 2, 3, 4 and onComplete
 
         source.onNext(1);

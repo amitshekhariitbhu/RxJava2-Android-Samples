@@ -25,13 +25,16 @@ public class AsyncSubjectExampleActivity extends ExampleBaseActivity {
         source.onNext(3);
 
         /*
-         * it will emit 4 and onComplete for second observer also.
+         * it will also emit 4 and onComplete for second observer also.
          */
         source.subscribe(getObserver("Second"));
 
         source.onNext(4);
         source.onComplete();
 
+        /*
+         * it will also emit 4 and onComplete for second observer also.
+         */
         source.subscribe(getObserver("Third"));
     }
 

@@ -14,9 +14,6 @@ public class BufferExampleActivity extends ExampleBaseActivity {
      */
     protected void doSomeWork() {
 
-    /*
-
-        Observable<List<String>> buffered = getObservable().buffer(3, 1);
 
         // 3 means,  it takes max of three from its start index and create list
         // 1 means, it jumps one step every time
@@ -27,23 +24,7 @@ public class BufferExampleActivity extends ExampleBaseActivity {
         // 4 - four, five
         // 5 - five
 
-        buffered.subscribe(getObserver());
-
-        */
-
-       /*
-        //每次取2个  每次跳过3个
-        //第一次：one、two
-        //第二次：four、five
-        getObservable().buffer(2, 3)
-                .subscribe(getObserver());
-        */
-
-        //每次取3个，每次跳过2个
-        //第一次：one、two、three
-        //第二次：three、four、five
-        //第三次：five
-        getObservable().buffer(3, 2)
+        getObservable().buffer(3, 1)
                 .subscribe(getObserver());
 
     }
