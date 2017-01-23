@@ -16,9 +16,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class DebounceExampleActivity extends ExampleBaseActivity {
 
-    private static final String TAG = DebounceExampleActivity.class.getSimpleName();
-
-
     /*
     * Using debounce() -> only emit an item from an Observable if a particular time-span has
     * passed without it emitting another item, so it will emit 2, 4, 5 as we have simulated it.
@@ -61,7 +58,7 @@ public class DebounceExampleActivity extends ExampleBaseActivity {
                 4和5之间有605毫秒的间隔，没有交集，所以4被发射出去。
                 5在接下来的500毫秒内没有和其他元素有交集，所以发射出去。
                 （如还不明白，建议在纸上画出各个元素的时间片段）
-                 */
+                s*/
 
             }
         });

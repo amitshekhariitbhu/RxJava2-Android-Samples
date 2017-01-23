@@ -17,10 +17,9 @@ public class CompletableObserverExampleActivity extends ExampleBaseActivity {
 
     /*
      * simple example using CompletableObserver
+     * Completable does not consist of onNext()
      */
     protected void doSomeWork() {
-        //延迟多久发射onComplete
-//        Completable completable = Completable.timer(1000, TimeUnit.MILLISECONDS);
 
         Completable completable = Completable.create(new CompletableOnSubscribe() {
             @Override
@@ -30,7 +29,7 @@ public class CompletableObserverExampleActivity extends ExampleBaseActivity {
                     if (randomInt % 2 == 0) {
                         e.onComplete();
                     } else {
-                        e.onError(new IllegalStateException("Can't completable because of error occur."));
+                        e.onError(new IllegalStateException("Can't complete because an error has occurred."));
                     }
                 }
             }

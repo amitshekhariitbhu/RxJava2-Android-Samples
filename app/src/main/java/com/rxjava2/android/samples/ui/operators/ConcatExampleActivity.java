@@ -9,16 +9,13 @@ import io.reactivex.Observable;
  */
 public class ConcatExampleActivity extends ExampleBaseActivity {
 
-    private static final String TAG = ConcatExampleActivity.class.getSimpleName();
-
-
     /*
      * Using concat operator to combine Observable : concat maintain
      * the order of Observable.
      * It will emit all the 7 values in order
      * here - first "A1", "A2", "A3", "A4" and then "B1", "B2", "B3"
      * first all from the first Observable and then
-     * all from the second Observable all in order
+     * all from the second Observable, all in order
      */
     protected void doSomeWork() {
         final String[] aStrings = {"A1", "A2", "A3", "A4"};
@@ -30,7 +27,6 @@ public class ConcatExampleActivity extends ExampleBaseActivity {
         Observable.concat(aObservable, bObservable)
                 .subscribe(getObserver());
     }
-
 
 
 }

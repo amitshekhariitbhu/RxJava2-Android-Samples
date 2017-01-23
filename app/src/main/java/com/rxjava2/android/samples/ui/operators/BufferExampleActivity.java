@@ -15,8 +15,8 @@ public class BufferExampleActivity extends ExampleBaseActivity {
     protected void doSomeWork() {
 
 
-        // 3 means,  it takes max of three from its start index and create list
-        // 1 means, it jumps one step every time
+        // count = 3 means,  it takes max of three from its start index and create list
+        // skip = 1 means, it jumps one step every time
         // so the it gives the following list
         // 1 - one, two, three
         // 2 - two, three, four
@@ -32,7 +32,5 @@ public class BufferExampleActivity extends ExampleBaseActivity {
     private Observable<String> getObservable() {
         return Observable.just("one", "two", "three", "four", "five");
     }
-
-
 
 }
