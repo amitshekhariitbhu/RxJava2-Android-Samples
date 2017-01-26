@@ -11,6 +11,10 @@ import java.util.List;
  */
 public class Utils {
 
+    private Utils() {
+        // This class in not publicly instantiable.
+    }
+
     public static List<User> getUserList() {
 
         List<User> userList = new ArrayList<>();

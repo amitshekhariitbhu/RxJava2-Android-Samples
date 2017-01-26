@@ -8,7 +8,7 @@ import android.app.Application;
 
 public class MyApplication extends Application {
 
-    public static final String TAG = MyApplication.class.getSimpleName();
+    public static final String TAG = "MyApplication";
 
     @Override
     public void onCreate() {
