@@ -1,47 +1,72 @@
 package com.rxjava2.android.samples.ui.operators;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-import com.rxjava2.android.samples.ui.ExampleBaseActivity;
+import com.rxjava2.android.samples.R;
+import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Single;
-import io.reactivex.SingleEmitter;
-import io.reactivex.SingleOnSubscribe;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class SingleObserverExampleActivity extends ExampleBaseActivity {
+public class SingleObserverExampleActivity extends AppCompatActivity {
+
+    private static final String TAG = SingleObserverExampleActivity.class.getSimpleName();
+    Button btn;
+    TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_example);
+        btn = (Button) findViewById(R.id.btn);
+        textView = (TextView) findViewById(R.id.textView);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doSomeWork();
+            }
+        });
+    }
 
     /*
      * simple example using SingleObserver
      */
-    protected void doSomeWork() {
-        Single.create(new SingleOnSubscribe<String>() {
+    private void doSomeWork() {
+        Single.just("Amit")
+                .subscribe(getSingleObserver());
+    }
+
+    private SingleObserver<String> getSingleObserver() {
+        return new SingleObserver<String>() {
             @Override
-            public void subscribe(SingleEmitter<String> e) throws Exception {
-                if (!e.isDisposed()) {
-                    e.onSuccess("Hello Success!");
-                }
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
-        }).doOnSuccess(new Consumer<String>() {
+
             @Override
-            public void accept(String s) throws Exception {
-                Log.d(TAG, "doOnSuccess: " + s);
+            public void onSuccess(String value) {
+                textView.append(" onNext : value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onNext value : " + value);
             }
-        }).doOnError(new Consumer<Throwable>() {
+
             @Override
-            public void accept(Throwable throwable) throws Exception {
-                Log.e(TAG, "doOnError: " + throwable.getMessage());
+            public void onError(Throwable e) {
+                textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onError : " + e.getMessage());
             }
-        }).onErrorReturn(new Function<Throwable, String>() {
-            @Override
-            public String apply(Throwable throwable) throws Exception {
-                return "Exception message: " + throwable.getMessage();
-            }
-        }).subscribe(getSingleObserver());
+        };
     }
 
 }

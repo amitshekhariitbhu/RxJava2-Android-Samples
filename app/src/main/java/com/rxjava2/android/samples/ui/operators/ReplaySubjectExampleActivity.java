@@ -1,45 +1,129 @@
 package com.rxjava2.android.samples.ui.operators;
 
-import com.rxjava2.android.samples.ui.ExampleBaseActivity;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.rxjava2.android.samples.R;
+import com.rxjava2.android.samples.utils.AppConstant;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.ReplaySubject;
 
 /**
  * Created by amitshekhar on 17/12/16.
  */
 
-public class ReplaySubjectExampleActivity extends ExampleBaseActivity {
+public class ReplaySubjectExampleActivity extends AppCompatActivity {
+
+    private static final String TAG = ReplaySubjectExampleActivity.class.getSimpleName();
+    Button btn;
+    TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_example);
+        btn = (Button) findViewById(R.id.btn);
+        textView = (TextView) findViewById(R.id.textView);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doSomeWork();
+            }
+        });
+    }
 
     /* ReplaySubject emits to any observer all of the items that were emitted
      * by the source Observable, regardless of when the observer subscribes.
      */
-    protected void doSomeWork() {
+    private void doSomeWork() {
 
-        //ReplaySubject 和 PublishSubject相反，
-        //ReplaySubject不管订阅者什么时候订阅都能获取到完整的发射数据。
-        //而PublishSubject会一直按照自己的步调发射数据，你在哪订阅就从这个时间点开始才能获取到事件
-        //所谓的完整数据指的是从第一个onNext 一直到 onComplete 或 onError
         ReplaySubject<Integer> source = ReplaySubject.create();
 
-
-        source.onNext(-1);
-        source.onNext(0);
-
-        source.subscribe(this.<Integer>getObserver("First")); // it will get -1, 0, 1, 2, 3, 4, 5
+        source.subscribe(getFirstObserver()); // it will get 1, 2, 3, 4
 
         source.onNext(1);
         source.onNext(2);
         source.onNext(3);
         source.onNext(4);
-
-        /*
-         * it will emit -1, 0, 1, 2, 3, 4, 5 for second observer also as we have used replay
-         */
-        source.subscribe(this.<Integer>getObserver("Second"));
-
-        source.onNext(5);
         source.onComplete();
 
+        /*
+         * it will emit 1, 2, 3, 4 for second observer also as we have used replay
+         */
+        source.subscribe(getSecondObserver());
+
+    }
+
+
+    private Observer<Integer> getFirstObserver() {
+        return new Observer<Integer>() {
+
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, " First onSubscribe : " + d.isDisposed());
+            }
+
+            @Override
+            public void onNext(Integer value) {
+                textView.append(" First onNext : value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " First onNext value : " + value);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                textView.append(" First onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " First onError : " + e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                textView.append(" First onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " First onComplete");
+            }
+        };
+    }
+
+    private Observer<Integer> getSecondObserver() {
+        return new Observer<Integer>() {
+
+            @Override
+            public void onSubscribe(Disposable d) {
+                textView.append(" Second onSubscribe : isDisposed :" + d.isDisposed());
+                Log.d(TAG, " Second onSubscribe : " + d.isDisposed());
+                textView.append(AppConstant.LINE_SEPARATOR);
+            }
+
+            @Override
+            public void onNext(Integer value) {
+                textView.append(" Second onNext : value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " Second onNext value : " + value);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                textView.append(" Second onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " Second onError : " + e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                textView.append(" Second onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " Second onComplete");
+            }
+        };
     }
 
 

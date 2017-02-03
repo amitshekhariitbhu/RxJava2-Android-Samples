@@ -17,7 +17,6 @@ public class Car {
     }
 
     public Observable<String> brandDeferObservable() {
-//        return Observable.just(brand);
         return Observable.defer(new Callable<ObservableSource<? extends String>>() {
             @Override
             public ObservableSource<? extends String> call() throws Exception {

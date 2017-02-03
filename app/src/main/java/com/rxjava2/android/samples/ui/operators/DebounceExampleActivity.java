@@ -1,29 +1,55 @@
 package com.rxjava2.android.samples.ui.operators;
 
-import com.rxjava2.android.samples.ui.ExampleBaseActivity;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.rxjava2.android.samples.R;
+import com.rxjava2.android.samples.utils.AppConstant;
 
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 22/12/16.
  */
 
-public class DebounceExampleActivity extends ExampleBaseActivity {
+public class DebounceExampleActivity extends AppCompatActivity {
+
+    private static final String TAG = DebounceExampleActivity.class.getSimpleName();
+    Button btn;
+    TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_example);
+        btn = (Button) findViewById(R.id.btn);
+        textView = (TextView) findViewById(R.id.textView);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doSomeWork();
+            }
+        });
+    }
 
     /*
     * Using debounce() -> only emit an item from an Observable if a particular time-span has
     * passed without it emitting another item, so it will emit 2, 4, 5 as we have simulated it.
     */
-    protected void doSomeWork() {
-
-        //debounce 是发射所有 时间片段 交集 中最后一个元素。
-        //这里的时间片段是指每次发射元素的当前时刻+超时时间形成的时间片段
+    private void doSomeWork() {
         getObservable()
                 .debounce(500, TimeUnit.MILLISECONDS)
                 // Run on a background thread
@@ -49,20 +75,42 @@ public class DebounceExampleActivity extends ExampleBaseActivity {
                 emitter.onNext(5); // deliver
                 Thread.sleep(510);
                 emitter.onComplete();
-
-                /*
-                分析如下：
-                1和2在400毫秒处有交集，所以1被扔掉。
-                2和3之间有500毫秒的间隔，没有交集，所以2被发射出去。
-                3在905毫秒出准备发射，但是紧接着4在1005毫秒处也要准备发射，所以3和4有交集，3被扔掉。
-                4和5之间有605毫秒的间隔，没有交集，所以4被发射出去。
-                5在接下来的500毫秒内没有和其他元素有交集，所以发射出去。
-                （如还不明白，建议在纸上画出各个元素的时间片段）
-                s*/
-
             }
         });
     }
 
+    private Observer<Integer> getObserver() {
+        return new Observer<Integer>() {
+
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, " onSubscribe : " + d.isDisposed());
+            }
+
+            @Override
+            public void onNext(Integer value) {
+                textView.append(" onNext : ");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                textView.append(" value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onNext ");
+                Log.d(TAG, " value : " + value);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onError : " + e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onComplete");
+            }
+        };
+    }
 
 }

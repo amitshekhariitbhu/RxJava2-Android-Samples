@@ -1,8 +1,16 @@
 package com.rxjava2.android.samples.ui.operators;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.model.ApiUser;
 import com.rxjava2.android.samples.model.User;
-import com.rxjava2.android.samples.ui.ExampleBaseActivity;
+import com.rxjava2.android.samples.utils.AppConstant;
 import com.rxjava2.android.samples.utils.Utils;
 
 import java.util.List;
@@ -10,14 +18,35 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class MapExampleActivity extends ExampleBaseActivity {
+public class MapExampleActivity extends AppCompatActivity {
+
+    private static final String TAG = MapExampleActivity.class.getSimpleName();
+    Button btn;
+    TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_example);
+        btn = (Button) findViewById(R.id.btn);
+        textView = (TextView) findViewById(R.id.textView);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doSomeWork();
+            }
+        });
+    }
 
     /*
     * Here we are getting ApiUser Object from api server
@@ -25,7 +54,7 @@ public class MapExampleActivity extends ExampleBaseActivity {
     * may be our database support User Not ApiUser Object
     * Here we are using Map Operator to do that
     */
-    protected void doSomeWork() {
+    private void doSomeWork() {
         getObservable()
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
@@ -52,5 +81,41 @@ public class MapExampleActivity extends ExampleBaseActivity {
             }
         });
     }
+
+    private Observer<List<User>> getObserver() {
+        return new Observer<List<User>>() {
+
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, " onSubscribe : " + d.isDisposed());
+            }
+
+            @Override
+            public void onNext(List<User> userList) {
+                textView.append(" onNext");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                for (User user : userList) {
+                    textView.append(" firstName : " + user.firstName);
+                    textView.append(AppConstant.LINE_SEPARATOR);
+                }
+                Log.d(TAG, " onNext : " + userList.size());
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onError : " + e.getMessage());
+            }
+
+            @Override
+            public void onComplete() {
+                textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onComplete");
+            }
+        };
+    }
+
 
 }

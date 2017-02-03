@@ -1,70 +1,81 @@
 package com.rxjava2.android.samples.ui.operators;
 
-import com.rxjava2.android.samples.ui.ExampleBaseActivity;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
+import com.rxjava2.android.samples.R;
+import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Flowable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class FlowableExampleActivity extends ExampleBaseActivity {
+public class FlowableExampleActivity extends AppCompatActivity {
 
-    private Subscription mSubscription;
+    private static final String TAG = FlowableExampleActivity.class.getSimpleName();
+    Button btn;
+    TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_example);
+        btn = (Button) findViewById(R.id.btn);
+        textView = (TextView) findViewById(R.id.textView);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doSomeWork();
+            }
+        });
+    }
 
     /*
      * simple example using Flowable
      */
-    protected void doSomeWork() {
+    private void doSomeWork() {
 
-        if (mSubscription != null) {
-            mSubscription.cancel();
-        }
+        Flowable<Integer> observable = Flowable.just(1, 2, 3, 4);
 
-        Flowable.range(0, 20)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new Subscriber<Integer>() {
-
-                    //当订阅后，会首先调用这个方法，其实就相当于onStart()，
-                    //传入的Subscription s参数可以用于请求数据或者取消订阅
-                    @Override
-                    public void onSubscribe(Subscription s) {
-                        FlowableExampleActivity.this.onSubscribe("", null);
-                        mSubscription = s;
-                        //要说明一下，request这个方法若不调用,下游的onNext与OnComplete都不会调用；
-                        // 若你写的数量小于真实数据量，只会传你的个数，而且不会调用onComplete方法（毕竟没有传完嘛，当然没有complete）
-                        mSubscription.request(1);
-                    }
-
-                    @Override
-                    public void onNext(Integer o) {
-                        FlowableExampleActivity.this.onNext("", o);
-                        mSubscription.request(1);
-                    }
-
-                    @Override
-                    public void onError(Throwable t) {
-                        FlowableExampleActivity.this.onError("", t);
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        FlowableExampleActivity.this.onComplete("");
-                    }
-                });
+        observable.reduce(50, new BiFunction<Integer, Integer, Integer>() {
+            @Override
+            public Integer apply(Integer t1, Integer t2) {
+                return t1 + t2;
+            }
+        }).subscribe(getObserver());
 
     }
 
-    @Override
-    protected void onDestroy() {
-        if (mSubscription != null) {
-            mSubscription.cancel();
-        }
-        super.onDestroy();
+    private SingleObserver<Integer> getObserver() {
+
+        return new SingleObserver<Integer>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, " onSubscribe : " + d.isDisposed());
+            }
+
+            @Override
+            public void onSuccess(Integer value) {
+                textView.append(" onSuccess : value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onSuccess : value : " + value);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onError : " + e.getMessage());
+            }
+        };
     }
 }
