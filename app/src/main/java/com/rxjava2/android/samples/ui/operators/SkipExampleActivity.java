@@ -40,7 +40,7 @@ public class SkipExampleActivity extends AppCompatActivity {
         });
     }
 
-    /* Using skip operator, it only not emit
+    /* Using skip operator, it will not emit
     * the first 2 values.
     */
     private void doSomeWork() {

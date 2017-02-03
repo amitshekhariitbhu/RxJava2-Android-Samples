@@ -52,7 +52,7 @@ public class ThrottleLastExampleActivity extends AppCompatActivity {
     */
     private void doSomeWork() {
         getObservable()
-                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .throttleLast(500, TimeUnit.MILLISECONDS)
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
