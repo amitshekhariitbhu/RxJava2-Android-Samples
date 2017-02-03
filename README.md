@@ -99,6 +99,9 @@ RxJava1 -> RxJava2
 ### Find this project useful ? :heart:
 * Support it by clicking the :star: button on the upper right of this page. :v:
 
+### Check out an awesome MVP architecture based project which uses RxJava2, Dagger2.
+* [Android-MVP-Architecture](https://github.com/MindorksOpenSource/android-mvp-architecture)
+
 ### Check out an awesome library for fast and simple networking in Android.
 * [Fast Android Networking Library](https://github.com/amitshekhariitbhu/Fast-Android-Networking)
 
