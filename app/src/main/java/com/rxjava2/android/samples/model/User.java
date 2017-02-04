@@ -7,6 +7,16 @@ public class User {
     public long id;
     public String firstName;
     public String lastName;
+    public boolean isFollowing;
+
+    public User() {
+    }
+
+    public User(ApiUser apiUser) {
+        this.id = apiUser.id;
+        this.firstName = apiUser.firstname;
+        this.lastName = apiUser.lastname;
+    }
 
     @Override
     public String toString() {
@@ -14,6 +24,7 @@ public class User {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", isFollowing=" + isFollowing +
                 '}';
     }
 }

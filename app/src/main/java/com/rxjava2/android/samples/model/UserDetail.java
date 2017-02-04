@@ -1,19 +1,21 @@
 package com.rxjava2.android.samples.model;
 
 /**
- * Created by amitshekhar on 27/08/16.
+ * Created by amitshekhar on 04/02/17.
  */
-public class ApiUser {
+
+public class UserDetail {
+
     public long id;
     public String firstname;
     public String lastname;
 
     @Override
     public String toString() {
-        return "ApiUser{" +
+        return "UserDetail{" +
                 "id=" + id +
-                ", firstName='" + firstname + '\'' +
-                ", lastName='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 '}';
     }
 }
