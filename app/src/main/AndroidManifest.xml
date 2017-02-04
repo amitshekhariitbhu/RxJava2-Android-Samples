@@ -78,7 +78,7 @@
             android:label="@string/distinct"/>
         <activity
             android:name=".ui.operators.LastOperatorExampleActivity"
-            android:label="@string/distinct"/>
+            android:label="@string/last"/>
         <activity
             android:name=".ui.operators.ReplaySubjectExampleActivity"
             android:label="@string/replay_subject"/>
