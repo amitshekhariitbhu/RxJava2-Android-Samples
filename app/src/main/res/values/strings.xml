@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">RxJava2-Android-Samples</string>
     <string name="doSomeWork">doSomeWork</string>
+    <string name="operators">Operators</string>
+    <string name="networking">Networking</string>
     <string name="simple">Simple</string>
     <string name="map">Map</string>
     <string name="zip">Zip</string>
