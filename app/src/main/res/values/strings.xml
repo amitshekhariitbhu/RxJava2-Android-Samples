@@ -35,4 +35,6 @@
     <string name="flatMapAndFilter">flatMapAndFilter</string>
     <string name="flatMap">flatMap</string>
     <string name="flatMapWithZip">flatMapWithZip</string>
+    <string name="click_me">Click Me</string>
+    <string name="rx_bus">RxBus</string>
 </resources>
