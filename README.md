@@ -1,5 +1,7 @@
 # Learning RxJava 2 for Android by example
 
+[![Mindorks](https://img.shields.io/badge/mindorks-opensource-blue.svg)](https://mindorks.com/open-source-projects)
+
 <img src=https://raw.githubusercontent.com/amitshekhariitbhu/RxJava2-Android-Samples/master/assets/rxjava2.png >
 
 ## How to use RxJava 2 in Android Application
