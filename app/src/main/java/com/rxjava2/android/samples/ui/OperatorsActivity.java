@@ -13,6 +13,7 @@ import com.rxjava2.android.samples.ui.operators.CompletableObserverExampleActivi
 import com.rxjava2.android.samples.ui.operators.ConcatExampleActivity;
 import com.rxjava2.android.samples.ui.operators.DebounceExampleActivity;
 import com.rxjava2.android.samples.ui.operators.DeferExampleActivity;
+import com.rxjava2.android.samples.ui.operators.DelayExampleActivity;
 import com.rxjava2.android.samples.ui.operators.DisposableExampleActivity;
 import com.rxjava2.android.samples.ui.operators.DistinctExampleActivity;
 import com.rxjava2.android.samples.ui.operators.FilterExampleActivity;
@@ -160,5 +161,8 @@ public class OperatorsActivity extends AppCompatActivity {
         startActivity(new Intent(OperatorsActivity.this,WindowExampleActivity.class));
     }
 
+    public void startDelayActivity(View view) {
+        startActivity(new Intent(OperatorsActivity.this,DelayExampleActivity.class));
+    }
 
 }

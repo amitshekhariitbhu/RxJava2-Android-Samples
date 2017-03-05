@@ -114,6 +114,9 @@
         <activity
             android:name=".ui.operators.ThrottleFirstExampleActivity"
             android:label="@string/throttle_first" />
+        <activity
+            android:name=".ui.operators.DelayExampleActivity"
+            android:label="@string/delay" />
     </application>
 
 </manifest>

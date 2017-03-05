@@ -31,6 +31,7 @@
     <string name="throttle_last">ThrottleLast</string>
     <string name="debounce">Debounce</string>
     <string name="window">Window</string>
+    <string name="delay">delay</string>
     <string name="throttle_first">ThrottleFirst</string>
     <string name="flatMapAndFilter">flatMapAndFilter</string>
     <string name="flatMap">flatMap</string>
