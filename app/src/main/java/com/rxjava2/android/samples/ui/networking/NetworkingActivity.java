@@ -40,10 +40,9 @@ public class NetworkingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_networking);
     }
 
-    /************************************
-     * map operator start
-     ************************************/
-
+    /**
+     * Map Operator Example
+     */
     public void map(View view) {
         Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAnUser/{userId}")
                 .addPathParameter("userId", "1")
@@ -84,13 +83,13 @@ public class NetworkingActivity extends AppCompatActivity {
     }
 
 
-    /************************************
-     * zip operator start
-     *********************************/
+    /**
+     * zip Operator Example
+     */
 
-    /*
-    * This observable return the list of User who loves cricket
-    */
+    /**
+     * This observable return the list of User who loves cricket
+     */
     private Observable<List<User>> getCricketFansObservable() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllCricketFans")
                 .build()
@@ -168,9 +167,10 @@ public class NetworkingActivity extends AppCompatActivity {
         findUsersWhoLovesBoth();
     }
 
-    /************************************
-     * flatMap and filter operator start
-     ************************************/
+
+    /**
+     * flatMap and filter Operators Example
+     */
 
     private Observable<List<User>> getAllMyFriendsObservable() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllFriends/{userId}")
@@ -220,9 +220,10 @@ public class NetworkingActivity extends AppCompatActivity {
                 });
     }
 
-    /************************************
-     * take operator start
-     ************************************/
+
+    /**
+     * take Operator Example
+     */
 
     public void take(View view) {
         getUserListObservable()
@@ -260,10 +261,9 @@ public class NetworkingActivity extends AppCompatActivity {
     }
 
 
-    /************************************
-     * flatMap operator start
-     ************************************/
-
+    /**
+     * flatMap Operator Example
+     */
 
     public void flatMap(View view) {
         getUserListObservable()
@@ -308,9 +308,9 @@ public class NetworkingActivity extends AppCompatActivity {
                 });
     }
 
-    /************************************
-     * flatMapWithZip operator start
-     ************************************/
+    /**
+     * flatMapWithZip Operator Example
+     */
 
     private Observable<List<User>> getUserListObservable() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllUsers/{pageNumber}")
