@@ -55,12 +55,12 @@ public class DelayExampleActivity extends AppCompatActivity {
                 .subscribe(getObserver());
     }
 
-    private Observable<? extends Long> getObservable() {
-        return Observable.timer(2, TimeUnit.SECONDS);
+    private Observable<String> getObservable() {
+        return Observable.just("Amit");
     }
 
-    private Observer<Long> getObserver() {
-        return new Observer<Long>() {
+    private Observer<String> getObserver() {
+        return new Observer<String>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -68,7 +68,7 @@ public class DelayExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(Long value) {
+            public void onNext(String value) {
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onNext : value : " + value);
