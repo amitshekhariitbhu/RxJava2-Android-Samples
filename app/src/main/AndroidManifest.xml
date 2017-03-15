@@ -28,6 +28,9 @@
             android:name=".ui.rxbus.RxBusActivity"
             android:label="@string/rx_bus" />
         <activity
+            android:name=".ui.pagination.PaginationActivity"
+            android:label="@string/pagination" />
+        <activity
             android:name=".ui.operators.SimpleExampleActivity"
             android:label="@string/simple" />
         <activity
