@@ -38,7 +38,7 @@ public class PaginationActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private boolean loading = false;
     private int pageNumber = 1;
-    private int visibleThreshold = 3;
+    private final int VISIBLE_THRESHOLD = 3;
     private int lastVisibleItem, totalItemCount;
     private LinearLayoutManager layoutManager;
 
@@ -64,6 +64,9 @@ public class PaginationActivity extends AppCompatActivity {
         compositeDisposable.clear();
     }
 
+    /**
+     * setting listener to get callback for load more
+     */
     private void setUpLoadMoreListener() {
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -75,7 +78,7 @@ public class PaginationActivity extends AppCompatActivity {
                 lastVisibleItem = layoutManager
                         .findLastVisibleItemPosition();
                 if (!loading
-                        && totalItemCount <= (lastVisibleItem + visibleThreshold)) {
+                        && totalItemCount <= (lastVisibleItem + VISIBLE_THRESHOLD)) {
                     pageNumber++;
                     paginator.onNext(pageNumber);
                     loading = true;
@@ -84,6 +87,9 @@ public class PaginationActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * subscribing for data
+     */
     private void subscribeForData() {
 
         Disposable disposable = paginator
