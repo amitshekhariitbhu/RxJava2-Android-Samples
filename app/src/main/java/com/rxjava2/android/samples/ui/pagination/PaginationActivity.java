@@ -135,7 +135,6 @@ public class PaginationActivity extends AppCompatActivity {
      */
     private Flowable<List<String>> dataFromNetwork(final int page) {
         return Flowable.just(true)
-                .observeOn(AndroidSchedulers.mainThread())
                 .delay(2, TimeUnit.SECONDS)
                 .map(new Function<Boolean, List<String>>() {
                     @Override
