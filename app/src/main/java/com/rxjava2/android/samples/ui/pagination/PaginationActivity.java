@@ -38,7 +38,7 @@ public class PaginationActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private boolean loading = false;
     private int pageNumber = 1;
-    private final int VISIBLE_THRESHOLD = 3;
+    private final int VISIBLE_THRESHOLD = 1;
     private int lastVisibleItem, totalItemCount;
     private LinearLayoutManager layoutManager;
 
