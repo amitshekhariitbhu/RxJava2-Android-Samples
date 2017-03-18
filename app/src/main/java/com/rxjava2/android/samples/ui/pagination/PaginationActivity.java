@@ -94,35 +94,24 @@ public class PaginationActivity extends AppCompatActivity {
 
         Disposable disposable = paginator
                 .onBackpressureDrop()
-                .doOnNext(new Consumer<Integer>() {
-                    @Override
-                    public void accept(@NonNull Integer integer) throws Exception {
-                        loading = true;
-                        progressBar.setVisibility(View.VISIBLE);
-                    }
-                })
                 .concatMap(new Function<Integer, Publisher<List<String>>>() {
                     @Override
                     public Publisher<List<String>> apply(@NonNull Integer page) throws Exception {
+                        loading = true;
+                        progressBar.setVisibility(View.VISIBLE);
                         return dataFromNetwork(page);
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<List<String>, Boolean>() {
+                .subscribe(new Consumer<List<String>>() {
                     @Override
-                    public Boolean apply(@NonNull List<String> items) throws Exception {
+                    public void accept(@NonNull List<String> items) throws Exception {
                         paginationAdapter.addItems(items);
                         paginationAdapter.notifyDataSetChanged();
-                        return true;
-                    }
-                })
-                .doOnNext(new Consumer<Boolean>() {
-                    @Override
-                    public void accept(@NonNull Boolean value) throws Exception {
                         loading = false;
                         progressBar.setVisibility(View.INVISIBLE);
                     }
-                }).subscribe();
+                });
 
         compositeDisposable.add(disposable);
 
