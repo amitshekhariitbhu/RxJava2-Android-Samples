@@ -95,7 +95,7 @@ public class MapExampleActivity extends AppCompatActivity {
                 textView.append(" onNext");
                 textView.append(AppConstant.LINE_SEPARATOR);
                 for (User user : userList) {
-                    textView.append(" firstName : " + user.firstName);
+                    textView.append(" firstname : " + user.firstname);
                     textView.append(AppConstant.LINE_SEPARATOR);
                 }
                 Log.d(TAG, " onNext : " + userList.size());

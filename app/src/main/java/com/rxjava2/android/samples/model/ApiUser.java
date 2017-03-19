@@ -12,8 +12,8 @@ public class ApiUser {
     public String toString() {
         return "ApiUser{" +
                 "id=" + id +
-                ", firstName='" + firstname + '\'' +
-                ", lastName='" + lastname + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 '}';
     }
 }
