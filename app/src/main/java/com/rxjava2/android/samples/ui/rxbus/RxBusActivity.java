@@ -41,7 +41,7 @@ public class RxBusActivity extends AppCompatActivity {
 
         disposables.add(((MyApplication) getApplication())
                 .bus()
-                .toObserverable()
+                .toObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Object>() {
