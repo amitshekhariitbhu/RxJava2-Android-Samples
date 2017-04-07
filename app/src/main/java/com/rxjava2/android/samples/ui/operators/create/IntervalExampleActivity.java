@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.create;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,20 +10,23 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Predicate;
+import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class FilterExampleActivity extends AppCompatActivity {
+public class IntervalExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = FilterExampleActivity.class.getSimpleName();
+    private static final String TAG = IntervalExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
+    private final CompositeDisposable disposables = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,38 +43,37 @@ public class FilterExampleActivity extends AppCompatActivity {
         });
     }
 
-    /*
-     * simple example by using filter operator to emit only even value
-     *
-     */
-    private void doSomeWork() {
-        Observable.just(1, 2, 3, 4, 5, 6)
-                .filter(new Predicate<Integer>() {
-                    @Override
-                    public boolean test(Integer integer) throws Exception {
-                        return integer % 2 == 0;
-                    }
-                })
-                .subscribe(getObserver());
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disposables.clear(); // clearing it : do not emit after destroy
     }
 
+    /*
+     * simple example using interval to run task at an interval of 2 sec
+     * which start immediately
+     */
+    private void doSomeWork() {
+        disposables.add(getObservable()
+                // Run on a background thread
+                .subscribeOn(Schedulers.io())
+                // Be notified on the main thread
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(getObserver()));
+    }
 
-    private Observer<Integer> getObserver() {
-        return new Observer<Integer>() {
+    private Observable<? extends Long> getObservable() {
+        return Observable.interval(0, 2, TimeUnit.SECONDS);
+    }
+
+    private DisposableObserver<Long> getObserver() {
+        return new DisposableObserver<Long>() {
 
             @Override
-            public void onSubscribe(Disposable d) {
-                Log.d(TAG, " onSubscribe : " + d.isDisposed());
-            }
-
-            @Override
-            public void onNext(Integer value) {
-                textView.append(" onNext : ");
+            public void onNext(Long value) {
+                textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                textView.append(" value : " + value);
-                textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext ");
-                Log.d(TAG, " value : " + value);
+                Log.d(TAG, " onNext : value : " + value);
             }
 
             @Override

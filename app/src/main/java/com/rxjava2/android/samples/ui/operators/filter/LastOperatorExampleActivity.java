@@ -1,6 +1,7 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.filter;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -8,24 +9,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.rxjava2.android.samples.R;
-import com.rxjava2.android.samples.model.Car;
 import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
+import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by amitshekhar on 30/08/16.
+ * Created by techteam on 13/09/16.
  */
-public class DeferExampleActivity extends AppCompatActivity {
+public class LastOperatorExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = DeferExampleActivity.class.getSimpleName();
+    private static final String TAG = DistinctExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
         btn = (Button) findViewById(R.id.btn);
@@ -39,25 +40,17 @@ public class DeferExampleActivity extends AppCompatActivity {
         });
     }
 
-    /*
-     * Defer used for Deferring Observable code until subscription in RxJava
-     */
     private void doSomeWork() {
-
-        Car car = new Car();
-
-        Observable<String> brandDeferObservable = car.brandDeferObservable();
-
-        car.setBrand("BMW");  // Even if we are setting the brand after creating Observable
-        // we will get the brand as BMW.
-        // If we had not used defer, we would have got null as the brand.
-
-        brandDeferObservable
+        getObservable().last("A1") // the default item ("A1") to emit if the source ObservableSource is empty
                 .subscribe(getObserver());
     }
 
-    private Observer<String> getObserver() {
-        return new Observer<String>() {
+    private Observable<String> getObservable() {
+        return Observable.just("A1", "A2", "A3", "A4", "A5", "A6");
+    }
+
+    private SingleObserver<String> getObserver() {
+        return new SingleObserver<String>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -65,11 +58,12 @@ public class DeferExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(String value) {
+            public void onSuccess(String value) {
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext : value : " + value);
+                Log.d(TAG, " onNext value : " + value);
             }
+
 
             @Override
             public void onError(Throwable e) {
@@ -77,15 +71,6 @@ public class DeferExampleActivity extends AppCompatActivity {
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
-
-            @Override
-            public void onComplete() {
-                textView.append(" onComplete");
-                textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onComplete");
-            }
         };
     }
-
-
 }

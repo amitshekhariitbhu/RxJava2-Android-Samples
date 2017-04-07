@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.create;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.rxjava2.android.samples.R;
+import com.rxjava2.android.samples.model.Car;
 import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Observable;
@@ -15,11 +16,11 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by amitshekhar on 27/08/16.
+ * Created by amitshekhar on 30/08/16.
  */
-public class ConcatExampleActivity extends AppCompatActivity {
+public class DeferExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = ConcatExampleActivity.class.getSimpleName();
+    private static final String TAG = DeferExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -39,24 +40,21 @@ public class ConcatExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * Using concat operator to combine Observable : concat maintain
-     * the order of Observable.
-     * It will emit all the 7 values in order
-     * here - first "A1", "A2", "A3", "A4" and then "B1", "B2", "B3"
-     * first all from the first Observable and then
-     * all from the second Observable all in order
+     * Defer used for Deferring Observable code until subscription in RxJava
      */
     private void doSomeWork() {
-        final String[] aStrings = {"A1", "A2", "A3", "A4"};
-        final String[] bStrings = {"B1", "B2", "B3"};
 
-        final Observable<String> aObservable = Observable.fromArray(aStrings);
-        final Observable<String> bObservable = Observable.fromArray(bStrings);
+        Car car = new Car();
 
-        Observable.concat(aObservable, bObservable)
+        Observable<String> brandDeferObservable = car.brandDeferObservable();
+
+        car.setBrand("BMW");  // Even if we are setting the brand after creating Observable
+        // we will get the brand as BMW.
+        // If we had not used defer, we would have got null as the brand.
+
+        brandDeferObservable
                 .subscribe(getObserver());
     }
-
 
     private Observer<String> getObserver() {
         return new Observer<String>() {

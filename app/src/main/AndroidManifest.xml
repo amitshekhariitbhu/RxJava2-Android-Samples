@@ -34,7 +34,7 @@
             android:name=".ui.operators.SimpleExampleActivity"
             android:label="@string/simple" />
         <activity
-            android:name=".ui.operators.MapExampleActivity"
+            android:name=".ui.operators.transform.MapExampleActivity"
             android:label="@string/map" />
         <activity
             android:name=".ui.operators.ZipExampleActivity"
@@ -49,7 +49,7 @@
             android:name=".ui.operators.TimerExampleActivity"
             android:label="@string/timer" />
         <activity
-            android:name=".ui.operators.IntervalExampleActivity"
+            android:name=".ui.operators.create.IntervalExampleActivity"
             android:label="@string/interval" />
         <activity
             android:name=".ui.operators.SingleObserverExampleActivity"
@@ -64,10 +64,10 @@
             android:name=".ui.operators.ReduceExampleActivity"
             android:label="@string/reduce" />
         <activity
-            android:name=".ui.operators.BufferExampleActivity"
+            android:name=".ui.operators.transform.BufferExampleActivity"
             android:label="@string/buffer" />
         <activity
-            android:name=".ui.operators.FilterExampleActivity"
+            android:name=".ui.operators.filter.FilterExampleActivity"
             android:label="@string/filter" />
         <activity
             android:name=".ui.operators.SkipExampleActivity"
@@ -79,19 +79,19 @@
             android:name=".ui.operators.ReplayExampleActivity"
             android:label="@string/replay" />
         <activity
-            android:name=".ui.operators.ConcatExampleActivity"
+            android:name=".ui.operators.mathematical.ConcatExampleActivity"
             android:label="@string/concat" />
         <activity
             android:name=".ui.operators.MergeExampleActivity"
             android:label="@string/merge" />
         <activity
-            android:name=".ui.operators.DeferExampleActivity"
+            android:name=".ui.operators.create.DeferExampleActivity"
             android:label="@string/defer" />
         <activity
-            android:name=".ui.operators.DistinctExampleActivity"
+            android:name=".ui.operators.filter.DistinctExampleActivity"
             android:label="@string/distinct" />
         <activity
-            android:name=".ui.operators.LastOperatorExampleActivity"
+            android:name=".ui.operators.filter.LastOperatorExampleActivity"
             android:label="@string/last" />
         <activity
             android:name=".ui.subject.ReplaySubjectExampleActivity"
@@ -109,7 +109,7 @@
             android:name=".ui.operators.ThrottleLastExampleActivity"
             android:label="@string/throttle_last" />
         <activity
-            android:name=".ui.operators.DebounceExampleActivity"
+            android:name=".ui.operators.filter.DebounceExampleActivity"
             android:label="@string/debounce" />
         <activity
             android:name=".ui.operators.WindowExampleActivity"
@@ -118,7 +118,7 @@
             android:name=".ui.operators.ThrottleFirstExampleActivity"
             android:label="@string/throttle_first" />
         <activity
-            android:name=".ui.operators.DelayExampleActivity"
+            android:name=".ui.operators.utility.DelayExampleActivity"
             android:label="@string/delay" />
         <activity
             android:name=".ui.operators.MeterailizeExampleActivity"

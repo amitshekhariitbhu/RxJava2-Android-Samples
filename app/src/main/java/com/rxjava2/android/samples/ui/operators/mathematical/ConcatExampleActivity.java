@@ -1,7 +1,6 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.mathematical;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,21 +11,20 @@ import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Observable;
-import io.reactivex.SingleObserver;
+import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by techteam on 13/09/16.
+ * Created by amitshekhar on 27/08/16.
  */
-public class LastOperatorExampleActivity extends AppCompatActivity {
+public class ConcatExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = DistinctExampleActivity.class.getSimpleName();
+    private static final String TAG = ConcatExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
         btn = (Button) findViewById(R.id.btn);
@@ -40,17 +38,28 @@ public class LastOperatorExampleActivity extends AppCompatActivity {
         });
     }
 
+    /*
+     * Using concat operator to combine Observable : concat maintain
+     * the order of Observable.
+     * It will emit all the 7 values in order
+     * here - first "A1", "A2", "A3", "A4" and then "B1", "B2", "B3"
+     * first all from the first Observable and then
+     * all from the second Observable all in order
+     */
     private void doSomeWork() {
-        getObservable().last("A1") // the default item ("A1") to emit if the source ObservableSource is empty
+        final String[] aStrings = {"A1", "A2", "A3", "A4"};
+        final String[] bStrings = {"B1", "B2", "B3"};
+
+        final Observable<String> aObservable = Observable.fromArray(aStrings);
+        final Observable<String> bObservable = Observable.fromArray(bStrings);
+
+        Observable.concat(aObservable, bObservable)
                 .subscribe(getObserver());
     }
 
-    private Observable<String> getObservable() {
-        return Observable.just("A1", "A2", "A3", "A4", "A5", "A6");
-    }
 
-    private SingleObserver<String> getObserver() {
-        return new SingleObserver<String>() {
+    private Observer<String> getObserver() {
+        return new Observer<String>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -58,12 +67,11 @@ public class LastOperatorExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onSuccess(String value) {
+            public void onNext(String value) {
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext value : " + value);
+                Log.d(TAG, " onNext : value : " + value);
             }
-
 
             @Override
             public void onError(Throwable e) {
@@ -71,6 +79,15 @@ public class LastOperatorExampleActivity extends AppCompatActivity {
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
+
+            @Override
+            public void onComplete() {
+                textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onComplete");
+            }
         };
     }
+
+
 }

@@ -1,7 +1,6 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.filter;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -14,18 +13,20 @@ import com.rxjava2.android.samples.utils.AppConstant;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Predicate;
+
 
 /**
- * Created by techteam on 13/09/16.
+ * Created by amitshekhar on 27/08/16.
  */
-public class DistinctExampleActivity extends AppCompatActivity {
+public class FilterExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = DistinctExampleActivity.class.getSimpleName();
+    private static final String TAG = FilterExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
         btn = (Button) findViewById(R.id.btn);
@@ -39,16 +40,19 @@ public class DistinctExampleActivity extends AppCompatActivity {
         });
     }
 
-
+    /*
+     * simple example by using filter operator to emit only even value
+     *
+     */
     private void doSomeWork() {
-
-        getObservable()
-                .distinct()
+        Observable.just(1, 2, 3, 4, 5, 6)
+                .filter(new Predicate<Integer>() {
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+                        return integer % 2 == 0;
+                    }
+                })
                 .subscribe(getObserver());
-    }
-
-    private Observable<Integer> getObservable() {
-        return Observable.just(1, 2, 1, 1, 2, 3, 4, 6, 4);
     }
 
 
@@ -62,20 +66,29 @@ public class DistinctExampleActivity extends AppCompatActivity {
 
             @Override
             public void onNext(Integer value) {
-                textView.append(" onNext : value : " + value);
+                textView.append(" onNext : ");
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext value : " + value);
+                textView.append(" value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onNext ");
+                Log.d(TAG, " value : " + value);
             }
 
             @Override
             public void onError(Throwable e) {
+                textView.append(" onError : " + e.getMessage());
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
+                textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onComplete");
             }
         };
     }
+
+
 }

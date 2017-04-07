@@ -1,6 +1,7 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.filter;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,26 +11,21 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import java.util.concurrent.TimeUnit;
-
 import io.reactivex.Observable;
 import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by amitshekhar on 05/03/17.
+ * Created by techteam on 13/09/16.
  */
+public class DistinctExampleActivity extends AppCompatActivity {
 
-public class DelayExampleActivity extends AppCompatActivity {
-
-    private static final String TAG = DelayExampleActivity.class.getSimpleName();
+    private static final String TAG = DistinctExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
         btn = (Button) findViewById(R.id.btn);
@@ -43,24 +39,21 @@ public class DelayExampleActivity extends AppCompatActivity {
         });
     }
 
-    /*
-     * simple example using delay to emit after 2 second
-     */
+
     private void doSomeWork() {
-        getObservable().delay(2, TimeUnit.SECONDS)
-                // Run on a background thread
-                .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
-                .observeOn(AndroidSchedulers.mainThread())
+
+        getObservable()
+                .distinct()
                 .subscribe(getObserver());
     }
 
-    private Observable<String> getObservable() {
-        return Observable.just("Amit");
+    private Observable<Integer> getObservable() {
+        return Observable.just(1, 2, 1, 1, 2, 3, 4, 6, 4);
     }
 
-    private Observer<String> getObserver() {
-        return new Observer<String>() {
+
+    private Observer<Integer> getObserver() {
+        return new Observer<Integer>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -68,27 +61,21 @@ public class DelayExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(String value) {
+            public void onNext(Integer value) {
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext : value : " + value);
+                Log.d(TAG, " onNext value : " + value);
             }
 
             @Override
             public void onError(Throwable e) {
-                textView.append(" onError : " + e.getMessage());
-                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
 
             @Override
             public void onComplete() {
-                textView.append(" onComplete");
-                textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onComplete");
             }
         };
     }
-
-
 }
