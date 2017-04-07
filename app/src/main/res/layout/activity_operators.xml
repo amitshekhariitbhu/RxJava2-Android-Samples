@@ -224,6 +224,19 @@
             android:onClick="startDelayActivity"
             android:text="@string/delay"
             android:textColor="@android:color/black" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startMeterailizeExampleActivity"
+            android:text="@string/Meterailize"
+            android:textColor="@android:color/black" />
 
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startSwitchMapExampleActivity"
+            android:text="@string/SwitchMap"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 </ScrollView>

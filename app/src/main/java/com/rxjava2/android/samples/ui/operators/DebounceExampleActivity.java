@@ -73,8 +73,8 @@ public class DebounceExampleActivity extends AppCompatActivity {
                 emitter.onNext(4); // deliver
                 Thread.sleep(605);
                 emitter.onNext(5); // deliver
-                Thread.sleep(510);
-                emitter.onComplete();
+                Thread.sleep(110);
+                emitter.onComplete(); //始终会执行
             }
         });
     }

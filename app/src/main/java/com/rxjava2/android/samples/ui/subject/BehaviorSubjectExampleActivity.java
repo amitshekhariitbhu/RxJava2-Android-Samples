@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.subject;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,15 +12,15 @@ import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.subjects.AsyncSubject;
+import io.reactivex.subjects.BehaviorSubject;
 
 /**
  * Created by amitshekhar on 17/12/16.
  */
 
-public class AsyncSubjectExampleActivity extends AppCompatActivity {
+public class BehaviorSubjectExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = AsyncSubjectExampleActivity.class.getSimpleName();
+    private static final String TAG = BehaviorSubjectExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -39,27 +39,28 @@ public class AsyncSubjectExampleActivity extends AppCompatActivity {
         });
     }
 
-    /* An AsyncSubject emits the last value (and only the last value) emitted by the source
-     * Observable, and only after that source Observable completes. (If the source Observable
-     * does not emit any values, the AsyncSubject also completes without emitting any values.)
+    /* When an observer subscribes to a BehaviorSubject, it begins by emitting the item most
+     * recently emitted by the source Observable (or a seed/default value if none has yet been
+     * emitted) and then continues to emit any other items emitted later by the source Observable(s).
+     * It is different from Async Subject as async emits the last value (and only the last value)
+     * but the Behavior Subject emits the last and the subsequent values also.
      */
     private void doSomeWork() {
 
-        AsyncSubject<Integer> source = AsyncSubject.create();
+        BehaviorSubject<Integer> source = BehaviorSubject.create();
 
-        source.subscribe(getFirstObserver()); // it will emit only 4 and onComplete
+        source.subscribe(getFirstObserver()); // it will get 1, 2, 3, 4 and onComplete
 
         source.onNext(1);
         source.onNext(2);
         source.onNext(3);
 
         /*
-         * it will emit 4 and onComplete for second observer also.
+         * it will emit 3(last emitted), 4 and onComplete for second observer also.
          */
         source.subscribe(getSecondObserver());
 
         source.onNext(4);
-        source.onComplete();
 
     }
 
@@ -69,6 +70,9 @@ public class AsyncSubjectExampleActivity extends AppCompatActivity {
 
             @Override
             public void onSubscribe(Disposable d) {
+                textView.append(" First onSubscribe : isDisposed :" + d.isDisposed());
+                textView.append(AppConstant.LINE_SEPARATOR);
+
                 Log.d(TAG, " First onSubscribe : " + d.isDisposed());
             }
 

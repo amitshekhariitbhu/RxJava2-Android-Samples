@@ -22,6 +22,7 @@ import com.rxjava2.android.samples.ui.operators.IntervalExampleActivity;
 import com.rxjava2.android.samples.ui.operators.LastOperatorExampleActivity;
 import com.rxjava2.android.samples.ui.operators.MapExampleActivity;
 import com.rxjava2.android.samples.ui.operators.MergeExampleActivity;
+import com.rxjava2.android.samples.ui.operators.MeterailizeExampleActivity;
 import com.rxjava2.android.samples.ui.operators.PublishSubjectExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ReduceExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ReplayExampleActivity;
@@ -30,6 +31,7 @@ import com.rxjava2.android.samples.ui.operators.ScanExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SimpleExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SingleObserverExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SkipExampleActivity;
+import com.rxjava2.android.samples.ui.operators.SwitchMapExampleActivity;
 import com.rxjava2.android.samples.ui.operators.TakeExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ThrottleFirstExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ThrottleLastExampleActivity;
@@ -163,6 +165,15 @@ public class OperatorsActivity extends AppCompatActivity {
 
     public void startDelayActivity(View view) {
         startActivity(new Intent(OperatorsActivity.this,DelayExampleActivity.class));
+    }
+
+    public void startMeterailizeExampleActivity(View view) {
+        startActivity(new Intent(OperatorsActivity.this,MeterailizeExampleActivity.class));
+    }
+
+
+    public void startSwitchMapExampleActivity(View view) {
+        startActivity(new Intent(OperatorsActivity.this,SwitchMapExampleActivity.class));
     }
 
 }

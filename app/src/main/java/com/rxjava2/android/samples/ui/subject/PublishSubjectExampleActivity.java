@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.subject;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,15 +12,15 @@ import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by amitshekhar on 17/12/16.
  */
 
-public class BehaviorSubjectExampleActivity extends AppCompatActivity {
+public class PublishSubjectExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = BehaviorSubjectExampleActivity.class.getSimpleName();
+    private static final String TAG = PublishSubjectExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -39,15 +39,12 @@ public class BehaviorSubjectExampleActivity extends AppCompatActivity {
         });
     }
 
-    /* When an observer subscribes to a BehaviorSubject, it begins by emitting the item most
-     * recently emitted by the source Observable (or a seed/default value if none has yet been
-     * emitted) and then continues to emit any other items emitted later by the source Observable(s).
-     * It is different from Async Subject as async emits the last value (and only the last value)
-     * but the Behavior Subject emits the last and the subsequent values also.
+    /* PublishSubject emits to an observer only those items that are emitted
+     * by the source Observable, subsequent to the time of the subscription.
      */
     private void doSomeWork() {
 
-        BehaviorSubject<Integer> source = BehaviorSubject.create();
+        PublishSubject<Integer> source = PublishSubject.create();
 
         source.subscribe(getFirstObserver()); // it will get 1, 2, 3, 4 and onComplete
 
@@ -56,7 +53,7 @@ public class BehaviorSubjectExampleActivity extends AppCompatActivity {
         source.onNext(3);
 
         /*
-         * it will emit 3(last emitted), 4 and onComplete for second observer also.
+         * it will emit 4 and onComplete for second observer also.
          */
         source.subscribe(getSecondObserver());
 

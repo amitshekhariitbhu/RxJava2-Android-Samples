@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.subject;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,15 +12,15 @@ import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.ReplaySubject;
 
 /**
  * Created by amitshekhar on 17/12/16.
  */
 
-public class PublishSubjectExampleActivity extends AppCompatActivity {
+public class ReplaySubjectExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = PublishSubjectExampleActivity.class.getSimpleName();
+    private static final String TAG = ReplaySubjectExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -39,26 +39,25 @@ public class PublishSubjectExampleActivity extends AppCompatActivity {
         });
     }
 
-    /* PublishSubject emits to an observer only those items that are emitted
-     * by the source Observable, subsequent to the time of the subscription.
+    /* ReplaySubject emits to any observer all of the items that were emitted
+     * by the source Observable, regardless of when the observer subscribes.
      */
     private void doSomeWork() {
 
-        PublishSubject<Integer> source = PublishSubject.create();
+        ReplaySubject<Integer> source = ReplaySubject.create();
 
-        source.subscribe(getFirstObserver()); // it will get 1, 2, 3, 4 and onComplete
+        source.subscribe(getFirstObserver()); // it will get 1, 2, 3, 4
 
         source.onNext(1);
         source.onNext(2);
         source.onNext(3);
-
-        /*
-         * it will emit 4 and onComplete for second observer also.
-         */
-        source.subscribe(getSecondObserver());
-
         source.onNext(4);
         source.onComplete();
+
+        /*
+         * it will emit 1, 2, 3, 4 for second observer also as we have used replay
+         */
+        source.subscribe(getSecondObserver());
 
     }
 

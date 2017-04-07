@@ -94,16 +94,16 @@
             android:name=".ui.operators.LastOperatorExampleActivity"
             android:label="@string/last" />
         <activity
-            android:name=".ui.operators.ReplaySubjectExampleActivity"
+            android:name=".ui.subject.ReplaySubjectExampleActivity"
             android:label="@string/replay_subject" />
         <activity
-            android:name=".ui.operators.PublishSubjectExampleActivity"
+            android:name=".ui.subject.PublishSubjectExampleActivity"
             android:label="@string/publish_subject" />
         <activity
-            android:name=".ui.operators.BehaviorSubjectExampleActivity"
+            android:name=".ui.subject.BehaviorSubjectExampleActivity"
             android:label="@string/behavior_subject" />
         <activity
-            android:name=".ui.operators.AsyncSubjectExampleActivity"
+            android:name=".ui.subject.AsyncSubjectExampleActivity"
             android:label="@string/async_subject" />
         <activity
             android:name=".ui.operators.ThrottleLastExampleActivity"
@@ -119,6 +119,12 @@
             android:label="@string/throttle_first" />
         <activity
             android:name=".ui.operators.DelayExampleActivity"
+            android:label="@string/delay" />
+        <activity
+            android:name=".ui.operators.MeterailizeExampleActivity"
+            android:label="@string/delay" />
+        <activity
+            android:name=".ui.operators.SwitchMapExampleActivity"
             android:label="@string/delay" />
     </application>
 
