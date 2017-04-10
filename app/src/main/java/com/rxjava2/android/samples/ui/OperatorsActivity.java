@@ -21,23 +21,23 @@ import com.rxjava2.android.samples.ui.operators.FlowableExampleActivity;
 import com.rxjava2.android.samples.ui.operators.create.IntervalExampleActivity;
 import com.rxjava2.android.samples.ui.operators.filter.LastOperatorExampleActivity;
 import com.rxjava2.android.samples.ui.operators.transform.MapExampleActivity;
-import com.rxjava2.android.samples.ui.operators.MergeExampleActivity;
+import com.rxjava2.android.samples.ui.operators.combine.MergeExampleActivity;
 import com.rxjava2.android.samples.ui.operators.MeterailizeExampleActivity;
 import com.rxjava2.android.samples.ui.operators.PublishSubjectExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ReduceExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ReplayExampleActivity;
+import com.rxjava2.android.samples.ui.operators.mathematical.ReduceExampleActivity;
+import com.rxjava2.android.samples.ui.operators.connectable.ReplayExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ReplaySubjectExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ScanExampleActivity;
+import com.rxjava2.android.samples.ui.operators.transform.ScanExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SimpleExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SingleObserverExampleActivity;
-import com.rxjava2.android.samples.ui.operators.SkipExampleActivity;
-import com.rxjava2.android.samples.ui.operators.SwitchMapExampleActivity;
-import com.rxjava2.android.samples.ui.operators.TakeExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ThrottleFirstExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ThrottleLastExampleActivity;
-import com.rxjava2.android.samples.ui.operators.TimerExampleActivity;
-import com.rxjava2.android.samples.ui.operators.WindowExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ZipExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.SkipExampleActivity;
+import com.rxjava2.android.samples.ui.operators.transform.SwitchMapExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.TakeExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.ThrottleFirstExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.ThrottleLastExampleActivity;
+import com.rxjava2.android.samples.ui.operators.create.TimerExampleActivity;
+import com.rxjava2.android.samples.ui.operators.transform.WindowExampleActivity;
+import com.rxjava2.android.samples.ui.operators.combine.ZipExampleActivity;
 
 public class OperatorsActivity extends AppCompatActivity {
 

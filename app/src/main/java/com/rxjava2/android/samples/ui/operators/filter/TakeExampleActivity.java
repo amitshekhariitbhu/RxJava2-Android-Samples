@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.filter;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,14 +12,16 @@ import com.rxjava2.android.samples.utils.AppConstant;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by amitshekhar on 28/08/16.
+ * Created by amitshekhar on 27/08/16.
  */
-public class MergeExampleActivity extends AppCompatActivity {
+public class TakeExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = MergeExampleActivity.class.getSimpleName();
+    private static final String TAG = TakeExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -38,26 +40,25 @@ public class MergeExampleActivity extends AppCompatActivity {
         });
     }
 
-    /*
-     * Using merge operator to combine Observable : merge does not maintain
-     * the order of Observable.
-     * It will emit all the 7 values may not be in order
-     * Ex - "A1", "B1", "A2", "A3", "A4", "B2", "B3" - may be anything
-     */
+    /* Using take operator, it only emits
+    * required number of values. here only 3 out of 5
+    */
     private void doSomeWork() {
-        final String[] aStrings = {"A1", "A2", "A3", "A4"};
-        final String[] bStrings = {"B1", "B2", "B3"};
-
-        final Observable<String> aObservable = Observable.fromArray(aStrings);
-        final Observable<String> bObservable = Observable.fromArray(bStrings);
-
-        Observable.merge(aObservable, bObservable)
+        getObservable()
+                // Run on a background thread
+                .subscribeOn(Schedulers.io())
+                // Be notified on the main thread
+                .observeOn(AndroidSchedulers.mainThread())
+                .take(3)
                 .subscribe(getObserver());
     }
 
+    private Observable<Integer> getObservable() {
+        return Observable.just(1, 2, 3, 4, 5);
+    }
 
-    private Observer<String> getObserver() {
-        return new Observer<String>() {
+    private Observer<Integer> getObserver() {
+        return new Observer<Integer>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -65,10 +66,10 @@ public class MergeExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(String value) {
+            public void onNext(Integer value) {
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext : value : " + value);
+                Log.d(TAG, " onNext value : " + value);
             }
 
             @Override

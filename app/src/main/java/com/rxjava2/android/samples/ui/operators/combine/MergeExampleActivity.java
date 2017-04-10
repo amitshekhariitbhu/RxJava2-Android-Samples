@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.combine;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,17 +10,16 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import io.reactivex.MaybeObserver;
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 
 /**
- * Created by amitshekhar on 27/08/16.
+ * Created by amitshekhar on 28/08/16.
  */
-public class ReduceExampleActivity extends AppCompatActivity {
+public class MergeExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = ReduceExampleActivity.class.getSimpleName();
+    private static final String TAG = MergeExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -40,35 +39,36 @@ public class ReduceExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using reduce to add all the number
+     * Using merge operator to combine Observable : merge does not maintain
+     * the order of Observable.
+     * It will emit all the 7 values may not be in order
+     * Ex - "A1", "B1", "A2", "A3", "A4", "B2", "B3" - may be anything
      */
     private void doSomeWork() {
-        getObservable()
-                .reduce(new BiFunction<Integer, Integer, Integer>() {
-                    @Override
-                    public Integer apply(Integer t1, Integer t2) {
-                        return t1 + t2;
-                    }
-                })
+        final String[] aStrings = {"A1", "A2", "A3", "A4"};
+        final String[] bStrings = {"B1", "B2", "B3"};
+
+        final Observable<String> aObservable = Observable.fromArray(aStrings);
+        final Observable<String> bObservable = Observable.fromArray(bStrings);
+
+        Observable.merge(aObservable, bObservable)
                 .subscribe(getObserver());
     }
 
-    private Observable<Integer> getObservable() {
-        return Observable.just(1, 2, 3, 4);
-    }
 
-    private MaybeObserver<Integer> getObserver() {
-        return new MaybeObserver<Integer>() {
+    private Observer<String> getObserver() {
+        return new Observer<String>() {
+
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onSuccess(Integer value) {
-                textView.append(" onSuccess : value : " + value);
+            public void onNext(String value) {
+                textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onSuccess : value : " + value);
+                Log.d(TAG, " onNext : value : " + value);
             }
 
             @Override

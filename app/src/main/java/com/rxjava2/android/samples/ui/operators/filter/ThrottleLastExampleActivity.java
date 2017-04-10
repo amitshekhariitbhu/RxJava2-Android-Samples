@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.filter;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

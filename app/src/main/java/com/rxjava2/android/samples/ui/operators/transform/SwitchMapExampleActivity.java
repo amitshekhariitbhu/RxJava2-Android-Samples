@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.transform;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.model.ApiUser;
 import com.rxjava2.android.samples.model.User;
+import com.rxjava2.android.samples.ui.operators.MeterailizeExampleActivity;
 import com.rxjava2.android.samples.utils.AppConstant;
 
 import org.reactivestreams.Subscriber;

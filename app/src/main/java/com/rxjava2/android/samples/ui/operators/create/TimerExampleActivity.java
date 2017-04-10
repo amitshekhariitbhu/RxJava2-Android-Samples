@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.create;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -19,9 +21,9 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class SkipExampleActivity extends AppCompatActivity {
+public class TimerExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = SkipExampleActivity.class.getSimpleName();
+    private static final String TAG = TimerExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -40,25 +42,24 @@ public class SkipExampleActivity extends AppCompatActivity {
         });
     }
 
-    /* Using skip operator, it will not emit
-    * the first 2 values.
-    */
+    /*
+     * simple example using timer to do something after 2 second
+     */
     private void doSomeWork() {
         getObservable()
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
-                .skip(2)
                 .subscribe(getObserver());
     }
 
-    private Observable<Integer> getObservable() {
-        return Observable.just(1, 2, 3, 4, 5);
+    private Observable<? extends Long> getObservable() {
+        return Observable.timer(2, TimeUnit.SECONDS);
     }
 
-    private Observer<Integer> getObserver() {
-        return new Observer<Integer>() {
+    private Observer<Long> getObserver() {
+        return new Observer<Long>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -66,10 +67,10 @@ public class SkipExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(Integer value) {
+            public void onNext(Long value) {
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext value : " + value);
+                Log.d(TAG, " onNext : value : " + value);
             }
 
             @Override

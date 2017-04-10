@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.mathematical;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,18 +10,17 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
+import io.reactivex.MaybeObserver;
 import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.functions.BiFunction;
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class TakeExampleActivity extends AppCompatActivity {
+public class ReduceExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = TakeExampleActivity.class.getSimpleName();
+    private static final String TAG = ReduceExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -40,36 +39,36 @@ public class TakeExampleActivity extends AppCompatActivity {
         });
     }
 
-    /* Using take operator, it only emits
-    * required number of values. here only 3 out of 5
-    */
+    /*
+     * simple example using reduce to add all the number
+     */
     private void doSomeWork() {
         getObservable()
-                // Run on a background thread
-                .subscribeOn(Schedulers.io())
-                // Be notified on the main thread
-                .observeOn(AndroidSchedulers.mainThread())
-                .take(3)
+                .reduce(new BiFunction<Integer, Integer, Integer>() {
+                    @Override
+                    public Integer apply(Integer t1, Integer t2) {
+                        return t1 + t2;
+                    }
+                })
                 .subscribe(getObserver());
     }
 
     private Observable<Integer> getObservable() {
-        return Observable.just(1, 2, 3, 4, 5);
+        return Observable.just(1, 2, 3, 4);
     }
 
-    private Observer<Integer> getObserver() {
-        return new Observer<Integer>() {
-
+    private MaybeObserver<Integer> getObserver() {
+        return new MaybeObserver<Integer>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onNext(Integer value) {
-                textView.append(" onNext : value : " + value);
+            public void onSuccess(Integer value) {
+                textView.append(" onSuccess : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext value : " + value);
+                Log.d(TAG, " onSuccess : value : " + value);
             }
 
             @Override
