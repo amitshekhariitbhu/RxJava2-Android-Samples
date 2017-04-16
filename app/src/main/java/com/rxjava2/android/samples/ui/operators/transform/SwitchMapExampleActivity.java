@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.model.ApiUser;
 import com.rxjava2.android.samples.model.User;
-import com.rxjava2.android.samples.ui.operators.MeterailizeExampleActivity;
+import com.rxjava2.android.samples.ui.operators.utility.MaterializeExampleActivity;
 import com.rxjava2.android.samples.utils.AppConstant;
 
 import org.reactivestreams.Subscriber;
@@ -32,7 +32,7 @@ import io.reactivex.schedulers.Schedulers;
 public class SwitchMapExampleActivity extends AppCompatActivity {
 
 
-    private static final String TAG = MeterailizeExampleActivity.class.getSimpleName();
+    private static final String TAG = MaterializeExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 

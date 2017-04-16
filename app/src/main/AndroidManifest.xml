@@ -31,7 +31,7 @@
             android:name=".ui.pagination.PaginationActivity"
             android:label="@string/pagination" />
         <activity
-            android:name=".ui.operators.SimpleExampleActivity"
+            android:name=".ui.operators.ObservableExampleActivity"
             android:label="@string/simple" />
         <activity
             android:name=".ui.operators.transform.MapExampleActivity"
@@ -40,7 +40,7 @@
             android:name=".ui.operators.combine.ZipExampleActivity"
             android:label="@string/zip" />
         <activity
-            android:name=".ui.operators.DisposableExampleActivity"
+            android:name=".ui.operators.CompositeDisposableActivity"
             android:label="@string/disposable" />
         <activity
             android:name=".ui.operators.filter.TakeExampleActivity"
@@ -121,7 +121,7 @@
             android:name=".ui.operators.utility.DelayExampleActivity"
             android:label="@string/delay" />
         <activity
-            android:name=".ui.operators.MeterailizeExampleActivity"
+            android:name=".ui.operators.utility.MaterializeExampleActivity"
             android:label="@string/delay" />
         <activity
             android:name=".ui.operators.transform.SwitchMapExampleActivity"

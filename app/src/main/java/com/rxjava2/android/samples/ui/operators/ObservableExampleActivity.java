@@ -19,9 +19,9 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class SimpleExampleActivity extends AppCompatActivity {
+public class ObservableExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = SimpleExampleActivity.class.getSimpleName();
+    private static final String TAG = ObservableExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 

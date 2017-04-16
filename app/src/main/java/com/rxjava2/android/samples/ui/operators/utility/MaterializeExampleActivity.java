@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.utility;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,10 +25,10 @@ import io.reactivex.functions.Function;
  * Created by Jant on 2017/4/6.
  */
 
-public class MeterailizeExampleActivity extends AppCompatActivity {
+public class MaterializeExampleActivity extends AppCompatActivity {
 
 
-    private static final String TAG = MeterailizeExampleActivity.class.getSimpleName();
+    private static final String TAG = MaterializeExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 

@@ -23,9 +23,9 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class DisposableExampleActivity extends AppCompatActivity {
+public class CompositeDisposableActivity extends AppCompatActivity {
 
-    private static final String TAG = DisposableExampleActivity.class.getSimpleName();
+    private static final String TAG = CompositeDisposableActivity.class.getSimpleName();
     Button btn;
     TextView textView;
     private final CompositeDisposable disposables = new CompositeDisposable();
