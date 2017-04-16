@@ -1,6 +1,7 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.filter;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,22 +11,22 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import io.reactivex.Flowable;
+import io.reactivex.Observable;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 
 /**
- * Created by amitshekhar on 27/08/16.
+ * Created by techteam on 13/09/16.
  */
-public class FlowableExampleActivity extends AppCompatActivity {
+public class LastOperatorExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = FlowableExampleActivity.class.getSimpleName();
+    private static final String TAG = DistinctExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
         btn = (Button) findViewById(R.id.btn);
@@ -39,36 +40,30 @@ public class FlowableExampleActivity extends AppCompatActivity {
         });
     }
 
-    /*
-     * simple example using Flowable
-     */
     private void doSomeWork() {
-
-        Flowable<Integer> observable = Flowable.just(1, 1, 3, 4);
-
-        observable.reduce(10, new BiFunction<Integer, Integer, Integer>() {
-            @Override
-            public Integer apply(Integer t1, Integer t2) {
-                return t1 * t2;
-            }
-        }).subscribe(getObserver());
-
+        getObservable().last("A1") // the default item ("A1") to emit if the source ObservableSource is empty
+                .subscribe(getObserver());
     }
 
-    private SingleObserver<Integer> getObserver() {
+    private Observable<String> getObservable() {
+        return Observable.just("A1", "A2", "A3", "A4", "A5", "A6");
+    }
 
-        return new SingleObserver<Integer>() {
+    private SingleObserver<String> getObserver() {
+        return new SingleObserver<String>() {
+
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onSuccess(Integer value) {
-                textView.append(" onSuccess : value : " + value);
+            public void onSuccess(String value) {
+                textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onSuccess : value : " + value);
+                Log.d(TAG, " onNext value : " + value);
             }
+
 
             @Override
             public void onError(Throwable e) {

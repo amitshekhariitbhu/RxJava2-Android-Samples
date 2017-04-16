@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.create;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,19 +8,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.rxjava2.android.samples.R;
+import com.rxjava2.android.samples.model.Car;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import io.reactivex.Flowable;
-import io.reactivex.SingleObserver;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 
 /**
- * Created by amitshekhar on 27/08/16.
+ * Created by amitshekhar on 30/08/16.
  */
-public class FlowableExampleActivity extends AppCompatActivity {
+public class DeferExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = FlowableExampleActivity.class.getSimpleName();
+    private static final String TAG = DeferExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -40,34 +40,35 @@ public class FlowableExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using Flowable
+     * Defer used for Deferring Observable code until subscription in RxJava
      */
     private void doSomeWork() {
 
-        Flowable<Integer> observable = Flowable.just(1, 1, 3, 4);
+        Car car = new Car();
 
-        observable.reduce(10, new BiFunction<Integer, Integer, Integer>() {
-            @Override
-            public Integer apply(Integer t1, Integer t2) {
-                return t1 * t2;
-            }
-        }).subscribe(getObserver());
+        Observable<String> brandDeferObservable = car.brandDeferObservable();
 
+        car.setBrand("BMW");  // Even if we are setting the brand after creating Observable
+        // we will get the brand as BMW.
+        // If we had not used defer, we would have got null as the brand.
+
+        brandDeferObservable
+                .subscribe(getObserver());
     }
 
-    private SingleObserver<Integer> getObserver() {
+    private Observer<String> getObserver() {
+        return new Observer<String>() {
 
-        return new SingleObserver<Integer>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onSuccess(Integer value) {
-                textView.append(" onSuccess : value : " + value);
+            public void onNext(String value) {
+                textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onSuccess : value : " + value);
+                Log.d(TAG, " onNext : value : " + value);
             }
 
             @Override
@@ -76,6 +77,15 @@ public class FlowableExampleActivity extends AppCompatActivity {
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
+
+            @Override
+            public void onComplete() {
+                textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onComplete");
+            }
         };
     }
+
+
 }

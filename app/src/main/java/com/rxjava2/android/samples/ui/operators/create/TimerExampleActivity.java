@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.create;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,17 +10,20 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import io.reactivex.Flowable;
-import io.reactivex.SingleObserver;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class FlowableExampleActivity extends AppCompatActivity {
+public class TimerExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = FlowableExampleActivity.class.getSimpleName();
+    private static final String TAG = TimerExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -40,34 +43,34 @@ public class FlowableExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using Flowable
+     * simple example using timer to do something after 2 second
      */
     private void doSomeWork() {
-
-        Flowable<Integer> observable = Flowable.just(1, 1, 3, 4);
-
-        observable.reduce(10, new BiFunction<Integer, Integer, Integer>() {
-            @Override
-            public Integer apply(Integer t1, Integer t2) {
-                return t1 * t2;
-            }
-        }).subscribe(getObserver());
-
+        getObservable()
+                // Run on a background thread
+                .subscribeOn(Schedulers.io())
+                // Be notified on the main thread
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getObserver());
     }
 
-    private SingleObserver<Integer> getObserver() {
+    private Observable<? extends Long> getObservable() {
+        return Observable.timer(2, TimeUnit.SECONDS);
+    }
 
-        return new SingleObserver<Integer>() {
+    private Observer<Long> getObserver() {
+        return new Observer<Long>() {
+
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onSuccess(Integer value) {
-                textView.append(" onSuccess : value : " + value);
+            public void onNext(Long value) {
+                textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onSuccess : value : " + value);
+                Log.d(TAG, " onNext : value : " + value);
             }
 
             @Override
@@ -76,6 +79,15 @@ public class FlowableExampleActivity extends AppCompatActivity {
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
+
+            @Override
+            public void onComplete() {
+                textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onComplete");
+            }
         };
     }
+
+
 }

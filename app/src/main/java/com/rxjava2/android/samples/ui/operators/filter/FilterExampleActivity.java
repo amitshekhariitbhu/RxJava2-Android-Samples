@@ -1,4 +1,4 @@
-package com.rxjava2.android.samples.ui.operators;
+package com.rxjava2.android.samples.ui.operators.filter;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,17 +10,18 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import io.reactivex.Flowable;
-import io.reactivex.SingleObserver;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Predicate;
+
 
 /**
  * Created by amitshekhar on 27/08/16.
  */
-public class FlowableExampleActivity extends AppCompatActivity {
+public class FilterExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = FlowableExampleActivity.class.getSimpleName();
+    private static final String TAG = FilterExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
@@ -40,34 +41,37 @@ public class FlowableExampleActivity extends AppCompatActivity {
     }
 
     /*
-     * simple example using Flowable
+     * simple example by using filter operator to emit only even value
+     *
      */
     private void doSomeWork() {
-
-        Flowable<Integer> observable = Flowable.just(1, 1, 3, 4);
-
-        observable.reduce(10, new BiFunction<Integer, Integer, Integer>() {
-            @Override
-            public Integer apply(Integer t1, Integer t2) {
-                return t1 * t2;
-            }
-        }).subscribe(getObserver());
-
+        Observable.just(1, 2, 3, 4, 5, 6)
+                .filter(new Predicate<Integer>() {
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+                        return integer % 2 == 0;
+                    }
+                })
+                .subscribe(getObserver());
     }
 
-    private SingleObserver<Integer> getObserver() {
 
-        return new SingleObserver<Integer>() {
+    private Observer<Integer> getObserver() {
+        return new Observer<Integer>() {
+
             @Override
             public void onSubscribe(Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onSuccess(Integer value) {
-                textView.append(" onSuccess : value : " + value);
+            public void onNext(Integer value) {
+                textView.append(" onNext : ");
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onSuccess : value : " + value);
+                textView.append(" value : " + value);
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onNext ");
+                Log.d(TAG, " value : " + value);
             }
 
             @Override
@@ -76,6 +80,15 @@ public class FlowableExampleActivity extends AppCompatActivity {
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
             }
+
+            @Override
+            public void onComplete() {
+                textView.append(" onComplete");
+                textView.append(AppConstant.LINE_SEPARATOR);
+                Log.d(TAG, " onComplete");
+            }
         };
     }
+
+
 }
