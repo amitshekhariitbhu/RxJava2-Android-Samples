@@ -11,6 +11,7 @@ import com.rxjava2.android.samples.ui.operators.CompositeDisposableActivity;
 import com.rxjava2.android.samples.ui.operators.FlowableExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ObservableExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SingleObserverExampleActivity;
+import com.rxjava2.android.samples.ui.operators.combine.CombineLatestActivity;
 import com.rxjava2.android.samples.ui.operators.combine.MergeExampleActivity;
 import com.rxjava2.android.samples.ui.operators.combine.ZipExampleActivity;
 import com.rxjava2.android.samples.ui.operators.connectable.ReplayExampleActivity;
@@ -148,7 +149,7 @@ public class OperatorsActivity extends AppCompatActivity {
     }
 
     public void startThrottleFirstActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this,ThrottleFirstExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, ThrottleFirstExampleActivity.class));
     }
 
     public void startThrottleLastActivity(View view) {
@@ -160,20 +161,25 @@ public class OperatorsActivity extends AppCompatActivity {
     }
 
     public void startWindowActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this,WindowExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, WindowExampleActivity.class));
     }
 
     public void startDelayActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this,DelayExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, DelayExampleActivity.class));
     }
 
     public void startMeterailizeExampleActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this,MaterializeExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, MaterializeExampleActivity.class));
     }
 
 
     public void startSwitchMapExampleActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this,SwitchMapExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, SwitchMapExampleActivity.class));
     }
+
+    public void startCombineLatestActivity(View view) {
+        startActivity(new Intent(OperatorsActivity.this, CombineLatestActivity.class));
+    }
+
 
 }

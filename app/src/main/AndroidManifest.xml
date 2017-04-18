@@ -126,6 +126,10 @@
         <activity
             android:name=".ui.operators.transform.SwitchMapExampleActivity"
             android:label="@string/delay" />
+
+        <activity
+            android:name=".ui.operators.combine.CombineLatestActivity"
+            android:label="@string/delay" />
     </application>
 
 </manifest>

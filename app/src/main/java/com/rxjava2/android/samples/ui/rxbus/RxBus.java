@@ -1,5 +1,7 @@
 package com.rxjava2.android.samples.ui.rxbus;
 
+import android.util.Log;
+
 import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 import io.reactivex.subjects.Subject;
@@ -47,6 +49,7 @@ public class RxBus {
 
     // 根据传递的 eventType 类型返回特定类型(eventType)的 被观察者
     public <T> Observable<T> toObservable(Class<T> eventType) {
+        Log.i("rxbus", "oftype");
         return bus.ofType(eventType);
     }
 

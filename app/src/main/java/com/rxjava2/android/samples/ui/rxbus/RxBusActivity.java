@@ -99,14 +99,10 @@ public class RxBusActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 RxBus.getDefault().post(new StudentEvents(0,"jant"));
-//                RxBus.getDefault().post(new Events());
-//                ((MyApplication) getApplication())
-//                        .bus()
-//                        .send(new Events.TapEvent());
+//                disposables.delete(lDisposable);
+                disposables.remove(lDisposable);
             }
         });
     }
-
-
 
 }
