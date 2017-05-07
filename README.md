@@ -22,7 +22,7 @@ RxJava 2.0 has been completely rewritten from scratch on top of the Reactive-Str
 Because Reactive-Streams has a different architecture, it mandates changes to some well known RxJava types.
 
 
-# Migration From RxJava 1 to RxJava 2
+# Migration From RxJava 1.0 to RxJava 2.0
 
 To allow having RxJava 1 and RxJava 2 side-by-side, RxJava 2 is under the maven coordinates 
 io.reactivex.rxjava2:rxjava:2.x.y and classes are accessible below io.reactivex.
