@@ -6,9 +6,12 @@ package com.rxjava2.android.samples.model;
 
 public class Events {
 
-    private Events() {
+    public Events() {
 
     }
+
+
+
 
     public static class TapEvent {
 

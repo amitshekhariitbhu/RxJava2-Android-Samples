@@ -6,36 +6,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.rxjava2.android.samples.R;
-import com.rxjava2.android.samples.ui.operators.AsyncSubjectExampleActivity;
-import com.rxjava2.android.samples.ui.operators.BehaviorSubjectExampleActivity;
-import com.rxjava2.android.samples.ui.operators.BufferExampleActivity;
 import com.rxjava2.android.samples.ui.operators.CompletableObserverExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ConcatExampleActivity;
-import com.rxjava2.android.samples.ui.operators.DebounceExampleActivity;
-import com.rxjava2.android.samples.ui.operators.DeferExampleActivity;
-import com.rxjava2.android.samples.ui.operators.DelayExampleActivity;
-import com.rxjava2.android.samples.ui.operators.DisposableExampleActivity;
-import com.rxjava2.android.samples.ui.operators.DistinctExampleActivity;
-import com.rxjava2.android.samples.ui.operators.FilterExampleActivity;
+import com.rxjava2.android.samples.ui.operators.CompositeDisposableActivity;
 import com.rxjava2.android.samples.ui.operators.FlowableExampleActivity;
-import com.rxjava2.android.samples.ui.operators.IntervalExampleActivity;
-import com.rxjava2.android.samples.ui.operators.LastOperatorExampleActivity;
-import com.rxjava2.android.samples.ui.operators.MapExampleActivity;
-import com.rxjava2.android.samples.ui.operators.MergeExampleActivity;
-import com.rxjava2.android.samples.ui.operators.PublishSubjectExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ReduceExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ReplayExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ReplaySubjectExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ScanExampleActivity;
-import com.rxjava2.android.samples.ui.operators.SimpleExampleActivity;
+import com.rxjava2.android.samples.ui.operators.ObservableExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SingleObserverExampleActivity;
-import com.rxjava2.android.samples.ui.operators.SkipExampleActivity;
-import com.rxjava2.android.samples.ui.operators.TakeExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ThrottleFirstExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ThrottleLastExampleActivity;
-import com.rxjava2.android.samples.ui.operators.TimerExampleActivity;
-import com.rxjava2.android.samples.ui.operators.WindowExampleActivity;
-import com.rxjava2.android.samples.ui.operators.ZipExampleActivity;
+import com.rxjava2.android.samples.ui.operators.combine.CombineLatestActivity;
+import com.rxjava2.android.samples.ui.operators.combine.MergeExampleActivity;
+import com.rxjava2.android.samples.ui.operators.combine.ZipExampleActivity;
+import com.rxjava2.android.samples.ui.operators.connectable.ReplayExampleActivity;
+import com.rxjava2.android.samples.ui.operators.create.DeferExampleActivity;
+import com.rxjava2.android.samples.ui.operators.create.IntervalExampleActivity;
+import com.rxjava2.android.samples.ui.operators.create.TimerExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.DebounceExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.DistinctExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.FilterExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.LastOperatorExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.SkipExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.TakeExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.ThrottleFirstExampleActivity;
+import com.rxjava2.android.samples.ui.operators.filter.ThrottleLastExampleActivity;
+import com.rxjava2.android.samples.ui.operators.mathematical.ConcatExampleActivity;
+import com.rxjava2.android.samples.ui.operators.mathematical.ReduceExampleActivity;
+import com.rxjava2.android.samples.ui.operators.transform.BufferExampleActivity;
+import com.rxjava2.android.samples.ui.operators.transform.MapExampleActivity;
+import com.rxjava2.android.samples.ui.operators.transform.ScanExampleActivity;
+import com.rxjava2.android.samples.ui.operators.transform.SwitchMapExampleActivity;
+import com.rxjava2.android.samples.ui.operators.transform.WindowExampleActivity;
+import com.rxjava2.android.samples.ui.operators.utility.DelayExampleActivity;
+import com.rxjava2.android.samples.ui.operators.utility.MaterializeExampleActivity;
+import com.rxjava2.android.samples.ui.subject.AsyncSubjectExampleActivity;
+import com.rxjava2.android.samples.ui.subject.BehaviorSubjectExampleActivity;
+import com.rxjava2.android.samples.ui.subject.PublishSubjectExampleActivity;
+import com.rxjava2.android.samples.ui.subject.ReplaySubjectExampleActivity;
 
 public class OperatorsActivity extends AppCompatActivity {
 
@@ -46,7 +49,7 @@ public class OperatorsActivity extends AppCompatActivity {
     }
 
     public void startSimpleActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this, SimpleExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, ObservableExampleActivity.class));
     }
 
     public void startMapActivity(View view) {
@@ -58,7 +61,7 @@ public class OperatorsActivity extends AppCompatActivity {
     }
 
     public void startDisposableActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this, DisposableExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, CompositeDisposableActivity.class));
     }
 
     public void startTakeActivity(View view) {
@@ -146,7 +149,7 @@ public class OperatorsActivity extends AppCompatActivity {
     }
 
     public void startThrottleFirstActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this,ThrottleFirstExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, ThrottleFirstExampleActivity.class));
     }
 
     public void startThrottleLastActivity(View view) {
@@ -158,11 +161,25 @@ public class OperatorsActivity extends AppCompatActivity {
     }
 
     public void startWindowActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this,WindowExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, WindowExampleActivity.class));
     }
 
     public void startDelayActivity(View view) {
-        startActivity(new Intent(OperatorsActivity.this,DelayExampleActivity.class));
+        startActivity(new Intent(OperatorsActivity.this, DelayExampleActivity.class));
     }
+
+    public void startMeterailizeExampleActivity(View view) {
+        startActivity(new Intent(OperatorsActivity.this, MaterializeExampleActivity.class));
+    }
+
+
+    public void startSwitchMapExampleActivity(View view) {
+        startActivity(new Intent(OperatorsActivity.this, SwitchMapExampleActivity.class));
+    }
+
+    public void startCombineLatestActivity(View view) {
+        startActivity(new Intent(OperatorsActivity.this, CombineLatestActivity.class));
+    }
+
 
 }
