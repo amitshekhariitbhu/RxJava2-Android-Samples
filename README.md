@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/LICENSE)
 
 ## How to use RxJava 2 in Android Application
-## How to migrate from RxJava 1 to RxJava 2
+## How to migrate from RxJava 1.0 to RxJava 2.0
 
 ### This project is for : 
 * who is migrating to RxJava 2 
