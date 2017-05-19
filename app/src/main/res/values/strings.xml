@@ -39,4 +39,5 @@
     <string name="flatMapWithZip">flatMapWithZip</string>
     <string name="click_me">Click Me</string>
     <string name="rx_bus">RxBus</string>
+    <string name="compose">Compose for reusable</string>
 </resources>

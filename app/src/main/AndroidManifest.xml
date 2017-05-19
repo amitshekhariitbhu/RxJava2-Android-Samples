@@ -120,6 +120,9 @@
         <activity
             android:name=".ui.operators.DelayExampleActivity"
             android:label="@string/delay" />
+        <activity android:name=".ui.compose.ComposeOperatorExampleActivity"
+            android:label="@string/compose"
+            />
     </application>
 
 </manifest>
