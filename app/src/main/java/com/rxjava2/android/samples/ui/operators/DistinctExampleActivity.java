@@ -39,7 +39,9 @@ public class DistinctExampleActivity extends AppCompatActivity {
         });
     }
 
-
+    /*
+     * distinct() suppresses duplicate items emitted by the source Observable.
+     */
     private void doSomeWork() {
 
         getObservable()

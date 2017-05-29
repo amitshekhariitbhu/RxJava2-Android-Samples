@@ -40,6 +40,9 @@ public class LastOperatorExampleActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    * last() emits only the last item emitted by the Observable.
+    */
     private void doSomeWork() {
         getObservable().last("A1") // the default item ("A1") to emit if the source ObservableSource is empty
                 .subscribe(getObserver());
