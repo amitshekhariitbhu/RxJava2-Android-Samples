@@ -120,7 +120,7 @@ RxJava1 -> RxJava2
 ### Another awesome library for debugging databases and shared preferences.
 * [Android Debug Database](https://github.com/amitshekhariitbhu/Android-Debug-Database)
 
-###[Check out Mindorks awesome open source projects here](https://mindorks.com/open-source-projects)
+### [Check out Mindorks awesome open source projects here](https://mindorks.com/open-source-projects)
 
 ### Contact - Let's become friend
 - [Twitter](https://twitter.com/amitiitbhu)
