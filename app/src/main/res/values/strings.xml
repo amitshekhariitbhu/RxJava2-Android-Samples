@@ -4,6 +4,7 @@
     <string name="operators">Operators</string>
     <string name="networking">Networking</string>
     <string name="pagination">Pagination</string>
+    <string name="search">Search</string>
     <string name="simple">Simple</string>
     <string name="map">Map</string>
     <string name="zip">Zip</string>
@@ -40,4 +41,5 @@
     <string name="click_me">Click Me</string>
     <string name="rx_bus">RxBus</string>
     <string name="compose">Compose for reusable</string>
+    <string name="result">Result</string>
 </resources>

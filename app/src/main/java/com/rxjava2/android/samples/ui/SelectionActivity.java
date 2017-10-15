@@ -11,6 +11,7 @@ import com.rxjava2.android.samples.ui.compose.ComposeOperatorExampleActivity;
 import com.rxjava2.android.samples.ui.networking.NetworkingActivity;
 import com.rxjava2.android.samples.ui.pagination.PaginationActivity;
 import com.rxjava2.android.samples.ui.rxbus.RxBusActivity;
+import com.rxjava2.android.samples.ui.search.SearchActivity;
 
 public class SelectionActivity extends AppCompatActivity {
 
@@ -40,4 +41,9 @@ public class SelectionActivity extends AppCompatActivity {
     public void startComposeOperator(View view) {
         startActivity(new Intent(SelectionActivity.this, ComposeOperatorExampleActivity.class));
     }
+
+    public void startSearchActivity(View view) {
+        startActivity(new Intent(SelectionActivity.this, SearchActivity.class));
+    }
+
 }
