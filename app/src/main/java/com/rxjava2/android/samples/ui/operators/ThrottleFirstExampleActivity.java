@@ -67,15 +67,15 @@ public class ThrottleFirstExampleActivity extends AppCompatActivity {
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
                 // send events with simulated time wait
                 Thread.sleep(0);
-                emitter.onNext(1); // skip
-                emitter.onNext(2); // deliver
+                emitter.onNext(1); // deliver
+                emitter.onNext(2); // skip
                 Thread.sleep(505);
-                emitter.onNext(3); // skip
+                emitter.onNext(3); // deliver
                 Thread.sleep(99);
                 emitter.onNext(4); // skip
                 Thread.sleep(100);
                 emitter.onNext(5); // skip
-                emitter.onNext(6); // deliver
+                emitter.onNext(6); // skip
                 Thread.sleep(305);
                 emitter.onNext(7); // deliver
                 Thread.sleep(510);
