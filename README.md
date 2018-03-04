@@ -106,6 +106,7 @@ RxJava1 -> RxJava2
 * [PaginationActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/pagination/PaginationActivity.java) - Pagination for loadMore in RecyclerView
 * [ComposeOperatorExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/compose/ComposeOperatorExampleActivity.java) - Compose operator for reusable
 * [Search Implementation](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/search/SearchActivity.java) - Using `debounce`, `switchMap`, `distinctUntilChanged`, [Blog for reference](https://blog.mindorks.com/implement-search-using-rxjava-operators-c8882b64fe1d)
+* [PublishSubjectExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/PublishSubjectExampleActivity.java)
 
 ### TODO 
 
