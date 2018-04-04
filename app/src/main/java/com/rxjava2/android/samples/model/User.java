@@ -27,4 +27,22 @@ public class User {
                 ", isFollowing=" + isFollowing +
                 '}';
     }
+
+    @Override
+    public int hashCode() {
+        return (int) id + firstname.hashCode() + lastname.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof User) {
+            User user = (User) obj;
+
+            return this.id == user.id
+                    && this.firstname.equals(user.firstname)
+                    && this.lastname.equals(user.lastname);
+        }
+
+        return false;
+    }
 }
