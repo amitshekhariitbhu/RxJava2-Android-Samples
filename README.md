@@ -8,7 +8,7 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/LICENSE)
 
-### [Get the complete RxJava Course Here](https://mindorks.com/course/learn-rxjava)
+### Get the complete RxJava Course [here](https://mindorks.com/course/learn-rxjava)
 
 ## How to use RxJava 2 in Android Application
 ## How to migrate from RxJava 1.0 to RxJava 2.0
@@ -106,6 +106,7 @@ RxJava1 -> RxJava2
 * [PaginationActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/pagination/PaginationActivity.java) - Pagination for loadMore in RecyclerView
 * [ComposeOperatorExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/compose/ComposeOperatorExampleActivity.java) - Compose operator for reusable
 * [Search Implementation](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/search/SearchActivity.java) - Using `debounce`, `switchMap`, `distinctUntilChanged`, [Blog for reference](https://blog.mindorks.com/implement-search-using-rxjava-operators-c8882b64fe1d)
+* [PublishSubjectExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/PublishSubjectExampleActivity.java)
 
 ### TODO 
 
@@ -116,6 +117,9 @@ RxJava1 -> RxJava2
 
 ### Check out an awesome MVP architecture based project which uses RxJava2, Dagger2.
 * [Android-MVP-Architecture](https://github.com/MindorksOpenSource/android-mvp-architecture)
+
+### Check out an awesome Kotlin MVP architecture based project which uses RxJava2, Dagger2.
+* [Android-Kotlin-MVP-Architecture](https://github.com/MindorksOpenSource/android-kotlin-mvp-architecture)
 
 ### Check out an awesome library for fast and simple networking in Android.
 * [Fast Android Networking Library](https://github.com/amitshekhariitbhu/Fast-Android-Networking)

@@ -152,13 +152,13 @@ public class NetworkingActivity extends AppCompatActivity {
 
     private List<User> filterUserWhoLovesBoth(List<User> cricketFans, List<User> footballFans) {
         List<User> userWhoLovesBoth = new ArrayList<>();
-        for (User cricketFan : cricketFans) {
-            for (User footballFan : footballFans) {
-                if (cricketFan.id == footballFan.id) {
-                    userWhoLovesBoth.add(cricketFan);
-                }
+
+        for (User footballFan : footballFans) {
+            if (cricketFans.contains(footballFan)) {
+                userWhoLovesBoth.add(footballFan);
             }
         }
+
         return userWhoLovesBoth;
     }
 
