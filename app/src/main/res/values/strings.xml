@@ -42,4 +42,5 @@
     <string name="rx_bus">RxBus</string>
     <string name="compose">Compose for reusable</string>
     <string name="result">Result</string>
+    <string name="switch_map">Switch Map</string>
 </resources>
