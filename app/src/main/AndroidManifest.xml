@@ -126,6 +126,8 @@
         <activity
             android:name=".ui.compose.ComposeOperatorExampleActivity"
             android:label="@string/compose" />
+        <activity android:name=".ui.operators.SwitchMapExampleActivity"
+            android:label="@string/switch_map" />
     </application>
 
 </manifest>
