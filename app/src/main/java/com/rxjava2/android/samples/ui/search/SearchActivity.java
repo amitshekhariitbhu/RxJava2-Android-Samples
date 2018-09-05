@@ -1,7 +1,7 @@
 package com.rxjava2.android.samples.ui.search;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.SearchView;
 import android.widget.TextView;
 
