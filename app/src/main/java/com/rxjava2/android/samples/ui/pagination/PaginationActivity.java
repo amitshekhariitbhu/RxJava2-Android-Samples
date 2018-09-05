@@ -47,8 +47,8 @@ public class PaginationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagination);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        recyclerView = findViewById(R.id.recyclerView);
+        progressBar = findViewById(R.id.progressBar);
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -96,7 +96,7 @@ public class PaginationActivity extends AppCompatActivity {
                 .onBackpressureDrop()
                 .concatMap(new Function<Integer, Publisher<List<String>>>() {
                     @Override
-                    public Publisher<List<String>> apply(@NonNull Integer page) throws Exception {
+                    public Publisher<List<String>> apply(@NonNull Integer page) {
                         loading = true;
                         progressBar.setVisibility(View.VISIBLE);
                         return dataFromNetwork(page);
@@ -105,7 +105,7 @@ public class PaginationActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<String>>() {
                     @Override
-                    public void accept(@NonNull List<String> items) throws Exception {
+                    public void accept(@NonNull List<String> items) {
                         paginationAdapter.addItems(items);
                         paginationAdapter.notifyDataSetChanged();
                         loading = false;
@@ -127,7 +127,7 @@ public class PaginationActivity extends AppCompatActivity {
                 .delay(2, TimeUnit.SECONDS)
                 .map(new Function<Boolean, List<String>>() {
                     @Override
-                    public List<String> apply(@NonNull Boolean value) throws Exception {
+                    public List<String> apply(@NonNull Boolean value) {
                         List<String> items = new ArrayList<>();
                         for (int i = 1; i <= 10; i++) {
                             items.add("Item " + (page * 10 + i));

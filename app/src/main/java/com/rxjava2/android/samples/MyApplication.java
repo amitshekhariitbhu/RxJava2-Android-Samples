@@ -1,6 +1,5 @@
 package com.rxjava2.android.samples;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 
 import com.rxjava2.android.samples.model.Events;
@@ -30,12 +29,11 @@ public class MyApplication extends Application {
         return bus;
     }
 
-    @SuppressLint("CheckResult")
     public void sendAutoEvent() {
         Observable.timer(2, TimeUnit.SECONDS)
                 .subscribe(new Consumer<Long>() {
                     @Override
-                    public void accept(Long aLong) throws Exception {
+                    public void accept(Long aLong) {
                         bus.send(new Events.AutoEvent());
                     }
                 });

@@ -1,7 +1,7 @@
 package com.rxjava2.android.samples;
 
 import android.app.Application;
-import android.test.ApplicationTestCase;
+import androidx.test.*;
 
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
