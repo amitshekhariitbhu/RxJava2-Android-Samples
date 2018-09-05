@@ -1,7 +1,6 @@
 package com.rxjava2.android.samples.ui.networking;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -16,6 +15,7 @@ import com.rxjava2.android.samples.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
@@ -52,7 +52,7 @@ public class NetworkingActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Function<ApiUser, User>() {
                     @Override
-                    public User apply(ApiUser apiUser) throws Exception {
+                    public User apply(ApiUser apiUser) {
                         // here we get ApiUser from server
                         User user = new User(apiUser);
                         // then by converting, we are returning user
@@ -115,7 +115,7 @@ public class NetworkingActivity extends AppCompatActivity {
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
                 new BiFunction<List<User>, List<User>, List<User>>() {
                     @Override
-                    public List<User> apply(List<User> cricketFans, List<User> footballFans) throws Exception {
+                    public List<User> apply(List<User> cricketFans, List<User> footballFans) {
                         List<User> userWhoLovesBoth =
                                 filterUserWhoLovesBoth(cricketFans, footballFans);
                         return userWhoLovesBoth;
@@ -183,13 +183,13 @@ public class NetworkingActivity extends AppCompatActivity {
         getAllMyFriendsObservable()
                 .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
                     @Override
-                    public ObservableSource<User> apply(List<User> usersList) throws Exception {
+                    public ObservableSource<User> apply(List<User> usersList) {
                         return Observable.fromIterable(usersList); // returning user one by one from usersList.
                     }
                 })
                 .filter(new Predicate<User>() {
                     @Override
-                    public boolean test(User user) throws Exception {
+                    public boolean test(User user) {
                         // filtering user who follows me.
                         return user.isFollowing;
                     }
@@ -229,7 +229,7 @@ public class NetworkingActivity extends AppCompatActivity {
         getUserListObservable()
                 .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
                     @Override
-                    public ObservableSource<User> apply(List<User> usersList) throws Exception {
+                    public ObservableSource<User> apply(List<User> usersList) {
                         return Observable.fromIterable(usersList); // returning user one by one from usersList.
                     }
                 })
@@ -269,13 +269,13 @@ public class NetworkingActivity extends AppCompatActivity {
         getUserListObservable()
                 .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
                     @Override
-                    public ObservableSource<User> apply(List<User> usersList) throws Exception {
+                    public ObservableSource<User> apply(List<User> usersList) {
                         return Observable.fromIterable(usersList); // returning user one by one from usersList.
                     }
                 })
                 .flatMap(new Function<User, ObservableSource<UserDetail>>() {
                     @Override
-                    public ObservableSource<UserDetail> apply(User user) throws Exception {
+                    public ObservableSource<UserDetail> apply(User user) {
                         // here we get the user one by one
                         // and returns corresponding getUserDetailObservable
                         // for that userId
@@ -331,13 +331,13 @@ public class NetworkingActivity extends AppCompatActivity {
         getUserListObservable()
                 .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
                     @Override
-                    public ObservableSource<User> apply(List<User> usersList) throws Exception {
+                    public ObservableSource<User> apply(List<User> usersList) {
                         return Observable.fromIterable(usersList); // returning user one by one from usersList.
                     }
                 })
                 .flatMap(new Function<User, ObservableSource<Pair<UserDetail, User>>>() {
                     @Override
-                    public ObservableSource<Pair<UserDetail, User>> apply(User user) throws Exception {
+                    public ObservableSource<Pair<UserDetail, User>> apply(User user) {
                         // here we get the user one by one and then we are zipping
                         // two observable - one getUserDetailObservable (network call to get userDetail)
                         // and another Observable.just(user) - just to emit user
@@ -345,7 +345,7 @@ public class NetworkingActivity extends AppCompatActivity {
                                 Observable.just(user),
                                 new BiFunction<UserDetail, User, Pair<UserDetail, User>>() {
                                     @Override
-                                    public Pair<UserDetail, User> apply(UserDetail userDetail, User user) throws Exception {
+                                    public Pair<UserDetail, User> apply(UserDetail userDetail, User user) {
                                         // runs when network call completes
                                         // we get here userDetail for the corresponding user
                                         return new Pair<>(userDetail, user); // returning the pair(userDetail, user)

@@ -2,7 +2,6 @@ package com.rxjava2.android.samples.ui.operators;
 
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +12,7 @@ import com.rxjava2.android.samples.utils.AppConstant;
 
 import java.util.concurrent.Callable;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -34,8 +34,8 @@ public class DisposableExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +88,7 @@ public class DisposableExampleActivity extends AppCompatActivity {
     static Observable<String> sampleObservable() {
         return Observable.defer(new Callable<ObservableSource<? extends String>>() {
             @Override
-            public ObservableSource<? extends String> call() throws Exception {
+            public ObservableSource<? extends String> call() {
                 // Do some long running operation
                 SystemClock.sleep(2000);
                 return Observable.just("one", "two", "three", "four", "five");

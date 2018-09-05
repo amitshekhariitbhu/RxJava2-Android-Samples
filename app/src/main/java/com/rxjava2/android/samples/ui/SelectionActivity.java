@@ -2,7 +2,6 @@ package com.rxjava2.android.samples.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.rxjava2.android.samples.MyApplication;
@@ -12,6 +11,8 @@ import com.rxjava2.android.samples.ui.networking.NetworkingActivity;
 import com.rxjava2.android.samples.ui.pagination.PaginationActivity;
 import com.rxjava2.android.samples.ui.rxbus.RxBusActivity;
 import com.rxjava2.android.samples.ui.search.SearchActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SelectionActivity extends AppCompatActivity {
 
