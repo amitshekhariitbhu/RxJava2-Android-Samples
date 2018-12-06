@@ -42,4 +42,6 @@
     <string name="rx_bus">RxBus</string>
     <string name="compose">Compose for reusable</string>
     <string name="result">Result</string>
+
+    <string name="preference_file_key">PREFERENCE_FILE_KEY</string>
 </resources>

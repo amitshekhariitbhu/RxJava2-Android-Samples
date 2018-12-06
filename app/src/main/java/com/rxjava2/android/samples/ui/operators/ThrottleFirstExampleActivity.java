@@ -1,5 +1,7 @@
 package com.rxjava2.android.samples.ui.operators;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -60,6 +62,17 @@ public class ThrottleFirstExampleActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getObserver());
     }
+
+    String KEY_PUSH_NOTIFICATIONS_PREFS = "KEY_PUSH_NOTIFICATIONS_PREFS";
+
+    public Observable<Boolean> enablePushNotifications(boolean enable) {
+        SharedPreferences sharedPrefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        return Observable.fromCallable(() -> sharedPrefs
+                .edit()
+                .putBoolean(KEY_PUSH_NOTIFICATIONS_PREFS, enable)
+                .commit());
+    }
+
 
     private Observable<Integer> getObservable() {
         return Observable.create(new ObservableOnSubscribe<Integer>() {
