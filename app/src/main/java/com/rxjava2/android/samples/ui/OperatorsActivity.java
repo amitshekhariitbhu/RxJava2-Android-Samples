@@ -31,6 +31,7 @@ import com.rxjava2.android.samples.ui.operators.SingleObserverExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SkipExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SwitchMapExampleActivity;
 import com.rxjava2.android.samples.ui.operators.TakeExampleActivity;
+import com.rxjava2.android.samples.ui.operators.TakeWhileExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ThrottleFirstExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ThrottleLastExampleActivity;
 import com.rxjava2.android.samples.ui.operators.TimerExampleActivity;
@@ -169,5 +170,9 @@ public class OperatorsActivity extends AppCompatActivity {
 
     public void startSwitchMapActivity(View view) {
         startActivity(new Intent(OperatorsActivity.this, SwitchMapExampleActivity.class));
+    }
+
+    public void startTakeWhileActivity(View view) {
+        startActivity(new Intent(OperatorsActivity.this, TakeWhileExampleActivity.class));
     }
 }

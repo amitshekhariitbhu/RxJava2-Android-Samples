@@ -128,6 +128,9 @@
             android:label="@string/compose" />
         <activity android:name=".ui.operators.SwitchMapExampleActivity"
             android:label="@string/switch_map" />
+
+        <activity android:name=".ui.operators.TakeWhileExampleActivity"
+            android:label="@string/take_while"/>
     </application>
 
 </manifest>

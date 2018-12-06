@@ -76,6 +76,11 @@ public class Utils {
         return userList;
     }
 
+    public static List<ApiUser> convertApiUserListToApiUserList(List<ApiUser> apiUserList) {
+      return apiUserList;
+    }
+
+
     public static List<User> getUserListWhoLovesCricket() {
 
         List<User> userList = new ArrayList<>();
