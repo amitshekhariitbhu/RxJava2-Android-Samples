@@ -44,4 +44,5 @@
     <string name="result">Result</string>
     <string name="switch_map">Switch Map</string>
     <string name="take_while">Take While</string>
+    <string name="take_until">Take Until</string>
 </resources>
