@@ -131,6 +131,9 @@
 
         <activity android:name=".ui.operators.TakeWhileExampleActivity"
             android:label="@string/take_while"/>
+
+        <activity android:name=".ui.operators.TakeUntilExampleActivity"
+            android:label="@string/take_until"/>
     </application>
 
 </manifest>

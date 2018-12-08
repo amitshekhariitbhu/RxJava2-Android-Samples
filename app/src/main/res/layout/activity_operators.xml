@@ -239,5 +239,12 @@
             android:text="@string/take_while"
             android:textColor="@android:color/black" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="startTakeUntilActivity"
+            android:text="@string/take_until"
+            android:textColor="@android:color/black" />
+
     </LinearLayout>
 </ScrollView>
