@@ -22,7 +22,7 @@ public class RxSearchObservable {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                subject.onComplete();
+                subject.onNext(s);
                 return true;
             }
 
