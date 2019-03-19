@@ -5,6 +5,9 @@ import com.rxjava2.android.samples.ui.cache.model.Data;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
+/**
+ * The DataSource to handle 3 data sources - memory, disk, network
+ */
 public class DataSource {
 
     private final MemoryDataSource memoryDataSource;

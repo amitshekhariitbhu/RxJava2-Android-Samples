@@ -6,6 +6,9 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 
+/**
+ * Class to simulate Disk DataSource
+ */
 public class DiskDataSource {
 
     private Data data;

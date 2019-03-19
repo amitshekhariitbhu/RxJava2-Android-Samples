@@ -6,6 +6,9 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 
+/**
+ * Class to simulate InMemory DataSource
+ */
 public class MemoryDataSource {
 
     private Data data;
@@ -25,7 +28,6 @@ public class MemoryDataSource {
     public void cacheInMemory(Data data) {
         this.data = data.clone();
         this.data.source = "memory";
-
     }
 
 }

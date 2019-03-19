@@ -6,6 +6,10 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 
+
+/**
+ * Class to simulate Network DataSource
+ */
 public class NetworkDataSource {
 
     public Observable<Data> getData() {
