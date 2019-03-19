@@ -25,6 +25,9 @@
             android:name=".ui.networking.NetworkingActivity"
             android:label="@string/networking" />
         <activity
+            android:name=".ui.cache.CacheExampleActivity"
+            android:label="@string/cache" />
+        <activity
             android:name=".ui.rxbus.RxBusActivity"
             android:label="@string/rx_bus" />
         <activity
@@ -126,7 +129,8 @@
         <activity
             android:name=".ui.compose.ComposeOperatorExampleActivity"
             android:label="@string/compose" />
-        <activity android:name=".ui.operators.SwitchMapExampleActivity"
+        <activity
+            android:name=".ui.operators.SwitchMapExampleActivity"
             android:label="@string/switch_map" />
     </application>
 

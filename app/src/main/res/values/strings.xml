@@ -3,6 +3,7 @@
     <string name="doSomeWork">doSomeWork</string>
     <string name="operators">Operators</string>
     <string name="networking">Networking</string>
+    <string name="cache">Cache</string>
     <string name="pagination">Pagination</string>
     <string name="search">Search</string>
     <string name="simple">Simple</string>
