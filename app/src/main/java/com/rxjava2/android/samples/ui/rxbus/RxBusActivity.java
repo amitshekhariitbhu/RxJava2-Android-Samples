@@ -1,7 +1,6 @@
 package com.rxjava2.android.samples.ui.rxbus;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,6 +9,7 @@ import com.rxjava2.android.samples.MyApplication;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.model.Events;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -36,8 +36,8 @@ public class RxBusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxbus);
-        textView = (TextView) findViewById(R.id.textView);
-        button = (Button) findViewById(R.id.button);
+        textView = findViewById(R.id.textView);
+        button = findViewById(R.id.button);
 
         disposables.add(((MyApplication) getApplication())
                 .bus()
@@ -46,7 +46,7 @@ public class RxBusActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Object>() {
                     @Override
-                    public void accept(Object object) throws Exception {
+                    public void accept(Object object) {
                         if (object instanceof Events.AutoEvent) {
                             textView.setText("Auto Event Received");
                         } else if (object instanceof Events.TapEvent) {

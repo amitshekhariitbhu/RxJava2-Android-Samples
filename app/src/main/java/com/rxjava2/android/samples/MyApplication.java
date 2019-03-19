@@ -33,7 +33,7 @@ public class MyApplication extends Application {
         Observable.timer(2, TimeUnit.SECONDS)
                 .subscribe(new Consumer<Long>() {
                     @Override
-                    public void accept(Long aLong) throws Exception {
+                    public void accept(Long aLong) {
                         bus.send(new Events.AutoEvent());
                     }
                 });

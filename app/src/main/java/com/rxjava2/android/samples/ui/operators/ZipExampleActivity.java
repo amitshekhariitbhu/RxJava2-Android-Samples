@@ -1,7 +1,6 @@
 package com.rxjava2.android.samples.ui.operators;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +13,7 @@ import com.rxjava2.android.samples.utils.Utils;
 
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -36,8 +36,8 @@ public class ZipExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +57,7 @@ public class ZipExampleActivity extends AppCompatActivity {
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
                 new BiFunction<List<User>, List<User>, List<User>>() {
                     @Override
-                    public List<User> apply(List<User> cricketFans, List<User> footballFans) throws Exception {
+                    public List<User> apply(List<User> cricketFans, List<User> footballFans) {
                         return Utils.filterUserWhoLovesBoth(cricketFans, footballFans);
                     }
                 })
@@ -71,7 +71,7 @@ public class ZipExampleActivity extends AppCompatActivity {
     private Observable<List<User>> getCricketFansObservable() {
         return Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<User>> e) throws Exception {
+            public void subscribe(ObservableEmitter<List<User>> e) {
                 if (!e.isDisposed()) {
                     e.onNext(Utils.getUserListWhoLovesCricket());
                     e.onComplete();
@@ -83,7 +83,7 @@ public class ZipExampleActivity extends AppCompatActivity {
     private Observable<List<User>> getFootballFansObservable() {
         return Observable.create(new ObservableOnSubscribe<List<User>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<User>> e) throws Exception {
+            public void subscribe(ObservableEmitter<List<User>> e) {
                 if (!e.isDisposed()) {
                     e.onNext(Utils.getUserListWhoLovesFootball());
                     e.onComplete();

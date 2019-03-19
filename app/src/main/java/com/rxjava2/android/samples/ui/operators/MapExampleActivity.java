@@ -1,7 +1,6 @@
 package com.rxjava2.android.samples.ui.operators;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +14,7 @@ import com.rxjava2.android.samples.utils.Utils;
 
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -37,8 +37,8 @@ public class MapExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class MapExampleActivity extends AppCompatActivity {
                 .map(new Function<List<ApiUser>, List<User>>() {
 
                     @Override
-                    public List<User> apply(List<ApiUser> apiUsers) throws Exception {
+                    public List<User> apply(List<ApiUser> apiUsers) {
                         return Utils.convertApiUserListToUserList(apiUsers);
                     }
                 })
@@ -73,7 +73,7 @@ public class MapExampleActivity extends AppCompatActivity {
     private Observable<List<ApiUser>> getObservable() {
         return Observable.create(new ObservableOnSubscribe<List<ApiUser>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<ApiUser>> e) throws Exception {
+            public void subscribe(ObservableEmitter<List<ApiUser>> e) {
                 if (!e.isDisposed()) {
                     e.onNext(Utils.getApiUserList());
                     e.onComplete();
