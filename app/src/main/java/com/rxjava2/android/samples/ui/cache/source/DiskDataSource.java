@@ -3,8 +3,6 @@ package com.rxjava2.android.samples.ui.cache.source;
 import com.rxjava2.android.samples.ui.cache.model.Data;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 
 /**
  * Class to simulate Disk DataSource
@@ -14,14 +12,11 @@ public class DiskDataSource {
     private Data data;
 
     public Observable<Data> getData() {
-        return Observable.create(new ObservableOnSubscribe<Data>() {
-            @Override
-            public void subscribe(ObservableEmitter<Data> emitter) throws Exception {
-                if (data != null) {
-                    emitter.onNext(data);
-                }
-                emitter.onComplete();
+        return Observable.create(emitter -> {
+            if (data != null) {
+                emitter.onNext(data);
             }
+            emitter.onComplete();
         });
     }
 

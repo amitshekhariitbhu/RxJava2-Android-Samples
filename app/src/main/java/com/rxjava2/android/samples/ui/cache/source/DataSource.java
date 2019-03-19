@@ -3,7 +3,6 @@ package com.rxjava2.android.samples.ui.cache.source;
 import com.rxjava2.android.samples.ui.cache.model.Data;
 
 import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
 
 /**
  * The DataSource to handle 3 data sources - memory, disk, network
@@ -27,21 +26,13 @@ public class DataSource {
     }
 
     public Observable<Data> getDataFromDisk() {
-        return diskDataSource.getData().doOnNext(new Consumer<Data>() {
-            @Override
-            public void accept(Data data) throws Exception {
-                memoryDataSource.cacheInMemory(data);
-            }
-        });
+        return diskDataSource.getData().doOnNext(memoryDataSource::cacheInMemory);
     }
 
     public Observable<Data> getDataFromNetwork() {
-        return networkDataSource.getData().doOnNext(new Consumer<Data>() {
-            @Override
-            public void accept(Data data) throws Exception {
-                diskDataSource.saveToDisk(data);
-                memoryDataSource.cacheInMemory(data);
-            }
+        return networkDataSource.getData().doOnNext(data -> {
+            diskDataSource.saveToDisk(data);
+            memoryDataSource.cacheInMemory(data);
         });
     }
 
