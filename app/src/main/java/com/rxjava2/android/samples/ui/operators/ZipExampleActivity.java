@@ -48,11 +48,11 @@ public class ZipExampleActivity extends AppCompatActivity {
     }
 
     /*
-    * Here we are getting two user list
-    * One, the list of cricket fans
-    * Another one, the list of football fans
-    * Then we are finding the list of users who loves both
-    */
+     * Here we are getting two user list
+     * One, the list of cricket fans
+     * Another one, the list of football fans
+     * Then we are finding the list of users who loves both
+     */
     private void doSomeWork() {
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
                 new BiFunction<List<User>, List<User>, List<User>>() {
@@ -77,7 +77,7 @@ public class ZipExampleActivity extends AppCompatActivity {
                     e.onComplete();
                 }
             }
-        });
+        }).subscribeOn(Schedulers.io());
     }
 
     private Observable<List<User>> getFootballFansObservable() {
@@ -89,7 +89,7 @@ public class ZipExampleActivity extends AppCompatActivity {
                     e.onComplete();
                 }
             }
-        });
+        }).subscribeOn(Schedulers.io());
     }
 
     private Observer<List<User>> getObserver() {
