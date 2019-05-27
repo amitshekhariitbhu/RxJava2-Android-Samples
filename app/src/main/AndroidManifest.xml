@@ -5,8 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MyApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -25,15 +24,6 @@
             android:name=".ui.networking.NetworkingActivity"
             android:label="@string/networking" />
         <activity
-            android:name=".ui.cache.CacheExampleActivity"
-            android:label="@string/cache" />
-        <activity
-            android:name=".ui.rxbus.RxBusActivity"
-            android:label="@string/rx_bus" />
-        <activity
-            android:name=".ui.pagination.PaginationActivity"
-            android:label="@string/pagination" />
-        <activity
             android:name=".ui.search.SearchActivity"
             android:label="@string/search" />
         <activity
@@ -49,41 +39,11 @@
             android:name=".ui.operators.DisposableExampleActivity"
             android:label="@string/disposable" />
         <activity
-            android:name=".ui.operators.TakeExampleActivity"
-            android:label="@string/take" />
-        <activity
             android:name=".ui.operators.TimerExampleActivity"
             android:label="@string/timer" />
         <activity
-            android:name=".ui.operators.IntervalExampleActivity"
-            android:label="@string/interval" />
-        <activity
-            android:name=".ui.operators.SingleObserverExampleActivity"
-            android:label="@string/SingleObserver" />
-        <activity
-            android:name=".ui.operators.CompletableObserverExampleActivity"
-            android:label="@string/CompletableObserver" />
-        <activity
-            android:name=".ui.operators.FlowableExampleActivity"
-            android:label="@string/Flowable" />
-        <activity
-            android:name=".ui.operators.ReduceExampleActivity"
-            android:label="@string/reduce" />
-        <activity
-            android:name=".ui.operators.BufferExampleActivity"
-            android:label="@string/buffer" />
-        <activity
             android:name=".ui.operators.FilterExampleActivity"
             android:label="@string/filter" />
-        <activity
-            android:name=".ui.operators.SkipExampleActivity"
-            android:label="@string/skip" />
-        <activity
-            android:name=".ui.operators.ScanExampleActivity"
-            android:label="@string/scan" />
-        <activity
-            android:name=".ui.operators.ReplayExampleActivity"
-            android:label="@string/replay" />
         <activity
             android:name=".ui.operators.ConcatExampleActivity"
             android:label="@string/concat" />
@@ -91,53 +51,9 @@
             android:name=".ui.operators.MergeExampleActivity"
             android:label="@string/merge" />
         <activity
-            android:name=".ui.operators.DeferExampleActivity"
-            android:label="@string/defer" />
-        <activity
-            android:name=".ui.operators.DistinctExampleActivity"
-            android:label="@string/distinct" />
-        <activity
-            android:name=".ui.operators.LastOperatorExampleActivity"
-            android:label="@string/last" />
-        <activity
-            android:name=".ui.operators.ReplaySubjectExampleActivity"
-            android:label="@string/replay_subject" />
-        <activity
-            android:name=".ui.operators.PublishSubjectExampleActivity"
-            android:label="@string/publish_subject" />
-        <activity
-            android:name=".ui.operators.BehaviorSubjectExampleActivity"
-            android:label="@string/behavior_subject" />
-        <activity
-            android:name=".ui.operators.AsyncSubjectExampleActivity"
-            android:label="@string/async_subject" />
-        <activity
-            android:name=".ui.operators.ThrottleLastExampleActivity"
-            android:label="@string/throttle_last" />
-        <activity
-            android:name=".ui.operators.DebounceExampleActivity"
-            android:label="@string/debounce" />
-        <activity
-            android:name=".ui.operators.WindowExampleActivity"
-            android:label="@string/window" />
-        <activity
-            android:name=".ui.operators.ThrottleFirstExampleActivity"
-            android:label="@string/throttle_first" />
-        <activity
             android:name=".ui.operators.DelayExampleActivity"
             android:label="@string/delay" />
-        <activity
-            android:name=".ui.compose.ComposeOperatorExampleActivity"
-            android:label="@string/compose" />
-        <activity
-            android:name=".ui.operators.SwitchMapExampleActivity"
-            android:label="@string/switch_map" />
 
-        <activity android:name=".ui.operators.TakeWhileExampleActivity"
-            android:label="@string/take_while"/>
-
-        <activity android:name=".ui.operators.TakeUntilExampleActivity"
-            android:label="@string/take_until"/>
     </application>
 
 </manifest>

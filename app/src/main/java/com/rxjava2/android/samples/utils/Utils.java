@@ -77,7 +77,7 @@ public class Utils {
     }
 
     public static List<ApiUser> convertApiUserListToApiUserList(List<ApiUser> apiUserList) {
-      return apiUserList;
+        return apiUserList;
     }
 
 

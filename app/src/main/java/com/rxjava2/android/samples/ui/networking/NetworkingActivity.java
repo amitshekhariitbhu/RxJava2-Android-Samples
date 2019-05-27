@@ -5,6 +5,8 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.model.ApiUser;
@@ -15,7 +17,6 @@ import com.rxjava2.android.samples.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
@@ -97,8 +98,8 @@ public class NetworkingActivity extends AppCompatActivity {
     }
 
     /*
-    * This observable return the list of User who loves Football
-    */
+     * This observable return the list of User who loves Football
+     */
     private Observable<List<User>> getFootballFansObservable() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllFootballFans")
                 .build()
@@ -106,10 +107,10 @@ public class NetworkingActivity extends AppCompatActivity {
     }
 
     /*
-    * This do the complete magic, make both network call
-    * and then returns the list of user who loves both
-    * Using zip operator to get both response at a time
-    */
+     * This do the complete magic, make both network call
+     * and then returns the list of user who loves both
+     * Using zip operator to get both response at a time
+     */
     private void findUsersWhoLovesBoth() {
         // here we are using zip operator to combine both request
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
@@ -171,7 +172,6 @@ public class NetworkingActivity extends AppCompatActivity {
     /**
      * flatMap and filter Operators Example
      */
-
     private Observable<List<User>> getAllMyFriendsObservable() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllFriends/{userId}")
                 .addPathParameter("userId", "1")
@@ -220,51 +220,9 @@ public class NetworkingActivity extends AppCompatActivity {
                 });
     }
 
-
-    /**
-     * take Operator Example
-     */
-
-    public void take(View view) {
-        getUserListObservable()
-                .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
-                    @Override
-                    public ObservableSource<User> apply(List<User> usersList) {
-                        return Observable.fromIterable(usersList); // returning user one by one from usersList.
-                    }
-                })
-                .take(4) // it will only emit first 4 users out of all
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<User>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(User user) {
-                        // // only four user comes here one by one
-                        Log.d(TAG, "user : " + user.toString());
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Utils.logError(TAG, e);
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        Log.d(TAG, "onComplete");
-                    }
-                });
-    }
-
-
     /**
      * flatMap Operator Example
      */
-
     public void flatMap(View view) {
         getUserListObservable()
                 .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
@@ -311,7 +269,6 @@ public class NetworkingActivity extends AppCompatActivity {
     /**
      * flatMapWithZip Operator Example
      */
-
     private Observable<List<User>> getUserListObservable() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllUsers/{pageNumber}")
                 .addPathParameter("pageNumber", "0")

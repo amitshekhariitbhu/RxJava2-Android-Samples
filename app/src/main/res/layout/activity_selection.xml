@@ -12,7 +12,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <Button
@@ -27,34 +27,6 @@
             android:layout_height="wrap_content"
             android:onClick="startNetworkingActivity"
             android:text="@string/networking"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="startCacheActivity"
-            android:text="@string/cache"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="startRxBusActivity"
-            android:text="@string/rx_bus"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="startPaginationActivity"
-            android:text="@string/pagination"
-            android:textColor="@android:color/black" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="startComposeOperator"
-            android:text="@string/compose"
             android:textColor="@android:color/black" />
 
         <Button
