@@ -36,9 +36,6 @@
             android:name=".ui.operators.ZipExampleActivity"
             android:label="@string/zip" />
         <activity
-            android:name=".ui.operators.DisposableExampleActivity"
-            android:label="@string/disposable" />
-        <activity
             android:name=".ui.operators.TimerExampleActivity"
             android:label="@string/timer" />
         <activity
