@@ -76,8 +76,8 @@ class MapExampleActivity : AppCompatActivity() {
             override fun onNext(userList: List<User>) {
                 textView.append(" onNext")
                 textView.append(AppConstant.LINE_SEPARATOR)
-                for ((_, firstname) in userList) {
-                    textView.append(" firstname : $firstname")
+                for (user in userList) {
+                    textView.append(" firstname : ${user.firstname}")
                     textView.append(AppConstant.LINE_SEPARATOR)
                 }
                 Log.d(TAG, " onNext : " + userList.size)
