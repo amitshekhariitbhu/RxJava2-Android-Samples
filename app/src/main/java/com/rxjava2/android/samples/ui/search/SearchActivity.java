@@ -45,7 +45,12 @@ public class SearchActivity extends AppCompatActivity {
                     @Override
                     public boolean test(String text) {
                         if (text.isEmpty()) {
-                            textViewResult.setText("");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    textViewResult.setText("");
+                                }
+                            });
                             return false;
                         } else {
                             return true;
