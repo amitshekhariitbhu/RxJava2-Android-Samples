@@ -5,6 +5,8 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.model.ApiUser;
@@ -15,7 +17,6 @@ import com.rxjava2.android.samples.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
@@ -93,23 +94,25 @@ public class NetworkingActivity extends AppCompatActivity {
     private Observable<List<User>> getCricketFansObservable() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllCricketFans")
                 .build()
-                .getObjectListObservable(User.class);
+                .getObjectListObservable(User.class)
+                .subscribeOn(Schedulers.io());
     }
 
     /*
-    * This observable return the list of User who loves Football
-    */
+     * This observable return the list of User who loves Football
+     */
     private Observable<List<User>> getFootballFansObservable() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllFootballFans")
                 .build()
-                .getObjectListObservable(User.class);
+                .getObjectListObservable(User.class)
+                .subscribeOn(Schedulers.io());
     }
 
     /*
-    * This do the complete magic, make both network call
-    * and then returns the list of user who loves both
-    * Using zip operator to get both response at a time
-    */
+     * This do the complete magic, make both network call
+     * and then returns the list of user who loves both
+     * Using zip operator to get both response at a time
+     */
     private void findUsersWhoLovesBoth() {
         // here we are using zip operator to combine both request
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
