@@ -43,6 +43,7 @@ class NetworkingActivity : AppCompatActivity() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllCricketFans")
                 .build()
                 .getObjectListObservable(User::class.java)
+                .subscribeOn(Schedulers.io())
     }
 
     /**
@@ -52,6 +53,7 @@ class NetworkingActivity : AppCompatActivity() {
         return Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAllFootballFans")
                 .build()
                 .getObjectListObservable(User::class.java)
+                .subscribeOn(Schedulers.io())
     }
 
     /**
