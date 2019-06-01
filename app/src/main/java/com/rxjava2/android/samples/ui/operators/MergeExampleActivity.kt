@@ -41,13 +41,10 @@ class MergeExampleActivity : AppCompatActivity() {
      * Ex - "A1", "B1", "A2", "A3", "A4", "B2", "B3" - may be anything
      */
     private fun doSomeWork() {
-        val aStrings = arrayOf("A1", "A2", "A3", "A4")
-        val bStrings = arrayOf("B1", "B2", "B3")
+        val observableA = Observable.fromArray("A1", "A2", "A3", "A4")
+        val observableB = Observable.fromArray("B1", "B2", "B3", "B4")
 
-        val aObservable = Observable.fromArray(*aStrings)
-        val bObservable = Observable.fromArray(*bStrings)
-
-        Observable.merge(aObservable, bObservable)
+        Observable.merge(observableA, observableB)
                 .subscribe(getObserver())
     }
 
