@@ -8,7 +8,7 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/LICENSE)
 
-### Get the complete RxJava Course [here](https://mindorks.com/course/learn-rxjava)
+### [Take the MindOrks Android Online Course and Learn RxJava](https://bootcamp.mindorks.com)
 
 ## How to use RxJava 2 in Android Application
 ## How to migrate from RxJava 1.0 to RxJava 2.0
