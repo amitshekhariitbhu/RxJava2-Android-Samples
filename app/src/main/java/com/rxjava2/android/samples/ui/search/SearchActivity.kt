@@ -47,6 +47,10 @@ class SearchActivity : AppCompatActivity() {
                 .distinctUntilChanged()
                 .switchMap { query ->
                     dataFromNetwork(query)
+                            .doOnError {
+                                // handle error
+                            }
+                            .onErrorReturn { "" }
                 }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
