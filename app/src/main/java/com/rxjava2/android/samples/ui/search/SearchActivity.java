@@ -4,11 +4,12 @@ import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.rxjava2.android.samples.R;
 
 import java.util.concurrent.TimeUnit;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -56,7 +57,12 @@ public class SearchActivity extends AppCompatActivity {
                 .switchMap(new Function<String, ObservableSource<String>>() {
                     @Override
                     public ObservableSource<String> apply(String query) {
-                        return dataFromNetwork(query);
+                        return dataFromNetwork(query)
+                                .doOnError(throwable -> {
+                                    // handle error
+                                })
+                                // continue emission in case of error also
+                                .onErrorReturn(throwable -> "");
                     }
                 })
                 .subscribeOn(Schedulers.io())

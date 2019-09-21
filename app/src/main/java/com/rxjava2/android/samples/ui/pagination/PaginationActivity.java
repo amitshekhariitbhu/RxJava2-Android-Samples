@@ -4,15 +4,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.rxjava2.android.samples.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -98,7 +99,9 @@ public class PaginationActivity extends AppCompatActivity {
                         .subscribeOn(Schedulers.io())
                         .doOnError(throwable -> {
                             // handle error
-                        }))
+                        })
+                            // continue emission in case of error also
+                        .onErrorReturn(throwable -> new ArrayList<>()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(items -> {
                     paginationAdapter.addItems(items);
