@@ -28,6 +28,7 @@ public class DisposableExampleActivity extends AppCompatActivity {
     private static final String TAG = DisposableExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
+    //in RxJava 2.0 compositeSubscription changed to compositeDisposable
     private final CompositeDisposable disposables = new CompositeDisposable();
 
     @Override
@@ -84,7 +85,8 @@ public class DisposableExampleActivity extends AppCompatActivity {
                     }
                 }));
     }
-
+    //defer create observable each time you get a new observer
+    //callable is a improvement of Runnable, callable is added in Java 1.5
     static Observable<String> sampleObservable() {
         return Observable.defer(new Callable<ObservableSource<? extends String>>() {
             @Override
