@@ -12,6 +12,7 @@
 
 ## How to use RxJava 2 in Android Application
 ## How to migrate from RxJava 1.0 to RxJava 2.0
+## How to use RxJava 3 in Android Application [Check here](https://github.com/MindorksOpenSource/RxJava3-Android-Examples)
 
 ### This project is for : 
 * who is migrating to RxJava 2 
@@ -82,7 +83,7 @@ RxJava1 -> RxJava2
 * `Concat` -> emit the emissions from two or more Observables without interleaving them
 * `Replay` -> ensure that all observers see the same sequence of emitted items, even if they subscribe after the Observable has begun emitting items
 * `Merge` -> combine multiple Observables into one by merging their emissions
-* `SwitchMap` -> ransform the items emitted by an Observable into Observables, and mirror those items emitted by the most-recently transformed Observable
+* `SwitchMap` -> transform the items emitted by an Observable into Observables, and mirror those items emitted by the most-recently transformed Observable
 
 
 # Highlights of the examples :
