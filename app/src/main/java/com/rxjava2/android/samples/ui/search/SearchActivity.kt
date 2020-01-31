@@ -38,7 +38,7 @@ class SearchActivity : AppCompatActivity() {
                 .debounce(300, TimeUnit.MILLISECONDS)
                 .filter { text ->
                     if (text.isEmpty()) {
-                        textViewResult.text = ""
+                        runOnUiThread { textViewResult.text = "" }
                         return@filter false
                     } else {
                         return@filter true
