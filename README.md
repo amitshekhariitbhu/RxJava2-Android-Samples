@@ -131,6 +131,10 @@ RxJava1 -> RxJava2
 ### Another awesome library for debugging databases and shared preferences.
 * [Android Debug Database](https://github.com/amitshekhariitbhu/Android-Debug-Database)
 
+
+### Learn to build a ride-sharing Android app like Uber, Lyft.
+* [Check here](https://github.com/MindorksOpenSource/ridesharing-uber-lyft-app)
+
 ### [Check out Mindorks awesome open source projects here](https://mindorks.com/open-source-projects)
 
 ### Contact - Let's become friend
