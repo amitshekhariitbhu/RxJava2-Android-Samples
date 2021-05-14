@@ -42,6 +42,7 @@ public class IntervalExampleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d(TAG, "onDestroy");
         disposables.clear(); // clearing it : do not emit after destroy
     }
 
@@ -50,6 +51,7 @@ public class IntervalExampleActivity extends AppCompatActivity {
      * which start immediately
      */
     private void doSomeWork() {
+        Log.d(TAG, "doSomeWork");
         disposables.add(getObservable()
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
