@@ -38,6 +38,7 @@ public class ReduceExampleActivity extends AppCompatActivity {
      * simple example using reduce to add all the number
      */
     private void doSomeWork() {
+        //noinspection Convert2MethodRef
         getObservable()
                 .reduce((t1, t2) -> t1 + t2)
                 .subscribe(getObserver());

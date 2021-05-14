@@ -39,9 +39,10 @@ public class FlowableExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
 
-        Flowable<Integer> observable = Flowable.just(1, 2, 3, 4);
+        Flowable<Integer> flowable = Flowable.just(1, 2, 3, 4);
 
-        observable.reduce(50, (t1, t2) -> t1 + t2).subscribe(getObserver());
+        //noinspection Convert2MethodRef
+        flowable.reduce(50, (t1, t2) -> t1 + t2).subscribe(getObserver());
 
     }
 

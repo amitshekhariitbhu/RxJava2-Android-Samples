@@ -35,6 +35,7 @@ public class ScanExampleActivity extends AppCompatActivity {
 
     /* Using scan operator, it sends also the previous result */
     private void doSomeWork() {
+        //noinspection Convert2MethodRef
         getObservable()
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
