@@ -41,6 +41,7 @@ public class DisposableExampleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d(TAG, " onDestroy");
         disposables.clear(); // do not send event after activity has been destroyed
     }
 
@@ -49,12 +50,14 @@ public class DisposableExampleActivity extends AppCompatActivity {
      * disposables is cleared in onDestroy of this activity.
      */
     void doSomeWork() {
+        Log.d(TAG, " doSomeWork");
         disposables.add(sampleObservable()
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableObserver<String>() {
+
                     @Override
                     public void onComplete() {
                         textView.append(" onComplete");
