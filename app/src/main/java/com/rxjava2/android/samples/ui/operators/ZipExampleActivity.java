@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.rxjava2.android.samples.R;
@@ -78,12 +79,12 @@ public class ZipExampleActivity extends AppCompatActivity {
         return new Observer<List<User>>() {
 
             @Override
-            public void onSubscribe(Disposable d) {
+            public void onSubscribe(@NonNull Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onNext(List<User> userList) {
+            public void onNext(@NonNull List<User> userList) {
                 textView.append(" onNext");
                 textView.append(AppConstant.LINE_SEPARATOR);
                 for (User user : userList) {
@@ -94,7 +95,7 @@ public class ZipExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onError(@NonNull Throwable e) {
                 textView.append(" onError : " + e.getMessage());
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());

@@ -5,6 +5,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.rxjava2.android.samples.R;
@@ -73,12 +74,12 @@ public class DebounceExampleActivity extends AppCompatActivity {
         return new Observer<Integer>() {
 
             @Override
-            public void onSubscribe(Disposable d) {
+            public void onSubscribe(@NonNull Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onNext(Integer value) {
+            public void onNext(@NonNull Integer value) {
                 textView.append(" onNext : ");
                 textView.append(AppConstant.LINE_SEPARATOR);
                 textView.append(" value : " + value);
@@ -88,7 +89,7 @@ public class DebounceExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onError(@NonNull Throwable e) {
                 textView.append(" onError : " + e.getMessage());
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());

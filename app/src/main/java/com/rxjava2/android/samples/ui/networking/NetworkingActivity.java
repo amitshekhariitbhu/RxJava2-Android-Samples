@@ -5,6 +5,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
@@ -57,17 +58,17 @@ public class NetworkingActivity extends AppCompatActivity {
                 })
                 .subscribe(new Observer<User>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(User user) {
+                    public void onNext(@NonNull User user) {
                         Log.d(TAG, "user : " + user.toString());
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
@@ -120,12 +121,12 @@ public class NetworkingActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<User>>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(List<User> users) {
+                    public void onNext(@NonNull List<User> users) {
                         // do anything with user who loves both
                         Log.d(TAG, "userList size : " + users.size());
                         for (User user : users) {
@@ -134,7 +135,7 @@ public class NetworkingActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
@@ -188,18 +189,18 @@ public class NetworkingActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<User>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(User user) {
+                    public void onNext(@NonNull User user) {
                         // only the user who is following me comes here one by one
                         Log.d(TAG, "user : " + user.toString());
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
@@ -226,18 +227,18 @@ public class NetworkingActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<User>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(User user) {
+                    public void onNext(@NonNull User user) {
                         // // only four user comes here one by one
                         Log.d(TAG, "user : " + user.toString());
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
@@ -269,17 +270,17 @@ public class NetworkingActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<UserDetail>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
                     @Override
-                    public void onNext(UserDetail userDetail) {
+                    public void onNext(@NonNull UserDetail userDetail) {
                         // do anything with userDetail
                         Log.d(TAG, "userDetail : " + userDetail.toString());
                     }
@@ -338,18 +339,18 @@ public class NetworkingActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         // handle error
                         Utils.logError(TAG, e);
                     }
 
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(Pair<UserDetail, User> pair) {
+                    public void onNext(@NonNull Pair<UserDetail, User> pair) {
                         // here we are getting the userDetail for the corresponding user one by one
                         UserDetail userDetail = pair.first;
                         User user = pair.second;
