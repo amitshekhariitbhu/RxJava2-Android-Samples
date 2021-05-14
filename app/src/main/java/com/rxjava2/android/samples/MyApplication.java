@@ -8,7 +8,6 @@ import com.rxjava2.android.samples.ui.rxbus.RxBus;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
 
 /**
  * Created by threshold on 2017/1/12.

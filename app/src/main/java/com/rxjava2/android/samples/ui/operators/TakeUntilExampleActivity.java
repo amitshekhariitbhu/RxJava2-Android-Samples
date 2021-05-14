@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.BiFunction;
 
 public class TakeUntilExampleActivity extends TakeOperatorBaseActivity {
 

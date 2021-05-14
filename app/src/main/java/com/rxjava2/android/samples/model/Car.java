@@ -1,9 +1,6 @@
 package com.rxjava2.android.samples.model;
 
-import java.util.concurrent.Callable;
-
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 
 /**
  * Created by amitshekhar on 30/08/16.

@@ -4,8 +4,6 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.BiFunction;
-import io.reactivex.functions.Predicate;
 
 public class TakeWhileExampleActivity extends TakeOperatorBaseActivity {
 
