@@ -40,12 +40,7 @@ public class MapExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -60,24 +55,15 @@ public class MapExampleActivity extends AppCompatActivity {
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<List<ApiUser>, List<User>>() {
-
-                    @Override
-                    public List<User> apply(List<ApiUser> apiUsers) {
-                        return Utils.convertApiUserListToUserList(apiUsers);
-                    }
-                })
+                .map(apiUsers -> Utils.convertApiUserListToUserList(apiUsers))
                 .subscribe(getObserver());
     }
 
     private Observable<List<ApiUser>> getObservable() {
-        return Observable.create(new ObservableOnSubscribe<List<ApiUser>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<ApiUser>> e) {
-                if (!e.isDisposed()) {
-                    e.onNext(Utils.getApiUserList());
-                    e.onComplete();
-                }
+        return Observable.create(e -> {
+            if (!e.isDisposed()) {
+                e.onNext(Utils.getApiUserList());
+                e.onComplete();
             }
         });
     }

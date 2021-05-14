@@ -32,12 +32,7 @@ public class FilterExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -46,12 +41,7 @@ public class FilterExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
         Observable.just(1, 2, 3, 4, 5, 6)
-                .filter(new Predicate<Integer>() {
-                    @Override
-                    public boolean test(Integer integer) {
-                        return integer % 2 == 0;
-                    }
-                })
+                .filter(integer -> integer % 2 == 0)
                 .subscribe(getObserver());
     }
 

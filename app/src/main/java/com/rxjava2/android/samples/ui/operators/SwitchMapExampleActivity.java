@@ -39,12 +39,7 @@ public class SwitchMapExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /* whenever a new item is emitted by the source Observable, it will unsubscribe to and stop
@@ -55,14 +50,11 @@ public class SwitchMapExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
         getObservable()
-                .switchMap(new Function<Integer, ObservableSource<String>>() {
-                    @Override
-                    public ObservableSource<String> apply(Integer integer) {
-                        int delay = new Random().nextInt(2);
+                .switchMap((Function<Integer, ObservableSource<String>>) integer -> {
+                    int delay = new Random().nextInt(2);
 
-                        return Observable.just(integer.toString() + "x")
-                                .delay(delay, TimeUnit.SECONDS, Schedulers.io());
-                    }
+                    return Observable.just(integer.toString() + "x")
+                            .delay(delay, TimeUnit.SECONDS, Schedulers.io());
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -31,12 +31,7 @@ public class FlowableExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -46,12 +41,7 @@ public class FlowableExampleActivity extends AppCompatActivity {
 
         Flowable<Integer> observable = Flowable.just(1, 2, 3, 4);
 
-        observable.reduce(50, new BiFunction<Integer, Integer, Integer>() {
-            @Override
-            public Integer apply(Integer t1, Integer t2) {
-                return t1 + t2;
-            }
-        }).subscribe(getObserver());
+        observable.reduce(50, (t1, t2) -> t1 + t2).subscribe(getObserver());
 
     }
 

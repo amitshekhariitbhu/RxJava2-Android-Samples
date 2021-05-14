@@ -39,12 +39,7 @@ public class ZipExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -55,12 +50,7 @@ public class ZipExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
-                new BiFunction<List<User>, List<User>, List<User>>() {
-                    @Override
-                    public List<User> apply(List<User> cricketFans, List<User> footballFans) {
-                        return Utils.filterUserWhoLovesBoth(cricketFans, footballFans);
-                    }
-                })
+                (cricketFans, footballFans) -> Utils.filterUserWhoLovesBoth(cricketFans, footballFans))
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
@@ -69,25 +59,19 @@ public class ZipExampleActivity extends AppCompatActivity {
     }
 
     private Observable<List<User>> getCricketFansObservable() {
-        return Observable.create(new ObservableOnSubscribe<List<User>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<User>> e) {
-                if (!e.isDisposed()) {
-                    e.onNext(Utils.getUserListWhoLovesCricket());
-                    e.onComplete();
-                }
+        return Observable.create((ObservableOnSubscribe<List<User>>) e -> {
+            if (!e.isDisposed()) {
+                e.onNext(Utils.getUserListWhoLovesCricket());
+                e.onComplete();
             }
         }).subscribeOn(Schedulers.io());
     }
 
     private Observable<List<User>> getFootballFansObservable() {
-        return Observable.create(new ObservableOnSubscribe<List<User>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<User>> e) {
-                if (!e.isDisposed()) {
-                    e.onNext(Utils.getUserListWhoLovesFootball());
-                    e.onComplete();
-                }
+        return Observable.create((ObservableOnSubscribe<List<User>>) e -> {
+            if (!e.isDisposed()) {
+                e.onNext(Utils.getUserListWhoLovesFootball());
+                e.onComplete();
             }
         }).subscribeOn(Schedulers.io());
     }

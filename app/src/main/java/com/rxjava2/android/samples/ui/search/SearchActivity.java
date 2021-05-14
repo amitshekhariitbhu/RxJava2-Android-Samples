@@ -42,37 +42,24 @@ public class SearchActivity extends AppCompatActivity {
     private void setUpSearchObservable() {
         RxSearchObservable.fromView(searchView)
                 .debounce(300, TimeUnit.MILLISECONDS)
-                .filter(new Predicate<String>() {
-                    @Override
-                    public boolean test(String text) {
-                        if (text.isEmpty()) {
-                            textViewResult.setText("");
-                            return false;
-                        } else {
-                            return true;
-                        }
+                .filter(text -> {
+                    if (text.isEmpty()) {
+                        textViewResult.setText("");
+                        return false;
+                    } else {
+                        return true;
                     }
                 })
                 .distinctUntilChanged()
-                .switchMap(new Function<String, ObservableSource<String>>() {
-                    @Override
-                    public ObservableSource<String> apply(String query) {
-                        return dataFromNetwork(query)
-                                .doOnError(throwable -> {
-                                    // handle error
-                                })
-                                // continue emission in case of error also
-                                .onErrorReturn(throwable -> "");
-                    }
-                })
+                .switchMap((Function<String, ObservableSource<String>>) query -> dataFromNetwork(query)
+                        .doOnError(throwable -> {
+                            // handle error
+                        })
+                        // continue emission in case of error also
+                        .onErrorReturn(throwable -> ""))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<String>() {
-                    @Override
-                    public void accept(String result) {
-                        textViewResult.setText(result);
-                    }
-                });
+                .subscribe(result -> textViewResult.setText(result));
     }
 
     /**
@@ -81,12 +68,7 @@ public class SearchActivity extends AppCompatActivity {
     private Observable<String> dataFromNetwork(final String query) {
         return Observable.just(true)
                 .delay(2, TimeUnit.SECONDS)
-                .map(new Function<Boolean, String>() {
-                    @Override
-                    public String apply(@NonNull Boolean value) {
-                        return query;
-                    }
-                });
+                .map(value -> query);
     }
 
 }

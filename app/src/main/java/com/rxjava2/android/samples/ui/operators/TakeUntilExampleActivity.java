@@ -30,12 +30,7 @@ public class TakeUntilExampleActivity extends TakeOperatorBaseActivity {
 
         getStringObservable()
                 //Delay item emission by one second
-                .zipWith(Observable.interval(0, 1, TimeUnit.SECONDS), new BiFunction<String, Long, String>() {
-                    @Override
-                    public String apply(String s, Long aLong) throws Exception {
-                        return s;
-                    }
-                })
+                .zipWith(Observable.interval(0, 1, TimeUnit.SECONDS), (s, aLong) -> s)
                 //Will receive the items from Strings observable until timerObservable doesn't start emitting data.
                 .takeUntil(timerObservable)
                 //We need to observe on MainThread because delay works on background thread to avoid UI blocking.

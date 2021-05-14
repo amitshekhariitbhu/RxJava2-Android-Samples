@@ -44,25 +44,17 @@ public class RxBusActivity extends AppCompatActivity {
                 .toObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Object>() {
-                    @Override
-                    public void accept(Object object) {
-                        if (object instanceof Events.AutoEvent) {
-                            textView.setText("Auto Event Received");
-                        } else if (object instanceof Events.TapEvent) {
-                            textView.setText("Tap Event Received");
-                        }
+                .subscribe(object -> {
+                    if (object instanceof Events.AutoEvent) {
+                        textView.setText("Auto Event Received");
+                    } else if (object instanceof Events.TapEvent) {
+                        textView.setText("Tap Event Received");
                     }
                 }));
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MyApplication) getApplication())
-                        .bus()
-                        .send(new Events.TapEvent());
-            }
-        });
+        button.setOnClickListener(v -> ((MyApplication) getApplication())
+                .bus()
+                .send(new Events.TapEvent()));
     }
 
 

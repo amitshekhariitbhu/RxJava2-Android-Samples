@@ -30,12 +30,7 @@ public class WindowExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -54,24 +49,18 @@ public class WindowExampleActivity extends AppCompatActivity {
     }
 
     public Consumer<Observable<Long>> getConsumer() {
-        return new Consumer<Observable<Long>>() {
-            @Override
-            public void accept(Observable<Long> observable) {
-                Log.d(TAG, "Sub Divide begin....");
-                textView.append("Sub Divide begin ....");
-                textView.append(AppConstant.LINE_SEPARATOR);
-                observable
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Consumer<Long>() {
-                            @Override
-                            public void accept(Long value) {
-                                Log.d(TAG, "Next:" + value);
-                                textView.append("Next:" + value);
-                                textView.append(AppConstant.LINE_SEPARATOR);
-                            }
-                        });
-            }
+        return observable -> {
+            Log.d(TAG, "Sub Divide begin....");
+            textView.append("Sub Divide begin ....");
+            textView.append(AppConstant.LINE_SEPARATOR);
+            observable
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(value -> {
+                        Log.d(TAG, "Next:" + value);
+                        textView.append("Next:" + value);
+                        textView.append(AppConstant.LINE_SEPARATOR);
+                    });
         };
     }
 }

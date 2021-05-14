@@ -35,12 +35,7 @@ public class CacheExampleActivity extends AppCompatActivity {
         btn = (Button) findViewById(R.id.btn);
         textView = (TextView) findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
 
         dataSource = new DataSource(new MemoryDataSource(), new DiskDataSource(), new NetworkDataSource());
     }

@@ -30,12 +30,7 @@ public class ScanExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /* Using scan operator, it sends also the previous result */
@@ -45,12 +40,7 @@ public class ScanExampleActivity extends AppCompatActivity {
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
-                .scan(new BiFunction<Integer, Integer, Integer>() {
-                    @Override
-                    public Integer apply(Integer int1, Integer int2) {
-                        return int1 + int2;
-                    }
-                })
+                .scan((int1, int2) -> int1 + int2)
                 .subscribe(getObserver());
     }
 

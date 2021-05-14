@@ -38,12 +38,7 @@ public class ThrottleFirstExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -62,25 +57,22 @@ public class ThrottleFirstExampleActivity extends AppCompatActivity {
     }
 
     private Observable<Integer> getObservable() {
-        return Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                // send events with simulated time wait
-                Thread.sleep(0);
-                emitter.onNext(1); // deliver
-                emitter.onNext(2); // skip
-                Thread.sleep(505);
-                emitter.onNext(3); // deliver
-                Thread.sleep(99);
-                emitter.onNext(4); // skip
-                Thread.sleep(100);
-                emitter.onNext(5); // skip
-                emitter.onNext(6); // skip
-                Thread.sleep(305);
-                emitter.onNext(7); // deliver
-                Thread.sleep(510);
-                emitter.onComplete();
-            }
+        return Observable.create(emitter -> {
+            // send events with simulated time wait
+            Thread.sleep(0);
+            emitter.onNext(1); // deliver
+            emitter.onNext(2); // skip
+            Thread.sleep(505);
+            emitter.onNext(3); // deliver
+            Thread.sleep(99);
+            emitter.onNext(4); // skip
+            Thread.sleep(100);
+            emitter.onNext(5); // skip
+            emitter.onNext(6); // skip
+            Thread.sleep(305);
+            emitter.onNext(7); // deliver
+            Thread.sleep(510);
+            emitter.onComplete();
         });
     }
 

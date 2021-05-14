@@ -37,12 +37,7 @@ public class DisposableExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     @Override
@@ -86,13 +81,10 @@ public class DisposableExampleActivity extends AppCompatActivity {
     }
 
     static Observable<String> sampleObservable() {
-        return Observable.defer(new Callable<ObservableSource<? extends String>>() {
-            @Override
-            public ObservableSource<? extends String> call() {
-                // Do some long running operation
-                SystemClock.sleep(2000);
-                return Observable.just("one", "two", "three", "four", "five");
-            }
+        return Observable.defer(() -> {
+            // Do some long running operation
+            SystemClock.sleep(2000);
+            return Observable.just("one", "two", "three", "four", "five");
         });
     }
 }

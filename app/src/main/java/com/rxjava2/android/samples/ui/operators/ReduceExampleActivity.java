@@ -31,12 +31,7 @@ public class ReduceExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -44,12 +39,7 @@ public class ReduceExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
         getObservable()
-                .reduce(new BiFunction<Integer, Integer, Integer>() {
-                    @Override
-                    public Integer apply(Integer t1, Integer t2) {
-                        return t1 + t2;
-                    }
-                })
+                .reduce((t1, t2) -> t1 + t2)
                 .subscribe(getObserver());
     }
 
