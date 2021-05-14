@@ -53,15 +53,15 @@ public class MapExampleActivity extends AppCompatActivity {
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(apiUsers -> Utils.convertApiUserListToUserList(apiUsers))
+                .map(Utils::convertApiUserListToUserList)
                 .subscribe(getObserver());
     }
 
     private Observable<List<ApiUser>> getObservable() {
-        return Observable.create(e -> {
-            if (!e.isDisposed()) {
-                e.onNext(Utils.getApiUserList());
-                e.onComplete();
+        return Observable.create(source -> {
+            if (!source.isDisposed()) {
+                source.onNext(Utils.getApiUserList());
+                source.onComplete();
             }
         });
     }

@@ -49,7 +49,7 @@ public class ZipExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
-                (cricketFans, footballFans) -> Utils.filterUserWhoLovesBoth(cricketFans, footballFans))
+                Utils::filterUserWhoLovesBoth)
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
@@ -58,19 +58,19 @@ public class ZipExampleActivity extends AppCompatActivity {
     }
 
     private Observable<List<User>> getCricketFansObservable() {
-        return Observable.create((ObservableOnSubscribe<List<User>>) e -> {
-            if (!e.isDisposed()) {
-                e.onNext(Utils.getUserListWhoLovesCricket());
-                e.onComplete();
+        return Observable.create((ObservableOnSubscribe<List<User>>) source -> {
+            if (!source.isDisposed()) {
+                source.onNext(Utils.getUserListWhoLovesCricket());
+                source.onComplete();
             }
         }).subscribeOn(Schedulers.io());
     }
 
     private Observable<List<User>> getFootballFansObservable() {
-        return Observable.create((ObservableOnSubscribe<List<User>>) e -> {
-            if (!e.isDisposed()) {
-                e.onNext(Utils.getUserListWhoLovesFootball());
-                e.onComplete();
+        return Observable.create((ObservableOnSubscribe<List<User>>) source -> {
+            if (!source.isDisposed()) {
+                source.onNext(Utils.getUserListWhoLovesFootball());
+                source.onComplete();
             }
         }).subscribeOn(Schedulers.io());
     }
