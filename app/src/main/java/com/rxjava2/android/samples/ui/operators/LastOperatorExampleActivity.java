@@ -21,7 +21,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class LastOperatorExampleActivity extends AppCompatActivity {
 
-    private static final String TAG = DistinctExampleActivity.class.getSimpleName();
+    private static final String TAG = LastOperatorExampleActivity.class.getSimpleName();
     Button btn;
     TextView textView;
 
