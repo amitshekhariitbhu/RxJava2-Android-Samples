@@ -1,5 +1,6 @@
 package com.rxjava2.android.samples.ui.operators;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -39,20 +40,24 @@ public class WindowExampleActivity extends AppCompatActivity {
      * Observable windows and emit these windows rather than
      * emitting the items one at a time
      */
+    @SuppressLint("CheckResult")
     protected void doSomeWork() {
-
-        Observable.interval(1, TimeUnit.SECONDS).take(12)
+        //noinspection ResultOfMethodCallIgnored
+        Observable.interval(1, TimeUnit.SECONDS)
+                .take(12)
                 .window(3, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getConsumer());
     }
 
+    @SuppressLint("CheckResult")
     public Consumer<Observable<Long>> getConsumer() {
         return observable -> {
             Log.d(TAG, "Sub Divide begin....");
             textView.append("Sub Divide begin ....");
             textView.append(AppConstant.LINE_SEPARATOR);
+            //noinspection ResultOfMethodCallIgnored
             observable
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
