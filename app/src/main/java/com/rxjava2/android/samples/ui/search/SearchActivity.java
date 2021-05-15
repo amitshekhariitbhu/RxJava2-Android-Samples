@@ -1,5 +1,6 @@
 package com.rxjava2.android.samples.ui.search;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -36,7 +37,9 @@ public class SearchActivity extends AppCompatActivity {
         setUpSearchObservable();
     }
 
+    @SuppressLint("CheckResult")
     private void setUpSearchObservable() {
+        //noinspection ResultOfMethodCallIgnored
         RxSearchObservable.fromView(searchView)
                 .debounce(300, TimeUnit.MILLISECONDS)
                 .filter(text -> {
@@ -61,11 +64,12 @@ public class SearchActivity extends AppCompatActivity {
 
     /**
      * Simulation of network data
+     * Reverse the query string
      */
     private Observable<String> dataFromNetwork(final String query) {
         return Observable.just(true)
                 .delay(2, TimeUnit.SECONDS)
-                .map(value -> query);
+                .map(value -> new StringBuilder(query).reverse().toString());
     }
 
 }
