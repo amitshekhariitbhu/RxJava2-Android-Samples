@@ -29,8 +29,9 @@ import io.reactivex.schedulers.Schedulers;
 public class PaginationActivity extends AppCompatActivity {
 
     public static final String TAG = PaginationActivity.class.getSimpleName();
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private PublishProcessor<Integer> paginator = PublishProcessor.create();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+    @SuppressWarnings("SpellCheckingInspection")
+    private final PublishProcessor<Integer> paginator = PublishProcessor.create();
     private PaginationAdapter paginationAdapter;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
