@@ -7,7 +7,7 @@ public class Data {
     public String source;
 
     @NonNull
-    @SuppressWarnings("CloneDoesntDeclareCloneNotSupportedException")
+    @SuppressWarnings({"MethodDoesntCallSuperMethod"})
     @Override
     public Data clone() {
         return new Data();
