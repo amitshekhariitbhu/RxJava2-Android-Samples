@@ -1,5 +1,6 @@
 package com.rxjava2.android.samples.ui.rxbus;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 06/02/17.
+ * https://blog.mindorks.com/implementing-eventbus-with-rxjava-rxbus-e6c940a94bd8
  */
 
 public class RxBusActivity extends AppCompatActivity {
@@ -31,15 +33,19 @@ public class RxBusActivity extends AppCompatActivity {
         disposables.clear(); // do not send event after activity has been destroyed
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxbus);
+
+        ((MyApplication) getApplication()).sendAutoEvent();
+
         textView = findViewById(R.id.textView);
         button = findViewById(R.id.button);
 
         disposables.add(((MyApplication) getApplication())
-                .bus()
+                .getRxBus()
                 .toObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -52,7 +58,7 @@ public class RxBusActivity extends AppCompatActivity {
                 }));
 
         button.setOnClickListener(v -> ((MyApplication) getApplication())
-                .bus()
+                .getRxBus()
                 .send(new Events.TapEvent()));
     }
 

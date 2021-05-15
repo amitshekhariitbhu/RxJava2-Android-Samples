@@ -1,5 +1,6 @@
 package com.rxjava2.android.samples;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 
 import com.rxjava2.android.samples.model.Events;
@@ -16,21 +17,23 @@ import io.reactivex.Observable;
 public class MyApplication extends Application {
 
     public static final String TAG = "MyApplication";
-    private RxBus bus;
+    private RxBus rxBus;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        bus = new RxBus();
+        rxBus = new RxBus();
     }
 
-    public RxBus bus() {
-        return bus;
+    public RxBus getRxBus() {
+        return rxBus;
     }
 
+    @SuppressLint("CheckResult")
     public void sendAutoEvent() {
+        //noinspection ResultOfMethodCallIgnored
         Observable.timer(2, TimeUnit.SECONDS)
-                .subscribe(aLong -> bus.send(new Events.AutoEvent()));
+                .subscribe(aLong -> rxBus.send(new Events.AutoEvent()));
     }
 
 }

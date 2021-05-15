@@ -36,7 +36,6 @@ public class SelectionActivity extends AppCompatActivity {
     }
 
     public void startRxBusActivity(View view) {
-        ((MyApplication) getApplication()).sendAutoEvent();
         startActivity(new Intent(SelectionActivity.this, RxBusActivity.class));
     }
 
