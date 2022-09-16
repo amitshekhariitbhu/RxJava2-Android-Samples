@@ -8,16 +8,15 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/LICENSE)
 
-### [Take the MindOrks Android Online Course and Learn RxJava](https://bootcamp.mindorks.com)
 
-## How to use RxJava 2 in Android Application
-## How to migrate from RxJava 1.0 to RxJava 2.0
-## How to use RxJava 3 in Android Application [Check here](https://github.com/MindorksOpenSource/RxJava3-Android-Examples)
-## Kotlin-Coroutines-Android-Examples - [Check here](https://github.com/MindorksOpenSource/Kotlin-Coroutines-Android-Examples)
+### How to use RxJava 2 in Android Application
+### How to migrate from RxJava 1.0 to RxJava 2.0
 
 ### This project is for : 
 * who is migrating to RxJava 2 
 * or just started with RxJava.
+
+## [My Personal Blog - amitshekhar.me](https://amitshekhar.me/blog) - High-quality content to learn Android concepts.
 
 ### Just Build the project and start learning RxJava by examples.
 
