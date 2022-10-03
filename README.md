@@ -41,7 +41,7 @@ compile 'io.reactivex.rxjava2:rxandroid:X.X.X'
 
 # Highlights of the examples :
 
-* [DisposableExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/DisposableExampleActivity.java) - Using `CompositeDisposable`
+* [DisposableExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/DisposableExampleActivity.java) - Using `CompositeDisposable`. [Blog for reference](https://amitshekhar.me/blog/dispose-vs-clear-compositedisposable-rxjava)
 * [FlowableExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/FlowableExampleActivity.java) - Using `Flowable` and `reduce` operator
 * [SingleObserverExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/SingleObserverExampleActivity.java) - Using `SingleObserver`
 * [CompletableObserverActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/CompletableObserverExampleActivity.java) - Using `CompletableObserver`
