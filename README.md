@@ -33,7 +33,7 @@ compile 'io.reactivex.rxjava2:rxandroid:X.X.X'
 * `Reduce` -> apply a function to each item emitted by an Observable, sequentially, and emit the final value
 * `Skip` -> suppress the first n items emitted by an Observable
 * `Buffer` -> periodically gather items emitted by an Observable into bundles and emit these bundles rather than emitting the items one at a time
-* `Concat` -> emit the emissions from two or more Observables without interleaving them
+* `Concat` -> emit the emissions from two or more Observables without interleaving them. [Blog for reference](https://amitshekhar.me/blog/rxjava-concat-operator)
 * `Replay` -> ensure that all observers see the same sequence of emitted items, even if they subscribe after the Observable has begun emitting items
 * `Merge` -> combine multiple Observables into one by merging their emissions
 * `SwitchMap` -> transform the items emitted by an Observable into Observables, and mirror those items emitted by the most-recently transformed Observable
@@ -53,7 +53,7 @@ compile 'io.reactivex.rxjava2:rxandroid:X.X.X'
 * [FilterExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/FilterExampleActivity.java) - Using `filter` Operator
 * [SkipExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/SkipExampleActivity.java) - Using `skip` Operator
 * [ReplayExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/ReplayExampleActivity.java) - Using `replay` Operator
-* [ConcatExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/ConcatExampleActivity.java) - Using `concat` Operator
+* [ConcatExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/ConcatExampleActivity.java) - Using `concat` Operator. [Blog for reference](https://amitshekhar.me/blog/rxjava-concat-operator)
 * [MergeExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/MergeExampleActivity.java) - Using `merge` Operator
 * [DeferExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/DeferExampleActivity.java) - Using `defer` Observable
 * [SwitchMapExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/SwitchMapExampleActivity.java) - Using `switchMap` Observable
