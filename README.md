@@ -25,10 +25,10 @@ compile 'io.reactivex.rxjava2:rxandroid:X.X.X'
 
 # RxJava 2 Operators Examples present in this sample project:
 
-* `Map` -> transform the items emitted by an Observable by applying a function to each item
+* `Map` -> transform the items emitted by an Observable by applying a function to each item. Blog: [RxJava Operator Map vs FlatMap](https://amitshekhar.me/blog/rxjava-map-vs-flatmap)
 * `Zip` -> combine the emissions of multiple Observables together via a specified function and emit single items for each combination based on the results of this function
 * `Filter` -> emit only those items from an Observable that pass a predicate test
-* `FlatMap` -> transform the items emitted by an Observable into Observables, then flatten the emissions from those into a single Observable
+* `FlatMap` -> transform the items emitted by an Observable into Observables, then flatten the emissions from those into a single Observable. Blog: [RxJava Operator Map vs FlatMap](https://amitshekhar.me/blog/rxjava-map-vs-flatmap)
 * `Take` -> emit only the first n items emitted by an Observable. [Blog for reference](https://amitshekhar.me/blog/rxjava-interval-operator)
 * `Reduce` -> apply a function to each item emitted by an Observable, sequentially, and emit the final value
 * `Skip` -> suppress the first n items emitted by an Observable
@@ -45,7 +45,7 @@ compile 'io.reactivex.rxjava2:rxandroid:X.X.X'
 * [FlowableExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/FlowableExampleActivity.java) - Using `Flowable` and `reduce` operator
 * [SingleObserverExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/SingleObserverExampleActivity.java) - Using `SingleObserver`
 * [CompletableObserverActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/CompletableObserverExampleActivity.java) - Using `CompletableObserver`
-* [MapExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/MapExampleActivity.java) - Using `map` Operator
+* [MapExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/MapExampleActivity.java) - Using `map` Operator. Blog: [RxJava Operator Map vs FlatMap](https://amitshekhar.me/blog/rxjava-map-vs-flatmap)
 * [ZipExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/ZipExampleActivity.java) - Using `zip` Operator
 * [BufferExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/BufferExampleActivity.java) - Using `buffer` Operator
 * [TakeExampleActivity](https://github.com/amitshekhariitbhu/RxJava2-Android-Samples/blob/master/app/src/main/java/com/rxjava2/android/samples/ui/operators/TakeExampleActivity.java) - Using `take` Operator. [Blog for reference](https://amitshekhar.me/blog/rxjava-interval-operator)
