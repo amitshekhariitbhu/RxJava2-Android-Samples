@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,8 +29,9 @@ import io.reactivex.schedulers.Schedulers;
 public class PaginationActivity extends AppCompatActivity {
 
     public static final String TAG = PaginationActivity.class.getSimpleName();
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private PublishProcessor<Integer> paginator = PublishProcessor.create();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+    @SuppressWarnings("SpellCheckingInspection")
+    private final PublishProcessor<Integer> paginator = PublishProcessor.create();
     private PaginationAdapter paginationAdapter;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
@@ -67,7 +69,7 @@ public class PaginationActivity extends AppCompatActivity {
     private void setUpLoadMoreListener() {
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView,
+            public void onScrolled(@NonNull RecyclerView recyclerView,
                                    int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 

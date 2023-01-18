@@ -26,8 +26,7 @@ public class DataSource {
     }
 
     public Observable<Data> getDataFromDisk() {
-        return diskDataSource.getData().doOnNext(data ->
-                memoryDataSource.cacheInMemory(data)
+        return diskDataSource.getData().doOnNext(memoryDataSource::cacheInMemory
         );
     }
 

@@ -2,14 +2,15 @@ package com.rxjava2.android.samples.ui.operators;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.AsyncSubject;
@@ -31,12 +32,7 @@ public class AsyncSubjectExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /* An AsyncSubject emits the last value (and only the last value) emitted by the source
@@ -68,19 +64,19 @@ public class AsyncSubjectExampleActivity extends AppCompatActivity {
         return new Observer<Integer>() {
 
             @Override
-            public void onSubscribe(Disposable d) {
+            public void onSubscribe(@NonNull Disposable d) {
                 Log.d(TAG, " First onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onNext(Integer value) {
+            public void onNext(@NonNull Integer value) {
                 textView.append(" First onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " First onNext value : " + value);
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onError(@NonNull Throwable e) {
                 textView.append(" First onError : " + e.getMessage());
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " First onError : " + e.getMessage());
@@ -99,21 +95,21 @@ public class AsyncSubjectExampleActivity extends AppCompatActivity {
         return new Observer<Integer>() {
 
             @Override
-            public void onSubscribe(Disposable d) {
+            public void onSubscribe(@NonNull Disposable d) {
                 textView.append(" Second onSubscribe : isDisposed :" + d.isDisposed());
                 Log.d(TAG, " Second onSubscribe : " + d.isDisposed());
                 textView.append(AppConstant.LINE_SEPARATOR);
             }
 
             @Override
-            public void onNext(Integer value) {
+            public void onNext(@NonNull Integer value) {
                 textView.append(" Second onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " Second onNext value : " + value);
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onError(@NonNull Throwable e) {
                 textView.append(" Second onError : " + e.getMessage());
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " Second onError : " + e.getMessage());

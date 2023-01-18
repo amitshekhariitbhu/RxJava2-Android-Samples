@@ -1,5 +1,7 @@
 package com.rxjava2.android.samples.utils;
 
+import androidx.annotation.NonNull;
+
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -10,17 +12,17 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class ObserverAdapter<T> implements Observer<T> {
     @Override
-    public void onSubscribe(Disposable d) {
+    public void onSubscribe(@NonNull Disposable d) {
 
     }
 
     @Override
-    public void onNext(T s) {
+    public void onNext(@NonNull T s) {
 
     }
 
     @Override
-    public void onError(Throwable e) {
+    public void onError(@NonNull Throwable e) {
 
     }
 

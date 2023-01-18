@@ -2,9 +2,11 @@ package com.rxjava2.android.samples.ui.cache;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.ui.cache.model.Data;
@@ -14,7 +16,6 @@ import com.rxjava2.android.samples.ui.cache.source.MemoryDataSource;
 import com.rxjava2.android.samples.ui.cache.source.NetworkDataSource;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -32,15 +33,10 @@ public class CacheExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
-        btn = (Button) findViewById(R.id.btn);
-        textView = (TextView) findViewById(R.id.textView);
+        btn = findViewById(R.id.btn);
+        textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
 
         dataSource = new DataSource(new MemoryDataSource(), new DiskDataSource(), new NetworkDataSource());
     }
@@ -63,19 +59,19 @@ public class CacheExampleActivity extends AppCompatActivity {
         return new Observer<Data>() {
 
             @Override
-            public void onSubscribe(Disposable d) {
+            public void onSubscribe(@NonNull Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onNext(Data data) {
+            public void onNext(@NonNull Data data) {
                 textView.append(" onNext : " + data.source);
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onNext : " + data.source);
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onError(@NonNull Throwable e) {
                 textView.append(" onError : " + e.getMessage());
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());
