@@ -29,7 +29,7 @@ public class RxBusActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        disposables.clear(); // do not send event after activity has been destroyed
+        disposables.dispose(); // do not send event after activity has been destroyed
     }
 
     @Override
