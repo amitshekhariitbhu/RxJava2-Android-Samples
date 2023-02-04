@@ -46,7 +46,7 @@ public class IntervalExampleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        disposables.clear(); // clearing it : do not emit after destroy
+        disposables.dispose(); //disposeing it : so it do not perform unnecessary emittion
     }
 
     /*
