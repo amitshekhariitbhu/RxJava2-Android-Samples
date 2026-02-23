@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.ui.operators.AsyncSubjectExampleActivity;
 import com.rxjava2.android.samples.ui.operators.BehaviorSubjectExampleActivity;
@@ -38,8 +40,6 @@ import com.rxjava2.android.samples.ui.operators.ThrottleLastExampleActivity;
 import com.rxjava2.android.samples.ui.operators.TimerExampleActivity;
 import com.rxjava2.android.samples.ui.operators.WindowExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ZipExampleActivity;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class OperatorsActivity extends AppCompatActivity {
 

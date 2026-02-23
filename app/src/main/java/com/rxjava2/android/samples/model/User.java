@@ -1,5 +1,7 @@
 package com.rxjava2.android.samples.model;
 
+import androidx.annotation.NonNull;
+
 /**
  * Created by amitshekhar on 27/08/16.
  */
@@ -18,6 +20,7 @@ public class User {
         this.lastname = apiUser.lastname;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "User{" +

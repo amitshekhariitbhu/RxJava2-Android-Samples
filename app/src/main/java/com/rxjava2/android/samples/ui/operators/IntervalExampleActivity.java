@@ -2,16 +2,17 @@ package com.rxjava2.android.samples.ui.operators;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
 import java.util.concurrent.TimeUnit;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -35,17 +36,13 @@ public class IntervalExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d(TAG, "onDestroy");
         disposables.clear(); // clearing it : do not emit after destroy
     }
 
@@ -54,6 +51,7 @@ public class IntervalExampleActivity extends AppCompatActivity {
      * which start immediately
      */
     private void doSomeWork() {
+        Log.d(TAG, "doSomeWork");
         disposables.add(getObservable()
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
@@ -70,14 +68,14 @@ public class IntervalExampleActivity extends AppCompatActivity {
         return new DisposableObserver<Long>() {
 
             @Override
-            public void onNext(Long value) {
+            public void onNext(@NonNull Long value) {
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onNext : value : " + value);
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onError(@NonNull Throwable e) {
                 textView.append(" onError : " + e.getMessage());
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());

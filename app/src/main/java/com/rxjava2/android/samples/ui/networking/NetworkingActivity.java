@@ -5,6 +5,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
@@ -22,9 +23,7 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
-import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -51,28 +50,25 @@ public class NetworkingActivity extends AppCompatActivity {
                 .getObjectObservable(ApiUser.class)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<ApiUser, User>() {
-                    @Override
-                    public User apply(ApiUser apiUser) {
-                        // here we get ApiUser from server
-                        User user = new User(apiUser);
-                        // then by converting, we are returning user
-                        return user;
-                    }
+                .map(apiUser -> {
+                    // here we get ApiUser from server
+                    User user = new User(apiUser);
+                    // then by converting, we are returning user
+                    return user;
                 })
                 .subscribe(new Observer<User>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(User user) {
+                    public void onNext(@NonNull User user) {
                         Log.d(TAG, "user : " + user.toString());
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
@@ -116,24 +112,21 @@ public class NetworkingActivity extends AppCompatActivity {
     private void findUsersWhoLovesBoth() {
         // here we are using zip operator to combine both request
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
-                new BiFunction<List<User>, List<User>, List<User>>() {
-                    @Override
-                    public List<User> apply(List<User> cricketFans, List<User> footballFans) {
-                        List<User> userWhoLovesBoth =
-                                filterUserWhoLovesBoth(cricketFans, footballFans);
-                        return userWhoLovesBoth;
-                    }
+                (cricketFans, footballFans) -> {
+                    List<User> userWhoLovesBoth =
+                            filterUserWhoLovesBoth(cricketFans, footballFans);
+                    return userWhoLovesBoth;
                 })
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<User>>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(List<User> users) {
+                    public void onNext(@NonNull List<User> users) {
                         // do anything with user who loves both
                         Log.d(TAG, "userList size : " + users.size());
                         for (User user : users) {
@@ -142,7 +135,7 @@ public class NetworkingActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
@@ -183,36 +176,31 @@ public class NetworkingActivity extends AppCompatActivity {
     }
 
     public void flatMapAndFilter(View view) {
+        // flatMap - to return users one by one
         getAllMyFriendsObservable()
-                .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
-                    @Override
-                    public ObservableSource<User> apply(List<User> usersList) {
-                        return Observable.fromIterable(usersList); // returning user one by one from usersList.
-                    }
+                .flatMap((Function<List<User>, ObservableSource<User>>) usersList -> {
+                    return Observable.fromIterable(usersList); // returning user one by one from usersList.
                 })
-                .filter(new Predicate<User>() {
-                    @Override
-                    public boolean test(User user) {
-                        // filtering user who follows me.
-                        return user.isFollowing;
-                    }
+                .filter(user -> {
+                    // filtering user who follows me.
+                    return user.isFollowing;
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<User>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(User user) {
+                    public void onNext(@NonNull User user) {
                         // only the user who is following me comes here one by one
                         Log.d(TAG, "user : " + user.toString());
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
@@ -229,30 +217,28 @@ public class NetworkingActivity extends AppCompatActivity {
      */
 
     public void take(View view) {
+        // flatMap - to return users one by one
         getUserListObservable()
-                .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
-                    @Override
-                    public ObservableSource<User> apply(List<User> usersList) {
-                        return Observable.fromIterable(usersList); // returning user one by one from usersList.
-                    }
+                .flatMap((Function<List<User>, ObservableSource<User>>) usersList -> {
+                    return Observable.fromIterable(usersList); // returning user one by one from usersList.
                 })
                 .take(4) // it will only emit first 4 users out of all
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<User>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(User user) {
+                    public void onNext(@NonNull User user) {
                         // // only four user comes here one by one
                         Log.d(TAG, "user : " + user.toString());
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
@@ -269,37 +255,32 @@ public class NetworkingActivity extends AppCompatActivity {
      */
 
     public void flatMap(View view) {
+        // flatMap - to return users one by one
         getUserListObservable()
-                .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
-                    @Override
-                    public ObservableSource<User> apply(List<User> usersList) {
-                        return Observable.fromIterable(usersList); // returning user one by one from usersList.
-                    }
+                .flatMap((Function<List<User>, ObservableSource<User>>) usersList -> {
+                    return Observable.fromIterable(usersList); // returning user one by one from usersList.
                 })
-                .flatMap(new Function<User, ObservableSource<UserDetail>>() {
-                    @Override
-                    public ObservableSource<UserDetail> apply(User user) {
-                        // here we get the user one by one
-                        // and returns corresponding getUserDetailObservable
-                        // for that userId
-                        return getUserDetailObservable(user.id);
-                    }
+                .flatMap((Function<User, ObservableSource<UserDetail>>) user -> {
+                    // here we get the user one by one
+                    // and returns corresponding getUserDetailObservable
+                    // for that userId
+                    return getUserDetailObservable(user.id);
                 })
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<UserDetail>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         Utils.logError(TAG, e);
                     }
 
                     @Override
-                    public void onNext(UserDetail userDetail) {
+                    public void onNext(@NonNull UserDetail userDetail) {
                         // do anything with userDetail
                         Log.d(TAG, "userDetail : " + userDetail.toString());
                     }
@@ -331,30 +312,22 @@ public class NetworkingActivity extends AppCompatActivity {
     }
 
     public void flatMapWithZip(View view) {
+        // flatMap - to return users one by one
         getUserListObservable()
-                .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
-                    @Override
-                    public ObservableSource<User> apply(List<User> usersList) {
-                        return Observable.fromIterable(usersList); // returning user one by one from usersList.
-                    }
+                .flatMap((Function<List<User>, ObservableSource<User>>) usersList -> {
+                    return Observable.fromIterable(usersList); // returning user one by one from usersList.
                 })
-                .flatMap(new Function<User, ObservableSource<Pair<UserDetail, User>>>() {
-                    @Override
-                    public ObservableSource<Pair<UserDetail, User>> apply(User user) {
-                        // here we get the user one by one and then we are zipping
-                        // two observable - one getUserDetailObservable (network call to get userDetail)
-                        // and another Observable.just(user) - just to emit user
-                        return Observable.zip(getUserDetailObservable(user.id),
-                                Observable.just(user),
-                                new BiFunction<UserDetail, User, Pair<UserDetail, User>>() {
-                                    @Override
-                                    public Pair<UserDetail, User> apply(UserDetail userDetail, User user) {
-                                        // runs when network call completes
-                                        // we get here userDetail for the corresponding user
-                                        return new Pair<>(userDetail, user); // returning the pair(userDetail, user)
-                                    }
-                                });
-                    }
+                .flatMap((Function<User, ObservableSource<Pair<UserDetail, User>>>) user -> {
+                    // here we get the user one by one and then we are zipping
+                    // two observable - one getUserDetailObservable (network call to get userDetail)
+                    // and another Observable.just(user) - just to emit user
+                    return Observable.zip(getUserDetailObservable(user.id),
+                            Observable.just(user),
+                            (userDetail, user1) -> {
+                                // runs when network call completes
+                                // we get here userDetail for the corresponding user
+                                return new Pair<>(userDetail, user1); // returning the pair(userDetail, user)
+                            });
                 })
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -366,18 +339,18 @@ public class NetworkingActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onError(Throwable e) {
+                    public void onError(@NonNull Throwable e) {
                         // handle error
                         Utils.logError(TAG, e);
                     }
 
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(Pair<UserDetail, User> pair) {
+                    public void onNext(@NonNull Pair<UserDetail, User> pair) {
                         // here we are getting the userDetail for the corresponding user one by one
                         UserDetail userDetail = pair.first;
                         User user = pair.second;

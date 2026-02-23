@@ -18,6 +18,7 @@ public class Utils {
         // This class in not publicly instantiable.
     }
 
+    @SuppressWarnings("unused")
     public static List<User> getUserList() {
 
         List<User> userList = new ArrayList<>();
@@ -76,8 +77,9 @@ public class Utils {
         return userList;
     }
 
+    @SuppressWarnings("unused")
     public static List<ApiUser> convertApiUserListToApiUserList(List<ApiUser> apiUserList) {
-      return apiUserList;
+        return apiUserList;
     }
 
 
@@ -122,7 +124,7 @@ public class Utils {
 
 
     public static List<User> filterUserWhoLovesBoth(List<User> cricketFans, List<User> footballFans) {
-        List<User> userWhoLovesBoth = new ArrayList<User>();
+        List<User> userWhoLovesBoth = new ArrayList<>();
         for (User cricketFan : cricketFans) {
             for (User footballFan : footballFans) {
                 if (cricketFan.id == footballFan.id) {

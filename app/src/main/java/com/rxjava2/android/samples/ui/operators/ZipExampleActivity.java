@@ -2,9 +2,11 @@ package com.rxjava2.android.samples.ui.operators;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.model.User;
@@ -13,14 +15,11 @@ import com.rxjava2.android.samples.utils.Utils;
 
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -39,12 +38,7 @@ public class ZipExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -55,12 +49,7 @@ public class ZipExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
         Observable.zip(getCricketFansObservable(), getFootballFansObservable(),
-                new BiFunction<List<User>, List<User>, List<User>>() {
-                    @Override
-                    public List<User> apply(List<User> cricketFans, List<User> footballFans) {
-                        return Utils.filterUserWhoLovesBoth(cricketFans, footballFans);
-                    }
-                })
+                Utils::filterUserWhoLovesBoth)
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())
                 // Be notified on the main thread
@@ -69,25 +58,19 @@ public class ZipExampleActivity extends AppCompatActivity {
     }
 
     private Observable<List<User>> getCricketFansObservable() {
-        return Observable.create(new ObservableOnSubscribe<List<User>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<User>> e) {
-                if (!e.isDisposed()) {
-                    e.onNext(Utils.getUserListWhoLovesCricket());
-                    e.onComplete();
-                }
+        return Observable.create((ObservableOnSubscribe<List<User>>) source -> {
+            if (!source.isDisposed()) {
+                source.onNext(Utils.getUserListWhoLovesCricket());
+                source.onComplete();
             }
         }).subscribeOn(Schedulers.io());
     }
 
     private Observable<List<User>> getFootballFansObservable() {
-        return Observable.create(new ObservableOnSubscribe<List<User>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<User>> e) {
-                if (!e.isDisposed()) {
-                    e.onNext(Utils.getUserListWhoLovesFootball());
-                    e.onComplete();
-                }
+        return Observable.create((ObservableOnSubscribe<List<User>>) source -> {
+            if (!source.isDisposed()) {
+                source.onNext(Utils.getUserListWhoLovesFootball());
+                source.onComplete();
             }
         }).subscribeOn(Schedulers.io());
     }
@@ -96,12 +79,12 @@ public class ZipExampleActivity extends AppCompatActivity {
         return new Observer<List<User>>() {
 
             @Override
-            public void onSubscribe(Disposable d) {
+            public void onSubscribe(@NonNull Disposable d) {
                 Log.d(TAG, " onSubscribe : " + d.isDisposed());
             }
 
             @Override
-            public void onNext(List<User> userList) {
+            public void onNext(@NonNull List<User> userList) {
                 textView.append(" onNext");
                 textView.append(AppConstant.LINE_SEPARATOR);
                 for (User user : userList) {
@@ -112,7 +95,7 @@ public class ZipExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onError(@NonNull Throwable e) {
                 textView.append(" onError : " + e.getMessage());
                 textView.append(AppConstant.LINE_SEPARATOR);
                 Log.d(TAG, " onError : " + e.getMessage());

@@ -1,17 +1,18 @@
 package com.rxjava2.android.samples.ui.operators;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
 import java.util.concurrent.TimeUnit;
 
-import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -30,12 +31,7 @@ public class WindowExampleActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                doSomeWork();
-            }
-        });
+        btn.setOnClickListener(view -> doSomeWork());
     }
 
     /*
@@ -44,34 +40,32 @@ public class WindowExampleActivity extends AppCompatActivity {
      * Observable windows and emit these windows rather than
      * emitting the items one at a time
      */
+    @SuppressLint("CheckResult")
     protected void doSomeWork() {
-
-        Observable.interval(1, TimeUnit.SECONDS).take(12)
+        //noinspection ResultOfMethodCallIgnored
+        Observable.interval(1, TimeUnit.SECONDS)
+                .take(12)
                 .window(3, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getConsumer());
     }
 
+    @SuppressLint("CheckResult")
     public Consumer<Observable<Long>> getConsumer() {
-        return new Consumer<Observable<Long>>() {
-            @Override
-            public void accept(Observable<Long> observable) {
-                Log.d(TAG, "Sub Divide begin....");
-                textView.append("Sub Divide begin ....");
-                textView.append(AppConstant.LINE_SEPARATOR);
-                observable
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Consumer<Long>() {
-                            @Override
-                            public void accept(Long value) {
-                                Log.d(TAG, "Next:" + value);
-                                textView.append("Next:" + value);
-                                textView.append(AppConstant.LINE_SEPARATOR);
-                            }
-                        });
-            }
+        return observable -> {
+            Log.d(TAG, "Sub Divide begin....");
+            textView.append("Sub Divide begin ....");
+            textView.append(AppConstant.LINE_SEPARATOR);
+            //noinspection ResultOfMethodCallIgnored
+            observable
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(value -> {
+                        Log.d(TAG, "Next:" + value);
+                        textView.append("Next:" + value);
+                        textView.append(AppConstant.LINE_SEPARATOR);
+                    });
         };
     }
 }
